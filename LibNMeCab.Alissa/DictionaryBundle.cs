@@ -23,6 +23,8 @@ namespace NMeCab.Alissa
     /// An instance of this class holds references to MeCab's internal objects
     /// that are owned by the tagger and are disposed as the tagger is disposed.
     /// You need to keep the tagger object undisposed as long as you want to use an instance of this class.
+    /// Also, you should not try to dispose directly any of the objects that this class provides;
+    /// You should dispose the tagger instead after finished using it.
     /// </para>
     /// </remarks>
     public class DictionaryBundle<TNode> where TNode : MeCabNodeBase<TNode>, new()
