@@ -42,16 +42,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Constraints.cs" />
     <Compile Include="CostMethods.cs" />
     <Compile Include="DictionaryBundle.cs" />
     <Compile Include="Hack.cs" />
     <Compile Include="DictionaryPeeper.cs" />
+    <Compile Include="NodeRemover.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tagger.cs" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="LibNMeCab">
-      <Version>0.10.0-bata2</Version>
+      <Version>0.10.0-bata.2</Version>
     </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
