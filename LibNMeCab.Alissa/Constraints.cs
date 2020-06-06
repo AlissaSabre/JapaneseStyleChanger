@@ -43,7 +43,7 @@ namespace NMeCab.Alissa
         /// <remarks>
         /// Use indexer of BoundaryConstraints to add a new boundary constraint to this Constraints object.
         /// </remarks>
-        public BondaryConstraints Boundaries { get; } = new BondaryConstraints();
+        public BoundaryConstraints Boundaries { get; } = new BoundaryConstraints();
 
         /// <summary>
         /// A collection of general conditinal constraints.
@@ -85,7 +85,7 @@ namespace NMeCab.Alissa
             remover.DoRemoves();
         }
 
-        public class BondaryConstraints : IEnumerable<KeyValuePair<int, BoundaryType>>
+        public class BoundaryConstraints : IEnumerable<KeyValuePair<int, BoundaryType>>
         {
             private readonly SortedDictionary<int, BoundaryType> Dictionary = new SortedDictionary<int, BoundaryType>();
 
