@@ -26,11 +26,21 @@
 	{
 		switch (type)
 		{
-			case "string":
-				return $"features[{column}]";
+			case "string":	return $"features[{column}]";
 			case "int":
-			case "long":
-				return $"{type}.Parse(features[{column}])";
+			case "long":	return $"{type}.Parse(features[{column}])";
+			default:
+				throw new ApplicationException("Invalid type name");
+		}
+	}
+
+	string DefaultFeatureValue(string type)
+	{
+		switch (type)
+		{
+			case "string":	return "string.Empty";
+			case "int":
+			case "long":	return "0";
 			default:
 				throw new ApplicationException("Invalid type name");
 		}
@@ -61,13 +71,20 @@ namespace JapaneseStyleChanger
 
         private void LoadFeatures()
         {
-            var features = StrUtils.SplitCsvRow(Feature, 29, 16);
-
+			if (Feature == null)
+			{
 <# foreach (var m in members) { #>
-			_<#= m.N #> = <#= Load(m.C, m.T) #>;
+				_<#= m.N #> = <#= DefaultFeatureValue(m.T) #>;
 <# } #>
-
-			Feature = null;
+			}
+			else
+			{
+	            var features = StrUtils.SplitCsvRow(Feature, 29, 16);
+<# foreach (var m in members) { #>
+				_<#= m.N #> = <#= Load(m.C, m.T) #>;
+<# } #>
+				Feature = null;
+			}
             Loaded = true;
         }
 
@@ -85,5 +102,13 @@ namespace JapaneseStyleChanger
 		private <#= m.T #> _<#= m.N #>;
 <# } #>
 
+		public override string ToString()
+		{
+			return Surface
+<# foreach (var m in members) { #>
+				+ "," + <#= m.N #>
+<# } #>
+				;
+		}
     }
 }

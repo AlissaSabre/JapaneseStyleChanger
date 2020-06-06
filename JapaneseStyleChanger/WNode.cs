@@ -22,21 +22,36 @@ namespace JapaneseStyleChanger
 
         private void LoadFeatures()
         {
-            var features = StrUtils.SplitCsvRow(Feature, 29, 16);
-
-			_Pos1 = features[0];
-			_Pos2 = features[1];
-			_Pos3 = features[2];
-			_Pos4 = features[3];
-			_CType = features[4];
-			_CForm = features[5];
-			_Lemma = features[7];
-			_Orth = features[8];
-			_OrthBase = features[10];
-			_Lid = long.Parse(features[27]);
-			_Lemma_id = int.Parse(features[28]);
-
-			Feature = null;
+			if (Feature == null)
+			{
+				_Pos1 = string.Empty;
+				_Pos2 = string.Empty;
+				_Pos3 = string.Empty;
+				_Pos4 = string.Empty;
+				_CType = string.Empty;
+				_CForm = string.Empty;
+				_Lemma = string.Empty;
+				_Orth = string.Empty;
+				_OrthBase = string.Empty;
+				_Lid = 0;
+				_Lemma_id = 0;
+			}
+			else
+			{
+	            var features = StrUtils.SplitCsvRow(Feature, 29, 16);
+				_Pos1 = features[0];
+				_Pos2 = features[1];
+				_Pos3 = features[2];
+				_Pos4 = features[3];
+				_CType = features[4];
+				_CForm = features[5];
+				_Lemma = features[7];
+				_Orth = features[8];
+				_OrthBase = features[10];
+				_Lid = long.Parse(features[27]);
+				_Lemma_id = int.Parse(features[28]);
+				Feature = null;
+			}
             Loaded = true;
         }
 
@@ -162,5 +177,21 @@ namespace JapaneseStyleChanger
 		}
 		private int _Lemma_id;
 
+		public override string ToString()
+		{
+			return Surface
+				+ "," + Pos1
+				+ "," + Pos2
+				+ "," + Pos3
+				+ "," + Pos4
+				+ "," + CType
+				+ "," + CForm
+				+ "," + Lemma
+				+ "," + Orth
+				+ "," + OrthBase
+				+ "," + Lid
+				+ "," + Lemma_id
+				;
+		}
     }
 }
