@@ -15,7 +15,7 @@ namespace JapaneseStyleChanger
 
         private readonly Dictionary<WNode, List<WNode>> ConjugationTable;
 
-        public float CostMixFactor { get; set; }
+        public float CostMixFactor = 0.5f;
 
         public Conjugator(Tagger<WNode> tagger)
         {
