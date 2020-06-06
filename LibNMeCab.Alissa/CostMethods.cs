@@ -107,5 +107,61 @@ namespace NMeCab.Alissa
             // and the right side is easier to calculate in this case.
             return (long)Math.Round(weight * TotalCost(bundle, array) - (weight * 2 - 1) * WordsCost(bundle, array));
         }
+
+        /// <summary>
+        /// Calculates the total cost increase when a node would be added at the end of an existing open sequence.
+        /// </summary>
+        /// <typeparam name="TNode">Type of nodes.</typeparam>
+        /// <param name="bundle">A bundle of dictionaries to get cost parameters from.</param>
+        /// <param name="prev">The last node in the existing open sequence.</param>
+        /// <param name="next">A node that would be added.</param>
+        /// <returns>The total cost increase.</returns>
+        public static long TotalCostIncrease<TNode>(this DictionaryBundle<TNode> bundle, TNode prev, TNode next)
+            where TNode : MeCabNodeBase<TNode>, new()
+        {
+            return bundle.Connector.Cost(prev, next);
+        }
+
+        /// <summary>
+        /// Calculate the mixed cost increase when a node whould be added at the end of an existing open sequence.
+        /// </summary>
+        /// <typeparam name="TNode">Type of nodes.</typeparam>
+        /// <param name="bundle">A bundle of dictionaries to get cost parameters from.</param>
+        /// <param name="weight">A factor to determine the weights of word and path costs.</param>
+        /// <param name="prev">The last node in the existing open sequence.</param>
+        /// <param name="next">A node that would be added.</param>
+        /// <returns>The mixed cost increase in <see cref="double"/> value.</returns>
+        /// <remarks>
+        /// Although <see cref="MixedCost{TNode}(DictionaryBundle{TNode}, double, TNode[])"/> returns a long value,
+        /// the accurate mixed cost is not an integral value, because <paramref name="weight"/> can have any fractions.
+        /// This methods returns the estimated increase in double to give more accurate estimation.
+        /// </remarks>
+        /// <seealso cref="MixedCostIncreaseRounded{TNode}(DictionaryBundle{TNode}, double, TNode, TNode)"/>
+        public static double MixedCostIncrease<TNode>(this DictionaryBundle<TNode> bundle, double weight, TNode prev, TNode next)
+            where TNode : MeCabNodeBase<TNode>, new()
+        {
+            return weight * bundle.Connector.Cost(prev, next) - (weight * 2 - 1) * next.WCost;
+        }
+
+        /// <summary>
+        /// Calculate the mixed cost increase when a node would be added at the end of an existing open sequence.
+        /// </summary>
+        /// <typeparam name="TNode">Type of nodes.</typeparam>
+        /// <param name="bundle">A bundle of dictionaries to get cost parameters form.</param>
+        /// <param name="weight">A factor to determine the weights of word and path costs.</param>
+        /// <param name="prev">The last node in the existing open sequence.</param>
+        /// <param name="next">A node that would be added.</param>
+        /// <returns>The mixed cost increase in <see cref="long"/> value.</returns>
+        /// <remarks>
+        /// This is a convenient method around <see cref="MixedCostIncrease{TNode}(DictionaryBundle{TNode}, double, TNode, TNode)"/>
+        /// to return an integral value.
+        /// Because a mixed cost is actually non-integral,
+        /// The rounded value returned from this method may have some errors.
+        /// </remarks>
+        public static long MixedCostIncreaseRounded<TNode>(this DictionaryBundle<TNode> bundle, double weight, TNode prev, TNode next)
+            where TNode : MeCabNodeBase<TNode>, new()
+        {
+            return (long)Math.Round(MixedCostIncrease(bundle, weight, prev, next));
+        }
     }
 }
