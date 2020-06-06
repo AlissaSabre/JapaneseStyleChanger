@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("LibNMeCab.Alissa")]
-[assembly: AssemblyDescription("Alissa's additions to LibNMeCab")]
+[assembly: AssemblyTitle("JapaneseStyleChanger")]
+[assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Alissa Sabre")]
-[assembly: AssemblyProduct("LibNMeCab.Alissa")]
-[assembly: AssemblyCopyright("Copyright © 2020 Alissa Sabre")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("JapaneseStyleChanger")]
+[assembly: AssemblyCopyright("Copyright ©  2020")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("e8b46a50-925a-40ce-8191-0d90e009e07b")]
+[assembly: Guid("ad7760e3-d85b-4af2-b4d8-fde0a48ce2ac")]
 
 // Version information for an assembly consists of the following four values:
 //
@@ -32,5 +32,5 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("0.10.0.0")]
-[assembly: AssemblyFileVersion("0.10.0.0")]
+[assembly: AssemblyVersion("1.0.0.0")]
+[assembly: AssemblyFileVersion("1.0.0.0")]
