@@ -82,7 +82,7 @@ namespace JapaneseStyleChanger
                 paths[p] = new Path[nodes[p].Count];
                 for (int i = 0; i < paths[p].Length; i++)
                 {
-                    double min_cost = long.MaxValue;
+                    double min_cost = double.MaxValue;
                     for (int j = 0; j < paths[p - 1].Length; j++)
                     {
                         double cost = paths[p - 1][j].Cost + Dictionaries.MixedCostIncrease(CostMixFactor, nodes[p - 1][j], nodes[p][i]);
