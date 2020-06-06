@@ -22,7 +22,7 @@ namespace JapaneseStyleChanger
         CG = 2,
     }
 
-    class TokenCombiner<TToken>
+    public class TokenCombiner<TToken>
     {
         private readonly Func<TToken, string> Renderer;
 

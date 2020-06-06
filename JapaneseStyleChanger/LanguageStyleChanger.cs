@@ -9,7 +9,7 @@ using NMeCab.Alissa;
 
 namespace JapaneseStyleChanger
 {
-    class LanguageStyleChanger
+    public class LanguageStyleChanger
     {
         private readonly Conjugator Conjugator;
 
