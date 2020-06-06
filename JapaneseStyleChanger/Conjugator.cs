@@ -15,7 +15,7 @@ namespace JapaneseStyleChanger
 
         private readonly Dictionary<WNode, List<WNode>> ConjugationTable;
 
-        public float CostMixFactor = 0.5f;
+        public const double CostMixFactor = 0.7; // XXX XXX XXX
 
         public Conjugator(Tagger<WNode> tagger)
         {
@@ -63,14 +63,9 @@ namespace JapaneseStyleChanger
             }
         }
 
-        public int TotalCost(WNode[] text)
-        {
-            return Dictionaries.TotalCost(text);
-        }
-
         private struct Path
         {
-            public int Cost;
+            public double Cost;
             public int Previous;
         }
 
@@ -78,15 +73,19 @@ namespace JapaneseStyleChanger
         {
             var paths = new Path[nodes.Count][];
             paths[0] = new Path[nodes[0].Count];
+            for (int i = 0; i < paths[0].Length; i++)
+            {
+                paths[0][i].Cost = nodes[0][i].WCost * (1 - CostMixFactor);
+            }
             for (int p = 1; p < nodes.Count; p++)
             {
                 paths[p] = new Path[nodes[p].Count];
                 for (int i = 0; i < paths[p].Length; i++)
                 {
-                    var min_cost = int.MaxValue;
+                    double min_cost = long.MaxValue;
                     for (int j = 0; j < paths[p - 1].Length; j++)
                     {
-                        var cost = paths[p - 1][j].Cost + Dictionaries.MixedCost(CostMixFactor, nodes[p - 1][j], nodes[p][i]); // XXX XXX XXX
+                        double cost = paths[p - 1][j].Cost + Dictionaries.MixedCostIncrease(CostMixFactor, nodes[p - 1][j], nodes[p][i]);
                         if (cost < min_cost)
                         {
                             paths[p][i].Previous = j;
