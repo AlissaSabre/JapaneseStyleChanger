@@ -13,12 +13,6 @@ namespace JapaneseStyleChanger
     {
         private readonly Conjugator Conjugator;
 
-        public float Dubiousity
-        {
-            get { return Conjugator.CostMixFactor; }
-            set { Conjugator.CostMixFactor = value; }
-        }
-
         public LanguageStyleChanger(Tagger<WNode> tagger)
         {
             Conjugator = new Conjugator(tagger);
