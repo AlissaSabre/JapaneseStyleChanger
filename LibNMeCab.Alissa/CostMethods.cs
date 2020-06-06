@@ -11,8 +11,6 @@ namespace NMeCab.Alissa
     /// </summary>
     public static class CostMethods
     {
-
-
         /// <summary>
         /// Calculates the total cost of a series of nodes.
         /// </summary>
@@ -33,14 +31,14 @@ namespace NMeCab.Alissa
         /// so that it works better if applied to a sequence of nodes in a middle of a sentence.
         /// </para>
         /// </remarks>
-        public static int TotalCost<TNode>(this DictionaryBundle<TNode> bundle, params TNode[] array)
+        public static long TotalCost<TNode>(this DictionaryBundle<TNode> bundle, params TNode[] array)
             where TNode : MeCabNodeBase<TNode>, new()
         {
             if (array.Length == 0) return 0;
             var connector = bundle.Connector;
             TNode node, prev;
             node = prev = array[0];
-            int cost = node.WCost;
+            long cost = node.WCost;
             for (int i = 1; i < array.Length; i++)
             {
                 node = array[i];
@@ -61,10 +59,10 @@ namespace NMeCab.Alissa
         /// This method uses nodes' <see cref="MeCabNodeSuperBase.WCost"/> to calculate the sum.
         /// <paramref name="bundle"/> parameter is actually not needed.
         /// </remarks>
-        public static int WordsCost<TNode>(this DictionaryBundle<TNode> bundle, params TNode[] array)
+        public static long WordsCost<TNode>(this DictionaryBundle<TNode> bundle, params TNode[] array)
             where TNode : MeCabNodeBase<TNode>, new()
         {
-            return array.Sum(n => n.WCost);
+            return array.Sum(n => (long)n.WCost);
         }
 
         /// <summary>
@@ -79,7 +77,7 @@ namespace NMeCab.Alissa
         /// Path costs are looked anew up in <paramref name="bundle"/>
         /// (in particular in <see cref="DictionaryBundle{TNode}.Connector"/>).
         /// </remarks>
-        public static int PathsCost<TNode>(this DictionaryBundle<TNode> bundle, params TNode[] array)
+        public static long PathsCost<TNode>(this DictionaryBundle<TNode> bundle, params TNode[] array)
             where TNode : MeCabNodeBase<TNode>, new()
         {
             return TotalCost(bundle, array) - WordsCost(bundle, array);
@@ -102,12 +100,12 @@ namespace NMeCab.Alissa
         /// (<see cref="TotalCost{TNode}"/>).
         /// <paramref name="weight"/> can be below 0 or above 1, though the returned value may be meaningless.
         /// </remarks>
-        public static int MixedCost<TNode>(this DictionaryBundle<TNode> bundle, double weight, params TNode[] array)
+        public static long MixedCost<TNode>(this DictionaryBundle<TNode> bundle, double weight, params TNode[] array)
             where TNode : MeCabNodeBase<TNode>, new()
         {
             // Note that f * P + (1 - f) * W == f * (P + W) - (f * 2 - 1) * W,
             // and the right side is easier to calculate in this case.
-            return -(int)Math.Round(weight * TotalCost(bundle, array) - (weight * 2 - 1) * WordsCost(bundle, array));
+            return (long)Math.Round(weight * TotalCost(bundle, array) - (weight * 2 - 1) * WordsCost(bundle, array));
         }
     }
 }
