@@ -17,19 +17,20 @@ namespace JapaneseStyleChanger
 
         private TokenCombiner<WNode> Combiner;
 
-        private Task InitializeTask;
-
         public TextStyleChanger()
         {
-            InitializeTask = Task.Run((Action)Initialize);
-        }
-
-        private void Initialize()
-        {
-            var dir = Path.GetDirectoryName(GetType().Assembly.Location);
-            Tagger = Tagger<WNode>.Create(Path.Combine(dir, "UniDic-CWJ"));
-            Changer = new LanguageStyleChanger(Tagger);
-            Combiner = new TokenCombiner<WNode>(n => n.Surface, n => n.RLength != n.Length);
+            try
+            {
+                var dir = Path.GetDirectoryName(GetType().Assembly.Location);
+                Tagger = Tagger<WNode>.Create(Path.Combine(dir, "UniDic-CWJ"));
+                Changer = new LanguageStyleChanger(Tagger);
+                Combiner = new TokenCombiner<WNode>(n => n.Surface, n => n.RLength != n.Length);
+            }
+            catch (Exception)
+            {
+                Tagger?.Dispose();
+                throw;
+            }
         }
 
         public void Dispose()
@@ -46,12 +47,6 @@ namespace JapaneseStyleChanger
 
         public string ChangeText(string text)
         {
-            InitializeTask?.Wait();
-            if (InitializeTask?.IsFaulted == true)
-            {
-                throw new Exception("Initialization failed", InitializeTask?.Exception);
-            }
-
             IList<WNode> nodes = Tagger.Parse(text);
             if (ChangeToJotai)
             {

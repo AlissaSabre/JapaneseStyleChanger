@@ -18,11 +18,36 @@ namespace JapaneseStyleChangerDemo
         public Form1()
         {
             InitializeComponent();
-
             Application.Idle += Application_Idle;
+            Busy = true;
+            Task.Run(() =>
+            {
+                Exception exception = null;
+                try
+                {
+                    Changer = new TextStyleChanger();
+                }
+                catch (Exception e)
+                {
+                    exception = e;
+                }
+                BeginInvoke((Action)(() =>
+                {
+                    if (exception == null)
+                    {
+                        Initializing.Visible = false;
+                        Busy = false;
+                    }
+                    else
+                    {
+                        MessageBox.Show(this, exception.Message, "Exception - Japanese Style Changer Demo");
+                        Close();
+                    }
+                }));
+            });
         }
 
-        private TextStyleChanger Changer = new TextStyleChanger();
+        private TextStyleChanger Changer;
 
         private void Application_Idle(object sender, EventArgs e)
         {
@@ -30,8 +55,23 @@ namespace JapaneseStyleChangerDemo
             CGButton.Enabled = SpacingCheckBox.Checked;
         }
 
+        private bool _Busy;
+
+        private bool Busy
+        {
+            get { return _Busy; }
+            set
+            {
+                _Busy = value;
+                UseWaitCursor = value;
+                Cursor = value ? Cursors.WaitCursor : Cursors.Default;
+                GoButton.Enabled = !value;
+            }
+        }
+
         private async void GoButton_Click(object sender, EventArgs e)
         {
+            Busy = true;
             try
             {
                 Changer.ChangeToJotai = JotaiCheckBox.Checked;
@@ -46,6 +86,7 @@ namespace JapaneseStyleChangerDemo
             {
                 MessageBox.Show(this, exception.Message, "Exception - Japanese Style Changer Demo");
             }
+            Busy = false;
         }
     }
 }

@@ -36,6 +36,9 @@
             this.CGButton = new System.Windows.Forms.RadioButton();
             this.label1 = new System.Windows.Forms.Label();
             this.GoButton = new System.Windows.Forms.Button();
+            this.Initializing = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.Initializing.SuspendLayout();
             this.SuspendLayout();
             // 
             // SourceText
@@ -124,12 +127,34 @@
             this.GoButton.UseVisualStyleBackColor = true;
             this.GoButton.Click += new System.EventHandler(this.GoButton_Click);
             // 
+            // Initializing
+            // 
+            this.Initializing.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.Initializing.Controls.Add(this.label2);
+            this.Initializing.Location = new System.Drawing.Point(300, 170);
+            this.Initializing.Name = "Initializing";
+            this.Initializing.Size = new System.Drawing.Size(200, 100);
+            this.Initializing.TabIndex = 8;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(71, 45);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(62, 12);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Initializing...";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // Form1
             // 
             this.AcceptButton = this.GoButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 441);
+            this.Controls.Add(this.Initializing);
             this.Controls.Add(this.GoButton);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.CGButton);
@@ -140,6 +165,8 @@
             this.Controls.Add(this.SourceText);
             this.Name = "Form1";
             this.Text = "Japanese Style Changer Demo";
+            this.Initializing.ResumeLayout(false);
+            this.Initializing.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -155,6 +182,8 @@
         private System.Windows.Forms.RadioButton CGButton;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button GoButton;
+        private System.Windows.Forms.Panel Initializing;
+        private System.Windows.Forms.Label label2;
     }
 }
 
