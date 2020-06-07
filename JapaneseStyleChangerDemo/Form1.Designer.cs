@@ -38,24 +38,33 @@
             this.GoButton = new System.Windows.Forms.Button();
             this.Initializing = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.Initializing.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
+            this.splitContainer1.SuspendLayout();
             this.SuspendLayout();
             // 
             // SourceText
             // 
-            this.SourceText.Location = new System.Drawing.Point(12, 12);
+            this.SourceText.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.SourceText.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.SourceText.Location = new System.Drawing.Point(0, 0);
             this.SourceText.Multiline = true;
             this.SourceText.Name = "SourceText";
-            this.SourceText.Size = new System.Drawing.Size(568, 200);
+            this.SourceText.Size = new System.Drawing.Size(568, 208);
             this.SourceText.TabIndex = 0;
             this.SourceText.Text = "ここに書き換える文章を入力します。";
             // 
             // TargetText
             // 
-            this.TargetText.Location = new System.Drawing.Point(12, 229);
+            this.TargetText.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TargetText.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.TargetText.Location = new System.Drawing.Point(0, 0);
             this.TargetText.Multiline = true;
             this.TargetText.Name = "TargetText";
-            this.TargetText.Size = new System.Drawing.Size(568, 200);
+            this.TargetText.Size = new System.Drawing.Size(568, 205);
             this.TargetText.TabIndex = 1;
             // 
             // JotaiCheckBox
@@ -119,6 +128,7 @@
             // GoButton
             // 
             this.GoButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.GoButton.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.GoButton.Location = new System.Drawing.Point(603, 12);
             this.GoButton.Name = "GoButton";
             this.GoButton.Size = new System.Drawing.Size(169, 23);
@@ -132,6 +142,7 @@
             this.Initializing.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.Initializing.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Initializing.Controls.Add(this.label2);
             this.Initializing.Location = new System.Drawing.Point(300, 170);
             this.Initializing.Name = "Initializing";
@@ -148,6 +159,26 @@
             this.label2.Text = "Initializing...";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // splitContainer1
+            // 
+            this.splitContainer1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.splitContainer1.Location = new System.Drawing.Point(12, 12);
+            this.splitContainer1.Name = "splitContainer1";
+            this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.SourceText);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.TargetText);
+            this.splitContainer1.Size = new System.Drawing.Size(568, 417);
+            this.splitContainer1.SplitterDistance = 208;
+            this.splitContainer1.TabIndex = 9;
+            // 
             // Form1
             // 
             this.AcceptButton = this.GoButton;
@@ -155,18 +186,26 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 441);
             this.Controls.Add(this.Initializing);
+            this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.GoButton);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.CGButton);
             this.Controls.Add(this.MSButton);
             this.Controls.Add(this.SpacingCheckBox);
             this.Controls.Add(this.JotaiCheckBox);
-            this.Controls.Add(this.TargetText);
-            this.Controls.Add(this.SourceText);
+            this.MaximizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(300, 200);
             this.Name = "Form1";
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
             this.Text = "Japanese Style Changer Demo";
             this.Initializing.ResumeLayout(false);
             this.Initializing.PerformLayout();
+            this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel1.PerformLayout();
+            this.splitContainer1.Panel2.ResumeLayout(false);
+            this.splitContainer1.Panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+            this.splitContainer1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -184,6 +223,7 @@
         private System.Windows.Forms.Button GoButton;
         private System.Windows.Forms.Panel Initializing;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.SplitContainer splitContainer1;
     }
 }
 
