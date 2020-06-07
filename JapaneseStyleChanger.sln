@@ -3,15 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Express 15 for Windows Desktop
 VisualStudioVersion = 15.0.28307.852
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibNMeCab.Alissa", "LibNMeCab.Alissa\LibNMeCab.Alissa.csproj", "{E8B46A50-925A-40CE-8191-0D90E009E07B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JapaneseStyleChangerDemo", "JapaneseStyleChangerDemo\JapaneseStyleChangerDemo.csproj", "{98C4E8AD-2A5C-4A88-9634-BD802BFB94A9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JapaneseStyleChanger", "JapaneseStyleChanger\JapaneseStyleChanger.csproj", "{AD7760E3-D85B-4AF2-B4D8-FDE0A48CE2AC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JapaneseStyleChangerTest", "JapaneseStyleChangerTest\JapaneseStyleChangerTest.csproj", "{A3F80F80-588F-4993-998F-94D076965887}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibNMeCab.Alissa.Test", "LibNMeCab.Alissa.Test\LibNMeCab.Alissa.Test.csproj", "{82E5E465-8E37-4DCF-9859-BA86F65F5274}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibNMeCab.Alissa", "LibNMeCab.Alissa\LibNMeCab.Alissa.csproj", "{E8B46A50-925A-40CE-8191-0D90E009E07B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JapaneseStyleChangerDemo", "JapaneseStyleChangerDemo\JapaneseStyleChangerDemo.csproj", "{98C4E8AD-2A5C-4A88-9634-BD802BFB94A9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibNMeCab.Alissa.Test", "LibNMeCab.Alissa.Test\LibNMeCab.Alissa.Test.csproj", "{82E5E465-8E37-4DCF-9859-BA86F65F5274}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
