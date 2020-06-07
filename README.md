@@ -3,6 +3,7 @@ JapaneseStyleChanger
 An experimental library to rewrite Japanese texts using MeCab
 
 JapaneseStyleChanger is an experimental .NET class library built on top of NMeCab and UniDic to rewrite Japanese texts.
+It is currently in a very preliminary stage.
 For the moment it can, in some extent,
 - rewrite Japanese honorific style (敬体) sentences into plain style (常体) sentences, and
 - adjust spacing between words based on either of the two major style guidelines.
