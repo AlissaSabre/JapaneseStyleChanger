@@ -166,7 +166,7 @@ namespace JapaneseStyleChanger
             return TokenType.ZZ;
         }
 
-        public string Combine(IList<TToken> tokens)
+        public string Combine(IEnumerable<TToken> tokens)
         {
             Spacing[,] table;
             switch (CombineMode)
@@ -186,9 +186,9 @@ namespace JapaneseStyleChanger
 
             var sb = new StringBuilder();
             TokenType prev_type = TokenType.NN;
-            for (int i = 0; i < tokens.Count; i++)
+            foreach (var token in tokens)
             {
-                var s = Renderer(tokens[i]);
+                var s = Renderer(token);
                 var t = GetTokenTypeLeft(s);
                 switch (table[(int)prev_type, (int)t])
                 {
@@ -198,7 +198,7 @@ namespace JapaneseStyleChanger
                         sb.Append(Space);
                         break;
                     case Spacing.DD:
-                        if (Spacer?.Invoke(tokens[i]) == true) sb.Append(Space);
+                        if (Spacer?.Invoke(token) == true) sb.Append(Space);
                         break;
                     default:
                         throw new ApplicationException("Internal error");
