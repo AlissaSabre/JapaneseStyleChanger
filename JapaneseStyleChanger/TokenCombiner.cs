@@ -65,6 +65,12 @@ namespace JapaneseStyleChanger
 
     public static class TokenCombiner
     {
+        static TokenCombiner()
+        {
+            InitializeTokenDictionary();
+            InitializeSpaceEaters();
+        }
+
         #region Token types
 
         /// <summary>
@@ -109,14 +115,14 @@ namespace JapaneseStyleChanger
         /// <summary>
         /// A partial mapping of a character to a token type.
         /// </summary>
-        private static readonly Dictionary<char, TokenType> TokenDictionary;
+        private static readonly Dictionary<char, TokenType> TokenDictionary = new Dictionary<char, TokenType>();
 
         /// <summary>
         /// This static constructor fills <see cref="TokenDictionary"/>.
         /// </summary>
-        static TokenCombiner()
+        private static void InitializeTokenDictionary()
         {
-            var d = new Dictionary<char, TokenType>();
+            var d = TokenDictionary;
             for (var ch = '\u30A0'; ch <= '\u30FA'; ch++) d.Add(ch, TokenType.ZK);
             for (var ch = '\u30FC'; ch <= '\u30FE'; ch++) d.Add(ch, TokenType.ZK);
             for (var ch = '\u31F0'; ch <= '\u31FF'; ch++) d.Add(ch, TokenType.ZK);
@@ -126,7 +132,6 @@ namespace JapaneseStyleChanger
             for (var ch = '0'; ch <= '9'; ch++) d.Add(ch, TokenType.H9);
             foreach (var ch in "([{") d.Add(ch, TokenType.SL);
             foreach (var ch in ")]},.!?") d.Add(ch, TokenType.SR);
-            TokenDictionary = d;
         }
 
         /// <summary>
@@ -297,14 +302,88 @@ namespace JapaneseStyleChanger
             return sb.ToString();
         }
 
+        private static readonly HashSet<char> SpaceEatersLeft = new HashSet<char>();
+
+        private static readonly HashSet<char> SpaceEatersRight = new HashSet<char>();
+
+        private static void InitializeSpaceEaters()
+        {
+            SpaceEatersLeft.UnionWith(" \u3000、。，．‘’“”（）〔〕［］｛｝〈〉《》「」『』【】・");
+            SpaceEatersRight.UnionWith(SpaceEatersLeft);
+            SpaceEatersLeft.UnionWith(",.)]}､｡｣");
+            SpaceEatersRight.UnionWith("([{｢");
+        }
+
+        private const int ASCII_FULLWIDTH_SHIFT = '（' - '(';
+
         public static StringBuilder AsciiParentheses(StringBuilder sb)
         {
-            throw new NotImplementedException();
+            if (sb is null) throw new ArgumentNullException(nameof(sb));
+
+            for (int p = 0; p < sb.Length; p++)
+            {
+                var c = sb[p];
+                switch (c)
+                {
+                    case '（':
+                    case '［':
+                    case '｛':
+                        sb[p] -= (char)ASCII_FULLWIDTH_SHIFT;
+                        if (p > 0 && !SpaceEatersRight.Contains(sb[p - 1]))
+                        {
+                            sb.Insert(p, ' ');
+                        }
+                        break;
+                    case '）':
+                    case '］':
+                    case '｝':
+                        sb[p] -= (char)ASCII_FULLWIDTH_SHIFT;
+                        if (p < sb.Length - 1 && !SpaceEatersLeft.Contains(sb[p + 1]))
+                        {
+                            sb.Insert(p + 1, ' ');
+                        }
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            return sb;
         }
 
         public static StringBuilder FullWidthParentheses(StringBuilder sb)
         {
-            throw new NotImplementedException();
+            if (sb is null) throw new ArgumentNullException(nameof(sb));
+
+            for (int p = 0; p < sb.Length; p++)
+            {
+                var c = sb[p];
+                switch (c)
+                {
+                    case '(':
+                    case '[':
+                    case '{':
+                        sb[p] += (char)ASCII_FULLWIDTH_SHIFT;
+                        if (p > 0 && char.IsWhiteSpace(sb[p - 1]))
+                        {
+                            sb.Remove(--p, 1);
+                        }
+                        break;
+                    case ')':
+                    case ']':
+                    case '}':
+                        sb[p] += (char)ASCII_FULLWIDTH_SHIFT;
+                        if (p < sb.Length - 1 && char.IsWhiteSpace(sb[p + 1]))
+                        {
+                            sb.Remove(p + 1, 1);
+                        }
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            return sb;
         }
     }
 }
