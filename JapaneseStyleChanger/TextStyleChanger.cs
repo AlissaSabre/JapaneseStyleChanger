@@ -47,7 +47,7 @@ namespace JapaneseStyleChanger
 
         public string ChangeText(string text)
         {
-            IList<WNode> nodes = Tagger.Parse(text);
+            IEnumerable<WNode> nodes = Tagger.Parse(text);
             if (ChangeToJotai)
             {
                 var buffer = new EditBuffer(nodes);

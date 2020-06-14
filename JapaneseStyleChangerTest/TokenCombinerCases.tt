@@ -143,7 +143,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.MS;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("<#= source #>".ToCharArray());
+			var result = Combiner.Combine("<#= source #>");
 			Assert.AreEqual("<#= ms #>", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -151,7 +151,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.CG;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("<#= source #>".ToCharArray());
+			var result = Combiner.Combine("<#= source #>");
 			Assert.AreEqual("<#= cg #>", result, "Unexpected combined text.");
         }
 <# } #>

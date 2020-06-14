@@ -19,7 +19,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.MS;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("A".ToCharArray());
+			var result = Combiner.Combine("A");
 			Assert.AreEqual("A", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -27,7 +27,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.CG;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("A".ToCharArray());
+			var result = Combiner.Combine("A");
 			Assert.AreEqual("A", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -35,7 +35,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.MS;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("9".ToCharArray());
+			var result = Combiner.Combine("9");
 			Assert.AreEqual("9", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -43,7 +43,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.CG;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("9".ToCharArray());
+			var result = Combiner.Combine("9");
 			Assert.AreEqual("9", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -51,7 +51,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.MS;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("[".ToCharArray());
+			var result = Combiner.Combine("[");
 			Assert.AreEqual("[", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -59,7 +59,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.CG;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("[".ToCharArray());
+			var result = Combiner.Combine("[");
 			Assert.AreEqual("[", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -67,7 +67,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.MS;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("]".ToCharArray());
+			var result = Combiner.Combine("]");
 			Assert.AreEqual("]", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -75,7 +75,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.CG;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("]".ToCharArray());
+			var result = Combiner.Combine("]");
 			Assert.AreEqual("]", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -83,7 +83,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.MS;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("あ".ToCharArray());
+			var result = Combiner.Combine("あ");
 			Assert.AreEqual("あ", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -91,7 +91,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.CG;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("あ".ToCharArray());
+			var result = Combiner.Combine("あ");
 			Assert.AreEqual("あ", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -99,7 +99,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.MS;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("（".ToCharArray());
+			var result = Combiner.Combine("（");
 			Assert.AreEqual("（", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -107,7 +107,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.CG;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("（".ToCharArray());
+			var result = Combiner.Combine("（");
 			Assert.AreEqual("（", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -115,7 +115,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.MS;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("。".ToCharArray());
+			var result = Combiner.Combine("。");
 			Assert.AreEqual("。", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -123,7 +123,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.CG;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("。".ToCharArray());
+			var result = Combiner.Combine("。");
 			Assert.AreEqual("。", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -131,7 +131,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.MS;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("AA".ToCharArray());
+			var result = Combiner.Combine("AA");
 			Assert.AreEqual("AxA", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -139,7 +139,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.CG;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("AA".ToCharArray());
+			var result = Combiner.Combine("AA");
 			Assert.AreEqual("AxA", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -147,7 +147,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.MS;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("A9".ToCharArray());
+			var result = Combiner.Combine("A9");
 			Assert.AreEqual("Ax9", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -155,7 +155,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.CG;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("A9".ToCharArray());
+			var result = Combiner.Combine("A9");
 			Assert.AreEqual("Ax9", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -163,7 +163,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.MS;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("9A".ToCharArray());
+			var result = Combiner.Combine("9A");
 			Assert.AreEqual("9xA", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -171,7 +171,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.CG;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("9A".ToCharArray());
+			var result = Combiner.Combine("9A");
 			Assert.AreEqual("9xA", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -179,7 +179,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.MS;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("99".ToCharArray());
+			var result = Combiner.Combine("99");
 			Assert.AreEqual("9x9", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -187,7 +187,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.CG;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("99".ToCharArray());
+			var result = Combiner.Combine("99");
 			Assert.AreEqual("9x9", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -195,7 +195,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.MS;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("あ9（.]9[.".ToCharArray());
+			var result = Combiner.Combine("あ9（.]9[.");
 			Assert.AreEqual("あx9（.]x9x[.", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -203,7 +203,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.CG;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("あ9（.]9[.".ToCharArray());
+			var result = Combiner.Combine("あ9（.]9[.");
 			Assert.AreEqual("あ9（.]x9x[.", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -211,7 +211,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.MS;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("あ9A.（9]（".ToCharArray());
+			var result = Combiner.Combine("あ9A.（9]（");
 			Assert.AreEqual("あx9xA.（9]（", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -219,7 +219,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.CG;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("あ9A.（9]（".ToCharArray());
+			var result = Combiner.Combine("あ9A.（9]（");
 			Assert.AreEqual("あ9xA.（9]（", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -227,7 +227,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.MS;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("[[A..9（A".ToCharArray());
+			var result = Combiner.Combine("[[A..9（A");
 			Assert.AreEqual("[[A..x9（A", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -235,7 +235,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.CG;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("[[A..9（A".ToCharArray());
+			var result = Combiner.Combine("[[A..9（A");
 			Assert.AreEqual("[[A..x9（A", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -243,7 +243,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.MS;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("9.AAあAあ（".ToCharArray());
+			var result = Combiner.Combine("9.AAあAあ（");
 			Assert.AreEqual("9.xAxAxあxAxあ（", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -251,7 +251,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.CG;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("9.AAあAあ（".ToCharArray());
+			var result = Combiner.Combine("9.AAあAあ（");
 			Assert.AreEqual("9.xAxAあAあ（", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -259,7 +259,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.MS;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("[（.[9]（A".ToCharArray());
+			var result = Combiner.Combine("[（.[9]（A");
 			Assert.AreEqual("[（.x[9]（A", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -267,7 +267,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.CG;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("[（.[9]（A".ToCharArray());
+			var result = Combiner.Combine("[（.[9]（A");
 			Assert.AreEqual("[（.x[9]（A", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -275,7 +275,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.MS;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("[][].[あ（".ToCharArray());
+			var result = Combiner.Combine("[][].[あ（");
 			Assert.AreEqual("[]x[].x[あ（", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -283,7 +283,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.CG;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("[][].[あ（".ToCharArray());
+			var result = Combiner.Combine("[][].[あ（");
 			Assert.AreEqual("[]x[].x[あ（", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -291,7 +291,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.MS;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("A99あ.あ[[".ToCharArray());
+			var result = Combiner.Combine("A99あ.あ[[");
 			Assert.AreEqual("Ax9x9xあ.xあx[[", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -299,7 +299,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.CG;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("A99あ.あ[[".ToCharArray());
+			var result = Combiner.Combine("A99あ.あ[[");
 			Assert.AreEqual("Ax9x9あ.xあx[[", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -307,7 +307,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.MS;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("あ]A]A][[".ToCharArray());
+			var result = Combiner.Combine("あ]A]A][[");
 			Assert.AreEqual("あ]xA]xA]x[[", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -315,7 +315,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.CG;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("あ]A]A][[".ToCharArray());
+			var result = Combiner.Combine("あ]A]A][[");
 			Assert.AreEqual("あ]xA]xA]x[[", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -323,7 +323,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.MS;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("あ99AA（[A".ToCharArray());
+			var result = Combiner.Combine("あ99AA（[A");
 			Assert.AreEqual("あx9x9xAxA（[A", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -331,7 +331,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.CG;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("あ99AA（[A".ToCharArray());
+			var result = Combiner.Combine("あ99AA（[A");
 			Assert.AreEqual("あ9x9xAxA（[A", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -339,7 +339,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.MS;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("]9（.9あ]9".ToCharArray());
+			var result = Combiner.Combine("]9（.9あ]9");
 			Assert.AreEqual("]x9（.x9xあ]x9", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -347,7 +347,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.CG;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("]9（.9あ]9".ToCharArray());
+			var result = Combiner.Combine("]9（.9あ]9");
 			Assert.AreEqual("]x9（.x9あ]x9", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -355,7 +355,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.MS;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("（].][]あA".ToCharArray());
+			var result = Combiner.Combine("（].][]あA");
 			Assert.AreEqual("（].]x[]xあxA", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -363,7 +363,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.CG;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("（].][]あA".ToCharArray());
+			var result = Combiner.Combine("（].][]あA");
 			Assert.AreEqual("（].]x[]xあA", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -371,7 +371,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.MS;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("9A（（[あ].".ToCharArray());
+			var result = Combiner.Combine("9A（（[あ].");
 			Assert.AreEqual("9xA（（[あ].", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -379,7 +379,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.CG;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("9A（（[あ].".ToCharArray());
+			var result = Combiner.Combine("9A（（[あ].");
 			Assert.AreEqual("9xA（（[あ].", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -387,7 +387,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.MS;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("..]A[A[9".ToCharArray());
+			var result = Combiner.Combine("..]A[A[9");
 			Assert.AreEqual("..]xAx[Ax[9", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -395,7 +395,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.CG;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("..]A[A[9".ToCharArray());
+			var result = Combiner.Combine("..]A[A[9");
 			Assert.AreEqual("..]xAx[Ax[9", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -403,7 +403,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.MS;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("（9[（あ.（[".ToCharArray());
+			var result = Combiner.Combine("（9[（あ.（[");
 			Assert.AreEqual("（9x[（あ.（[", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -411,7 +411,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.CG;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("（9[（あ.（[".ToCharArray());
+			var result = Combiner.Combine("（9[（あ.（[");
 			Assert.AreEqual("（9x[（あ.（[", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -419,7 +419,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.MS;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("A]（あ[.9]".ToCharArray());
+			var result = Combiner.Combine("A]（あ[.9]");
 			Assert.AreEqual("A]（あx[.x9]", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -427,7 +427,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.CG;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("A]（あ[.9]".ToCharArray());
+			var result = Combiner.Combine("A]（あ[.9]");
 			Assert.AreEqual("A]（あx[.x9]", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -435,7 +435,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.MS;
 			Combiner.Space = "x";
-			var result = Combiner.Combine(".AA..あ（]".ToCharArray());
+			var result = Combiner.Combine(".AA..あ（]");
 			Assert.AreEqual(".xAxA..xあ（]", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -443,7 +443,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.CG;
 			Combiner.Space = "x";
-			var result = Combiner.Combine(".AA..あ（]".ToCharArray());
+			var result = Combiner.Combine(".AA..あ（]");
 			Assert.AreEqual(".xAxA..xあ（]", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -451,7 +451,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.MS;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("A9.あ.A（あ".ToCharArray());
+			var result = Combiner.Combine("A9.あ.A（あ");
 			Assert.AreEqual("Ax9.xあ.xA（あ", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -459,7 +459,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.CG;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("A9.あ.A（あ".ToCharArray());
+			var result = Combiner.Combine("A9.あ.A（あ");
 			Assert.AreEqual("Ax9.xあ.xA（あ", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -467,7 +467,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.MS;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("9あA[（A9[".ToCharArray());
+			var result = Combiner.Combine("9あA[（A9[");
 			Assert.AreEqual("9xあxAx[（Ax9x[", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -475,7 +475,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.CG;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("9あA[（A9[".ToCharArray());
+			var result = Combiner.Combine("9あA[（A9[");
 			Assert.AreEqual("9あAx[（Ax9x[", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -483,7 +483,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.MS;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("[9.[.（（（".ToCharArray());
+			var result = Combiner.Combine("[9.[.（（（");
 			Assert.AreEqual("[9.x[.（（（", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -491,7 +491,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.CG;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("[9.[.（（（".ToCharArray());
+			var result = Combiner.Combine("[9.[.（（（");
 			Assert.AreEqual("[9.x[.（（（", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -499,7 +499,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.MS;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("]]ああ[あああ".ToCharArray());
+			var result = Combiner.Combine("]]ああ[あああ");
 			Assert.AreEqual("]]xああx[あああ", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -507,7 +507,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.CG;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("]]ああ[あああ".ToCharArray());
+			var result = Combiner.Combine("]]ああ[あああ");
 			Assert.AreEqual("]]xああx[あああ", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -515,7 +515,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.MS;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("Aあ]]あ（99".ToCharArray());
+			var result = Combiner.Combine("Aあ]]あ（99");
 			Assert.AreEqual("Axあ]]xあ（9x9", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -523,7 +523,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.CG;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("Aあ]]あ（99".ToCharArray());
+			var result = Combiner.Combine("Aあ]]あ（99");
 			Assert.AreEqual("Aあ]]xあ（9x9", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -531,7 +531,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.MS;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("]]（]AAAA".ToCharArray());
+			var result = Combiner.Combine("]]（]AAAA");
 			Assert.AreEqual("]]（]xAxAxAxA", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -539,7 +539,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.CG;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("]]（]AAAA".ToCharArray());
+			var result = Combiner.Combine("]]（]AAAA");
 			Assert.AreEqual("]]（]xAxAxAxA", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -547,7 +547,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.MS;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("A（あ]あ[（".ToCharArray());
+			var result = Combiner.Combine("A（あ]あ[（");
 			Assert.AreEqual("A（あ]xあx[（", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -555,7 +555,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.CG;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("A（あ]あ[（".ToCharArray());
+			var result = Combiner.Combine("A（あ]あ[（");
 			Assert.AreEqual("A（あ]xあx[（", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -563,7 +563,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.MS;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("[あ（（]（A".ToCharArray());
+			var result = Combiner.Combine("[あ（（]（A");
 			Assert.AreEqual("[あ（（]（A", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -571,7 +571,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.CG;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("[あ（（]（A".ToCharArray());
+			var result = Combiner.Combine("[あ（（]（A");
 			Assert.AreEqual("[あ（（]（A", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -579,7 +579,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.MS;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("（（[[]）あ".ToCharArray());
+			var result = Combiner.Combine("（（[[]）あ");
 			Assert.AreEqual("（（[[]）あ", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -587,7 +587,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.CG;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("（（[[]）あ".ToCharArray());
+			var result = Combiner.Combine("（（[[]）あ");
 			Assert.AreEqual("（（[[]）あ", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -595,7 +595,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.MS;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("（（[（あ（あ".ToCharArray());
+			var result = Combiner.Combine("（（[（あ（あ");
 			Assert.AreEqual("（（[（あ（あ", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -603,7 +603,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.CG;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("（（[（あ（あ".ToCharArray());
+			var result = Combiner.Combine("（（[（あ（あ");
 			Assert.AreEqual("（（[（あ（あ", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -611,7 +611,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.MS;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("）A]]A（A".ToCharArray());
+			var result = Combiner.Combine("）A]]A（A");
 			Assert.AreEqual("）A]]xA（A", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -619,7 +619,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.CG;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("）A]]A（A".ToCharArray());
+			var result = Combiner.Combine("）A]]A（A");
 			Assert.AreEqual("）A]]xA（A", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -627,7 +627,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.MS;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("[ああAA（[".ToCharArray());
+			var result = Combiner.Combine("[ああAA（[");
 			Assert.AreEqual("[ああxAxA（[", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -635,7 +635,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.CG;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("[ああAA（[".ToCharArray());
+			var result = Combiner.Combine("[ああAA（[");
 			Assert.AreEqual("[ああAxA（[", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -643,7 +643,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.MS;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("]））A）[）".ToCharArray());
+			var result = Combiner.Combine("]））A）[）");
 			Assert.AreEqual("]））A）[）", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -651,7 +651,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.CG;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("]））A）[）".ToCharArray());
+			var result = Combiner.Combine("]））A）[）");
 			Assert.AreEqual("]））A）[）", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -659,7 +659,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.MS;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("あA）[[あA".ToCharArray());
+			var result = Combiner.Combine("あA）[[あA");
 			Assert.AreEqual("あxA）[[あxA", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -667,7 +667,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.CG;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("あA）[[あA".ToCharArray());
+			var result = Combiner.Combine("あA）[[あA");
 			Assert.AreEqual("あA）[[あA", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -675,7 +675,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.MS;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("]]あ）（]あ".ToCharArray());
+			var result = Combiner.Combine("]]あ）（]あ");
 			Assert.AreEqual("]]xあ）（]xあ", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -683,7 +683,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.CG;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("]]あ）（]あ".ToCharArray());
+			var result = Combiner.Combine("]]あ）（]あ");
 			Assert.AreEqual("]]xあ）（]xあ", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -691,7 +691,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.MS;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("あ（A][][".ToCharArray());
+			var result = Combiner.Combine("あ（A][][");
 			Assert.AreEqual("あ（A]x[]x[", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -699,7 +699,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.CG;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("あ（A][][".ToCharArray());
+			var result = Combiner.Combine("あ（A][][");
 			Assert.AreEqual("あ（A]x[]x[", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -707,7 +707,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.MS;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("）ああ[[AA".ToCharArray());
+			var result = Combiner.Combine("）ああ[[AA");
 			Assert.AreEqual("）ああx[[AxA", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -715,7 +715,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.CG;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("）ああ[[AA".ToCharArray());
+			var result = Combiner.Combine("）ああ[[AA");
 			Assert.AreEqual("）ああx[[AxA", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -723,7 +723,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.MS;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("（））]][）".ToCharArray());
+			var result = Combiner.Combine("（））]][）");
 			Assert.AreEqual("（））]]x[）", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -731,7 +731,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.CG;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("（））]][）".ToCharArray());
+			var result = Combiner.Combine("（））]][）");
 			Assert.AreEqual("（））]]x[）", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -739,7 +739,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.MS;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("あ]（]（）あ".ToCharArray());
+			var result = Combiner.Combine("あ]（]（）あ");
 			Assert.AreEqual("あ]（]（）あ", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -747,7 +747,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.CG;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("あ]（]（）あ".ToCharArray());
+			var result = Combiner.Combine("あ]（]（）あ");
 			Assert.AreEqual("あ]（]（）あ", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -755,7 +755,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.MS;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("A]A[（）]".ToCharArray());
+			var result = Combiner.Combine("A]A[（）]");
 			Assert.AreEqual("A]xAx[（）]", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -763,7 +763,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.CG;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("A]A[（）]".ToCharArray());
+			var result = Combiner.Combine("A]A[（）]");
 			Assert.AreEqual("A]xAx[（）]", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -771,7 +771,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.MS;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("あ]A[AAあ".ToCharArray());
+			var result = Combiner.Combine("あ]A[AAあ");
 			Assert.AreEqual("あ]xAx[AxAxあ", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -779,7 +779,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.CG;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("あ]A[AAあ".ToCharArray());
+			var result = Combiner.Combine("あ]A[AAあ");
 			Assert.AreEqual("あ]xAx[AxAあ", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -787,7 +787,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.MS;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("）Aあ））（[".ToCharArray());
+			var result = Combiner.Combine("）Aあ））（[");
 			Assert.AreEqual("）Axあ））（[", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -795,7 +795,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.CG;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("）Aあ））（[".ToCharArray());
+			var result = Combiner.Combine("）Aあ））（[");
 			Assert.AreEqual("）Aあ））（[", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -803,7 +803,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.MS;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("）（A）]）[".ToCharArray());
+			var result = Combiner.Combine("）（A）]）[");
 			Assert.AreEqual("）（A）]）[", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -811,7 +811,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.CG;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("）（A）]）[".ToCharArray());
+			var result = Combiner.Combine("）（A）]）[");
 			Assert.AreEqual("）（A）]）[", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -819,7 +819,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.MS;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("[Aああ[）A".ToCharArray());
+			var result = Combiner.Combine("[Aああ[）A");
 			Assert.AreEqual("[Axああx[）A", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -827,7 +827,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.CG;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("[Aああ[）A".ToCharArray());
+			var result = Combiner.Combine("[Aああ[）A");
 			Assert.AreEqual("[Aああx[）A", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -835,7 +835,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.MS;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("あ）[]A[A".ToCharArray());
+			var result = Combiner.Combine("あ）[]A[A");
 			Assert.AreEqual("あ）[]xAx[A", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -843,7 +843,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.CG;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("あ）[]A[A".ToCharArray());
+			var result = Combiner.Combine("あ）[]A[A");
 			Assert.AreEqual("あ）[]xAx[A", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -851,7 +851,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.MS;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("あキキA。。".ToCharArray());
+			var result = Combiner.Combine("あキキA。。");
 			Assert.AreEqual("あキxキxA。。", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -859,7 +859,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.CG;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("あキキA。。".ToCharArray());
+			var result = Combiner.Combine("あキキA。。");
 			Assert.AreEqual("あキキA。。", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -867,7 +867,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.MS;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("キ.BあAあ".ToCharArray());
+			var result = Combiner.Combine("キ.BあAあ");
 			Assert.AreEqual("キ.xBxあxAxあ", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -875,7 +875,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.CG;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("キ.BあAあ".ToCharArray());
+			var result = Combiner.Combine("キ.BあAあ");
 			Assert.AreEqual("キ.xBあAあ", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -883,7 +883,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.MS;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("。キBBキA".ToCharArray());
+			var result = Combiner.Combine("。キBBキA");
 			Assert.AreEqual("。キxBxBxキxA", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -891,7 +891,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.CG;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("。キBBキA".ToCharArray());
+			var result = Combiner.Combine("。キBBキA");
 			Assert.AreEqual("。キBxBキA", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -899,7 +899,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.MS;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("キキあ..カ".ToCharArray());
+			var result = Combiner.Combine("キキあ..カ");
 			Assert.AreEqual("キxキあ..xカ", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -907,7 +907,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.CG;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("キキあ..カ".ToCharArray());
+			var result = Combiner.Combine("キキあ..カ");
 			Assert.AreEqual("キキあ..xカ", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -915,7 +915,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.MS;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("AB。キキあ".ToCharArray());
+			var result = Combiner.Combine("AB。キキあ");
 			Assert.AreEqual("AxB。キxキあ", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -923,7 +923,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.CG;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("AB。キキあ".ToCharArray());
+			var result = Combiner.Combine("AB。キキあ");
 			Assert.AreEqual("AxB。キキあ", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -931,7 +931,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.MS;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("カキカBキ。".ToCharArray());
+			var result = Combiner.Combine("カキカBキ。");
 			Assert.AreEqual("カxキxカxBxキ。", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -939,7 +939,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.CG;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("カキカBキ。".ToCharArray());
+			var result = Combiner.Combine("カキカBキ。");
 			Assert.AreEqual("カキカBキ。", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -947,7 +947,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.MS;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("あカ。A.A".ToCharArray());
+			var result = Combiner.Combine("あカ。A.A");
 			Assert.AreEqual("あカ。A.xA", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -955,7 +955,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.CG;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("あカ。A.A".ToCharArray());
+			var result = Combiner.Combine("あカ。A.A");
 			Assert.AreEqual("あカ。A.xA", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -963,7 +963,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.MS;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("あ。BAあB".ToCharArray());
+			var result = Combiner.Combine("あ。BAあB");
 			Assert.AreEqual("あ。BxAxあxB", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -971,7 +971,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.CG;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("あ。BAあB".ToCharArray());
+			var result = Combiner.Combine("あ。BAあB");
 			Assert.AreEqual("あ。BxAあB", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -979,7 +979,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.MS;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("ああカあBあ".ToCharArray());
+			var result = Combiner.Combine("ああカあBあ");
 			Assert.AreEqual("ああカあxBxあ", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -987,7 +987,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.CG;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("ああカあBあ".ToCharArray());
+			var result = Combiner.Combine("ああカあBあ");
 			Assert.AreEqual("ああカあBあ", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -995,7 +995,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.MS;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("。キカカ.キ".ToCharArray());
+			var result = Combiner.Combine("。キカカ.キ");
 			Assert.AreEqual("。キxカxカ.xキ", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -1003,7 +1003,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.CG;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("。キカカ.キ".ToCharArray());
+			var result = Combiner.Combine("。キカカ.キ");
 			Assert.AreEqual("。キカカ.xキ", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -1011,7 +1011,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.MS;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("A。.。.B".ToCharArray());
+			var result = Combiner.Combine("A。.。.B");
 			Assert.AreEqual("A。.。.xB", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -1019,7 +1019,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.CG;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("A。.。.B".ToCharArray());
+			var result = Combiner.Combine("A。.。.B");
 			Assert.AreEqual("A。.。.xB", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -1027,7 +1027,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.MS;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("カ。B。Aカ".ToCharArray());
+			var result = Combiner.Combine("カ。B。Aカ");
 			Assert.AreEqual("カ。B。Axカ", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -1035,7 +1035,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.CG;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("カ。B。Aカ".ToCharArray());
+			var result = Combiner.Combine("カ。B。Aカ");
 			Assert.AreEqual("カ。B。Aカ", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -1043,7 +1043,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.MS;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("A.あ.。カ".ToCharArray());
+			var result = Combiner.Combine("A.あ.。カ");
 			Assert.AreEqual("A.xあ.。カ", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -1051,7 +1051,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.CG;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("A.あ.。カ".ToCharArray());
+			var result = Combiner.Combine("A.あ.。カ");
 			Assert.AreEqual("A.xあ.。カ", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -1059,7 +1059,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.MS;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("B.カAキB".ToCharArray());
+			var result = Combiner.Combine("B.カAキB");
 			Assert.AreEqual("B.xカxAxキxB", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -1067,7 +1067,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.CG;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("B.カAキB".ToCharArray());
+			var result = Combiner.Combine("B.カAキB");
 			Assert.AreEqual("B.xカAキB", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -1075,7 +1075,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.MS;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("カAカ。。あ".ToCharArray());
+			var result = Combiner.Combine("カAカ。。あ");
 			Assert.AreEqual("カxAxカ。。あ", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -1083,7 +1083,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.CG;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("カAカ。。あ".ToCharArray());
+			var result = Combiner.Combine("カAカ。。あ");
 			Assert.AreEqual("カAカ。。あ", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -1091,7 +1091,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.MS;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("ABあB。あ".ToCharArray());
+			var result = Combiner.Combine("ABあB。あ");
 			Assert.AreEqual("AxBxあxB。あ", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -1099,7 +1099,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.CG;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("ABあB。あ".ToCharArray());
+			var result = Combiner.Combine("ABあB。あ");
 			Assert.AreEqual("AxBあB。あ", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -1107,7 +1107,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.MS;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("。ああ。カ.".ToCharArray());
+			var result = Combiner.Combine("。ああ。カ.");
 			Assert.AreEqual("。ああ。カ.", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -1115,7 +1115,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.CG;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("。ああ。カ.".ToCharArray());
+			var result = Combiner.Combine("。ああ。カ.");
 			Assert.AreEqual("。ああ。カ.", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -1123,7 +1123,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.MS;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("Bカキあ.カ".ToCharArray());
+			var result = Combiner.Combine("Bカキあ.カ");
 			Assert.AreEqual("Bxカxキあ.xカ", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -1131,7 +1131,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.CG;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("Bカキあ.カ".ToCharArray());
+			var result = Combiner.Combine("Bカキあ.カ");
 			Assert.AreEqual("Bカキあ.xカ", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -1139,7 +1139,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.MS;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("あカBBキA".ToCharArray());
+			var result = Combiner.Combine("あカBBキA");
 			Assert.AreEqual("あカxBxBxキxA", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -1147,7 +1147,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.CG;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("あカBBキA".ToCharArray());
+			var result = Combiner.Combine("あカBBキA");
 			Assert.AreEqual("あカBxBキA", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -1155,7 +1155,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.MS;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("AB.キ..".ToCharArray());
+			var result = Combiner.Combine("AB.キ..");
 			Assert.AreEqual("AxB.xキ..", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -1163,7 +1163,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.CG;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("AB.キ..".ToCharArray());
+			var result = Combiner.Combine("AB.キ..");
 			Assert.AreEqual("AxB.xキ..", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -1171,7 +1171,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.MS;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("AあA。。A".ToCharArray());
+			var result = Combiner.Combine("AあA。。A");
 			Assert.AreEqual("AxあxA。。A", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -1179,7 +1179,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.CG;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("AあA。。A".ToCharArray());
+			var result = Combiner.Combine("AあA。。A");
 			Assert.AreEqual("AあA。。A", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -1187,7 +1187,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.MS;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("カあキ。カあ".ToCharArray());
+			var result = Combiner.Combine("カあキ。カあ");
 			Assert.AreEqual("カあキ。カあ", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -1195,7 +1195,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.CG;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("カあキ。カあ".ToCharArray());
+			var result = Combiner.Combine("カあキ。カあ");
 			Assert.AreEqual("カあキ。カあ", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -1203,7 +1203,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.MS;
 			Combiner.Space = "x";
-			var result = Combiner.Combine(".キ.あ。.".ToCharArray());
+			var result = Combiner.Combine(".キ.あ。.");
 			Assert.AreEqual(".xキ.xあ。.", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -1211,7 +1211,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.CG;
 			Combiner.Space = "x";
-			var result = Combiner.Combine(".キ.あ。.".ToCharArray());
+			var result = Combiner.Combine(".キ.あ。.");
 			Assert.AreEqual(".xキ.xあ。.", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -1219,7 +1219,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.MS;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("BAキ。BB".ToCharArray());
+			var result = Combiner.Combine("BAキ。BB");
 			Assert.AreEqual("BxAxキ。BxB", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -1227,7 +1227,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.CG;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("BAキ。BB".ToCharArray());
+			var result = Combiner.Combine("BAキ。BB");
 			Assert.AreEqual("BxAキ。BxB", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -1235,7 +1235,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.MS;
 			Combiner.Space = "x";
-			var result = Combiner.Combine(".AAAカキ".ToCharArray());
+			var result = Combiner.Combine(".AAAカキ");
 			Assert.AreEqual(".xAxAxAxカxキ", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -1243,7 +1243,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.CG;
 			Combiner.Space = "x";
-			var result = Combiner.Combine(".AAAカキ".ToCharArray());
+			var result = Combiner.Combine(".AAAカキ");
 			Assert.AreEqual(".xAxAxAカキ", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -1251,7 +1251,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.MS;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("BカA..B".ToCharArray());
+			var result = Combiner.Combine("BカA..B");
 			Assert.AreEqual("BxカxA..xB", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -1259,7 +1259,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.CG;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("BカA..B".ToCharArray());
+			var result = Combiner.Combine("BカA..B");
 			Assert.AreEqual("BカA..xB", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -1267,7 +1267,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.MS;
 			Combiner.Space = "x";
-			var result = Combiner.Combine(".。.ああキ".ToCharArray());
+			var result = Combiner.Combine(".。.ああキ");
 			Assert.AreEqual(".。.xああキ", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -1275,7 +1275,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.CG;
 			Combiner.Space = "x";
-			var result = Combiner.Combine(".。.ああキ".ToCharArray());
+			var result = Combiner.Combine(".。.ああキ");
 			Assert.AreEqual(".。.xああキ", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -1283,7 +1283,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.MS;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("カカB.AA".ToCharArray());
+			var result = Combiner.Combine("カカB.AA");
 			Assert.AreEqual("カxカxB.xAxA", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -1291,7 +1291,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.CG;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("カカB.AA".ToCharArray());
+			var result = Combiner.Combine("カカB.AA");
 			Assert.AreEqual("カカB.xAxA", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -1299,7 +1299,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.MS;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("カ.カカキカ".ToCharArray());
+			var result = Combiner.Combine("カ.カカキカ");
 			Assert.AreEqual("カ.xカxカxキxカ", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -1307,7 +1307,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.CG;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("カ.カカキカ".ToCharArray());
+			var result = Combiner.Combine("カ.カカキカ");
 			Assert.AreEqual("カ.xカカキカ", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -1315,7 +1315,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.MS;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("キBカAキあ".ToCharArray());
+			var result = Combiner.Combine("キBカAキあ");
 			Assert.AreEqual("キxBxカxAxキあ", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -1323,7 +1323,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.CG;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("キBカAキあ".ToCharArray());
+			var result = Combiner.Combine("キBカAキあ");
 			Assert.AreEqual("キBカAキあ", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -1331,7 +1331,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.MS;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("あABAAA".ToCharArray());
+			var result = Combiner.Combine("あABAAA");
 			Assert.AreEqual("あxAxBxAxAxA", result, "Unexpected combined text.");
         }
         [TestMethod]
@@ -1339,7 +1339,7 @@ namespace JapaneseStyleChangerTest
         {
 			Combiner.CombineMode = CombineMode.CG;
 			Combiner.Space = "x";
-			var result = Combiner.Combine("あABAAA".ToCharArray());
+			var result = Combiner.Combine("あABAAA");
 			Assert.AreEqual("あAxBxAxAxA", result, "Unexpected combined text.");
         }
 
