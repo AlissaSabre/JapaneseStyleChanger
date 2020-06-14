@@ -30,7 +30,7 @@ namespace JapaneseStyleChanger
 
         public TokenCombiner(Func<TToken, string> renderer = null, Func<TToken, bool> spacer = null)
         {
-            Renderer = renderer ?? (token => token.ToString());
+            Renderer = renderer;
             Spacer = spacer;
         }
 
@@ -38,17 +38,14 @@ namespace JapaneseStyleChanger
 
         public string Space { get; set; } = " ";
 
-        //public string Combine(IList<TToken> tokens)
-        //{
-        //    var sb = new StringBuilder();
-        //    for (int i = 0; i < tokens.Count; i++)
-        //    {
-        //        // We need to consider spaces between/inside _words_ written in alphabets. FIXME.
-        //        sb.Append(R(tokens[i]));
-        //    }
-        //    return sb.ToString();
-        //}
+        public string Combine(IEnumerable<TToken> tokens)
+        {
+            return TokenCombiner.Combine(tokens, CombineMode, Space, Renderer, Spacer);
+        }
+    }
 
+    public static class TokenCombiner
+    {
         private enum TokenType
         {
             /// <summary>an empty token that works like ZWJ.</summary>
@@ -166,10 +163,10 @@ namespace JapaneseStyleChanger
             return TokenType.ZZ;
         }
 
-        public string Combine(IEnumerable<TToken> tokens)
+        public static string Combine<TToken>(IEnumerable<TToken> tokens, CombineMode mode, string space = " ", Func<TToken, string> renderer = null, Func<TToken, bool> spacer = null)
         {
             Spacing[,] table;
-            switch (CombineMode)
+            switch (mode)
             {
                 case CombineMode.Default:
                     table = SpacingTableDefault;
@@ -184,21 +181,23 @@ namespace JapaneseStyleChanger
                     throw new ArgumentOutOfRangeException();
             }
 
+            if (renderer == null) renderer = token => token.ToString();
+
             var sb = new StringBuilder();
             TokenType prev_type = TokenType.NN;
             foreach (var token in tokens)
             {
-                var s = Renderer(token);
+                var s = renderer(token);
                 var t = GetTokenTypeLeft(s);
                 switch (table[(int)prev_type, (int)t])
                 {
                     case Spacing.__:
                         break;
                     case Spacing.SS:
-                        sb.Append(Space);
+                        sb.Append(space);
                         break;
                     case Spacing.DD:
-                        if (Spacer?.Invoke(token) == true) sb.Append(Space);
+                        if (spacer?.Invoke(token) == true) sb.Append(space);
                         break;
                     default:
                         throw new ApplicationException("Internal error");
