@@ -57,7 +57,8 @@ namespace JapaneseStyleChanger
                 nodes = buffer;
             }
             Combiner.CombineMode = CombineMode;
-            switch (WidthPreferences)
+            switch (WidthPreferences
+                & (WidthPreferences.HalfwidthParentheses | WidthPreferences.FullwidthParentheses))
             {
                 case WidthPreferences.HalfwidthParentheses:
                     Combiner.Postprocess = TokenCombiner.AsciiParentheses;
@@ -68,6 +69,23 @@ namespace JapaneseStyleChanger
                 default:
                     Combiner.Postprocess = null;
                     break;
+            }
+            if (WidthPreferences.None != (WidthPreferences
+                & (WidthPreferences.FullwidthAlphabets | WidthPreferences.FullwidthDigits | WidthPreferences.FullwidthSymbols)))
+            {
+                var p = TokenCombiner.SimpleFullwidthPostprocess(
+                    WidthPreferences.HasFlag(WidthPreferences.FullwidthAlphabets) ? TokenCombiner.AsciiAlphabets : null,
+                    WidthPreferences.HasFlag(WidthPreferences.FullwidthDigits) ? TokenCombiner.AsciiDigits : null,
+                    WidthPreferences.HasFlag(WidthPreferences.FullwidthSymbols) ? TokenCombiner.OtherAsciiSymbols : null);
+                var q = Combiner.Postprocess;
+                if (q == null)
+                {
+                    Combiner.Postprocess = p;
+                }
+                else
+                {
+                    Combiner.Postprocess = sb => p(q(sb));
+                }
             }
             var result = Combiner.Combine(nodes);
             return result;
@@ -81,5 +99,9 @@ namespace JapaneseStyleChanger
 
         HalfwidthParentheses = 1,
         FullwidthParentheses = 2,
+
+        FullwidthAlphabets = 16,
+        FullwidthDigits = 64,
+        FullwidthSymbols = 256,
     }
 }
