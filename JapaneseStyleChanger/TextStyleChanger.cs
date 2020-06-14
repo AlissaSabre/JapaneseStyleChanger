@@ -45,6 +45,8 @@ namespace JapaneseStyleChanger
 
         public CombineMode CombineMode { get; set; }
 
+        public WidthPreferences WidthPreferences { get; set; }
+
         public string ChangeText(string text)
         {
             IEnumerable<WNode> nodes = Tagger.Parse(text);
@@ -55,8 +57,29 @@ namespace JapaneseStyleChanger
                 nodes = buffer;
             }
             Combiner.CombineMode = CombineMode;
+            switch (WidthPreferences)
+            {
+                case WidthPreferences.HalfwidthParentheses:
+                    Combiner.Postprocess = TokenCombiner.AsciiParentheses;
+                    break;
+                case WidthPreferences.FullwidthParentheses:
+                    Combiner.Postprocess = TokenCombiner.FullWidthParentheses;
+                    break;
+                default:
+                    Combiner.Postprocess = null;
+                    break;
+            }
             var result = Combiner.Combine(nodes);
             return result;
         }
+    }
+
+    [Flags]
+    public enum WidthPreferences
+    {
+        None = 0,
+
+        HalfwidthParentheses = 1,
+        FullwidthParentheses = 2,
     }
 }

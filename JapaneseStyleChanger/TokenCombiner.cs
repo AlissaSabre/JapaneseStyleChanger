@@ -57,9 +57,11 @@ namespace JapaneseStyleChanger
 
         public string Space { get; set; } = " ";
 
+        public Func<StringBuilder, StringBuilder> Postprocess { get; set; }
+
         public string Combine(IEnumerable<TToken> tokens)
         {
-            return TokenCombiner.Combine(tokens, CombineMode, Space, Renderer, Spacer);
+            return TokenCombiner.Combine(tokens, CombineMode, Space, Renderer, Spacer, Postprocess);
         }
     }
 
