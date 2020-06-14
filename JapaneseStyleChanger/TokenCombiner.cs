@@ -11,14 +11,33 @@ namespace JapaneseStyleChanger
     /// </summary>
     public enum CombineMode
     {
-        /// <summary>Follow the original spacing as much as possible.</summary>
-        /// <remarks>This is the default.</remarks>
+        /// <summary>
+        /// To follow the original spacing as much as possible.
+        /// </summary>
+        /// <remarks>
+        /// This is the default value.
+        /// </remarks>
         Default = 0,
 
-        /// <summary>The way insisted by a company that dominated PC software market in '90s.</summary>
+        /// <summary>
+        /// To try to conform to the way insisted by a company that dominated PC software market in '90s.
+        /// </summary>
+        /// <remarks>
+        /// With this mode, spaces are inserted
+        /// between a half-width (ASCII) letter and a full-width letter,
+        /// before and after a number, and
+        /// between two katakana words,
+        /// in general.
+        /// (There is a more complicated set of rules.)
+        /// </remarks>
         MS = 1,
 
-        /// <summary>The way adopted by most of genuine Japanese console games in '90s.</summary>
+        /// <summary>
+        /// Try to follow the traditional way of writing Japanese texts.
+        /// </summary>
+        /// <remarks>
+        /// Less spaces are inserted in this mode than in <see cref="MS"/> mode.
+        /// </remarks>
         CG = 2,
     }
 
@@ -46,6 +65,16 @@ namespace JapaneseStyleChanger
 
     public static class TokenCombiner
     {
+        #region Token types
+
+        /// <summary>
+        /// Type of a token for the purpose of judging presence/absence of a space between two tokens.
+        /// </summary>
+        /// <remarks>
+        /// Although it is called <i>token</i> type, each token type is based on a single character.
+        /// You need to use <see cref="GetTokenTypeLeft(string)"/> and <see cref="GetTokenTypeRight(string)"/> appropriately
+        /// to get an appropriate type for a token.
+        /// </remarks>
         private enum TokenType
         {
             /// <summary>an empty token that works like ZWJ.</summary>
@@ -77,8 +106,14 @@ namespace JapaneseStyleChanger
             SR,
         }
 
+        /// <summary>
+        /// A partial mapping of a character to a token type.
+        /// </summary>
         private static readonly Dictionary<char, TokenType> TokenDictionary;
 
+        /// <summary>
+        /// This static constructor fills <see cref="TokenDictionary"/>.
+        /// </summary>
         static TokenCombiner()
         {
             var d = new Dictionary<char, TokenType>();
@@ -94,10 +129,74 @@ namespace JapaneseStyleChanger
             TokenDictionary = d;
         }
 
+        /// <summary>
+        /// Gets a token type of the leftmost character of a token text.
+        /// </summary>
+        /// <param name="token_text">Text that a token represents.</param>
+        /// <returns>
+        /// Token type appropriate for considering a placement of another token
+        /// to the left of <paramref name="token_text"/>.
+        /// </returns>
+        private static TokenType GetTokenTypeLeft(string token_text)
+        {
+            if (token_text is null) throw new ArgumentNullException(nameof(token_text));
+            if (token_text.Length == 0) return TokenType.NN;
+            return GetTokenType(token_text[0]);
+        }
+
+        /// <summary>
+        /// Gets a token type of the rightmost character of a token text.
+        /// </summary>
+        /// <param name="token_text">Text that a token represents.</param>
+        /// <returns>
+        /// Token type appropriate for considerting a placement of another token
+        /// to the right of <paramref name="token_text"/>.
+        /// </returns>
+        private static TokenType GetTokenTypeRight(string token_text)
+        {
+            if (token_text is null) throw new ArgumentNullException(nameof(token_text));
+            if (token_text.Length == 0) return TokenType.NN;
+            return GetTokenType(token_text[token_text.Length - 1]);
+        }
+
+        /// <summary>
+        /// Returns a <see cref="TokenType"/> for a character. 
+        /// </summary>
+        /// <param name="ch">A character.</param>
+        /// <returns>The <see cref="TokenType"/> for <paramref name="ch"/>.</returns>
+        /// <remarks>The current implementaiton is just a quick hack.  We need to revise it soon.  XXX</remarks>
+        private static TokenType GetTokenType(char ch)
+        {
+            if (TokenDictionary.TryGetValue(ch, out var type)) return type;
+            if (ch < 0x2000) return TokenType.HH;
+            if (ch < 0x2010) return TokenType.NN;
+            return TokenType.ZZ;
+        }
+
+        #endregion
+
+        #region Spacing tables
+
+        /// <summary>
+        /// Value of spacing tables.
+        /// </summary>
+        /// <remarks>
+        /// A spacing table is a two-dimensional array to help deciding
+        /// whether a space should be inserted between two tokens.
+        /// Its indexes for both dimensions are (integral values of) <see cref="TokenType"/> enumeration.
+        /// s[x, y] gives a hint of spacing when a token X is followed by Y,
+        /// where x == GetTokenTypeRight(X) and y == GetTokenTypeLeft(Y).
+        /// </remarks>
         private enum Spacing : byte
         {
+            /// <summary>A spacing should follow Spacer delegate.</summary>
+            /// <remarks>This is the default value.</remarks>
             DD = 0,
+
+            /// <summary>A space should be present.</summary>
             SS,
+
+            /// <summary>No space should be present.</summary>
             __,
         }
 
@@ -107,9 +206,18 @@ namespace JapaneseStyleChanger
 
         private const Spacing DD = Spacing.DD;
 
-        private static readonly Spacing[,] SpacingTableDefault = new Spacing[9, 9]; // i.e., all DD.
+        /// <summary>
+        /// The default spacing table.
+        /// </summary>
+        /// <remarks>
+        /// This table indicates to always follow Spacer delegate to reproduce original spacing.
+        /// </remarks>
+        private static readonly Spacing[,] SpacingTableDefault = new Spacing[9, 9];
 
-        private static readonly Spacing[,] SpaceTableMS =
+        /// <summary>
+        /// Spacing table for MS combining mode.
+        /// </summary>
+        private static readonly Spacing[,] SpacingTableMS =
         {   //         NN  ZZ  ZK  ZL  ZR  HH  H9  SL  SR
             /* NN */ { __, __, __, __, __, __, __, __, __ },
             /* ZZ */ { __, __, __, __, __, SS, SS, SS, __ },
@@ -122,7 +230,8 @@ namespace JapaneseStyleChanger
             /* SR */ { __, SS, SS, __, __, DD, DD, DD, __ },
         };
 
-        private static readonly Spacing[,] SpaceTableCG =
+        /// <summary>Spacing table for CG combining mode.</summary>
+        private static readonly Spacing[,] SpacingTableCG =
         {   //         NN  ZZ  ZK  ZL  ZR  HH  H9  SL  SR
             /* NN */ { __, __, __, __, __, __, __, __, __ },
             /* ZZ */ { __, __, __, __, __, __, __, SS, __ },
@@ -135,35 +244,14 @@ namespace JapaneseStyleChanger
             /* SR */ { __, SS, SS, __, __, DD, DD, DD, __ },
         };
 
-        private static TokenType GetTokenTypeLeft(string token_text)
-        {
-            if (token_text is null) throw new ArgumentNullException(nameof(token_text));
-            if (token_text.Length == 0) return TokenType.NN;
-            return GetTokenType(token_text[0]);
-        }
+        #endregion
 
-        private static TokenType GetTokenTypeRight(string token_text)
-        {
-            if (token_text is null) throw new ArgumentNullException(nameof(token_text));
-            if (token_text.Length == 0) return TokenType.NN;
-            return GetTokenType(token_text[token_text.Length - 1]);
-        }
-
-        /// <summary>
-        /// Returns a <see cref="TokenType"/> for a character, assuming it solely comprises a token. 
-        /// </summary>
-        /// <param name="ch"></param>
-        /// <returns>The <see cref="TokenType"/>.</returns>
-        /// <remarks>The current implementaiton is just a quick hack.  We need to revise it soon.  XXX</remarks>
-        private static TokenType GetTokenType(char ch)
-        {
-            if (TokenDictionary.TryGetValue(ch, out var type)) return type;
-            if (ch < 0x2000) return TokenType.HH;
-            if (ch < 0x2010) return TokenType.NN;
-            return TokenType.ZZ;
-        }
-
-        public static string Combine<TToken>(IEnumerable<TToken> tokens, CombineMode mode, string space = " ", Func<TToken, string> renderer = null, Func<TToken, bool> spacer = null)
+        public static string Combine<TToken>(IEnumerable<TToken> tokens,
+            CombineMode mode = CombineMode.Default,
+            string space = " ",
+            Func<TToken, string> renderer = null,
+            Func<TToken, bool> spacer = null,
+            Func<StringBuilder, StringBuilder> postprocess = null)
         {
             Spacing[,] table;
             switch (mode)
@@ -172,10 +260,10 @@ namespace JapaneseStyleChanger
                     table = SpacingTableDefault;
                     break;
                 case CombineMode.MS:
-                    table = SpaceTableMS;
+                    table = SpacingTableMS;
                     break;
                 case CombineMode.CG:
-                    table = SpaceTableCG;
+                    table = SpacingTableCG;
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
@@ -205,7 +293,18 @@ namespace JapaneseStyleChanger
                 sb.Append(s);
                 prev_type = GetTokenTypeRight(s);
             }
+            if (postprocess != null) sb = postprocess(sb);
             return sb.ToString();
+        }
+
+        public static StringBuilder AsciiParentheses(StringBuilder sb)
+        {
+            throw new NotImplementedException();
+        }
+
+        public static StringBuilder FullWidthParentheses(StringBuilder sb)
+        {
+            throw new NotImplementedException();
         }
     }
 }
