@@ -1023,5 +1023,293 @@ namespace JapaneseStyleChangerTest
         }
 
 
+        [TestMethod]
+        public void Test_Combine_postprocess_00_0070()
+        {
+			var result = TokenCombiner.Combine("】(", postprocess: null);
+			Assert.AreEqual("】(", result, "Unexpected combined text.");
+        }
+
+
+        [TestMethod]
+        public void Test_Combine_postprocess_01_0070()
+        {
+			var result = TokenCombiner.Combine("】(", postprocess: TokenCombiner.AsciiParentheses);
+			Assert.AreEqual("】(", result, "Unexpected combined text.");
+        }
+
+
+        [TestMethod]
+        public void Test_Combine_postprocess_02_0070()
+        {
+			var result = TokenCombiner.Combine("】(", postprocess: TokenCombiner.FullWidthParentheses);
+			Assert.AreEqual("】（", result, "Unexpected combined text.");
+        }
+
+
+        [TestMethod]
+        public void Test_Combine_postprocess_00_0071()
+        {
+			var result = TokenCombiner.Combine("】（", postprocess: null);
+			Assert.AreEqual("】（", result, "Unexpected combined text.");
+        }
+
+
+        [TestMethod]
+        public void Test_Combine_postprocess_01_0071()
+        {
+			var result = TokenCombiner.Combine("】（", postprocess: TokenCombiner.AsciiParentheses);
+			Assert.AreEqual("】(", result, "Unexpected combined text.");
+        }
+
+
+        [TestMethod]
+        public void Test_Combine_postprocess_02_0071()
+        {
+			var result = TokenCombiner.Combine("】（", postprocess: TokenCombiner.FullWidthParentheses);
+			Assert.AreEqual("】（", result, "Unexpected combined text.");
+        }
+
+
+        [TestMethod]
+        public void Test_Combine_postprocess_00_0072()
+        {
+			var result = TokenCombiner.Combine("】[", postprocess: null);
+			Assert.AreEqual("】[", result, "Unexpected combined text.");
+        }
+
+
+        [TestMethod]
+        public void Test_Combine_postprocess_01_0072()
+        {
+			var result = TokenCombiner.Combine("】[", postprocess: TokenCombiner.AsciiParentheses);
+			Assert.AreEqual("】[", result, "Unexpected combined text.");
+        }
+
+
+        [TestMethod]
+        public void Test_Combine_postprocess_02_0072()
+        {
+			var result = TokenCombiner.Combine("】[", postprocess: TokenCombiner.FullWidthParentheses);
+			Assert.AreEqual("】［", result, "Unexpected combined text.");
+        }
+
+
+        [TestMethod]
+        public void Test_Combine_postprocess_00_0073()
+        {
+			var result = TokenCombiner.Combine("】［", postprocess: null);
+			Assert.AreEqual("】［", result, "Unexpected combined text.");
+        }
+
+
+        [TestMethod]
+        public void Test_Combine_postprocess_01_0073()
+        {
+			var result = TokenCombiner.Combine("】［", postprocess: TokenCombiner.AsciiParentheses);
+			Assert.AreEqual("】[", result, "Unexpected combined text.");
+        }
+
+
+        [TestMethod]
+        public void Test_Combine_postprocess_02_0073()
+        {
+			var result = TokenCombiner.Combine("】［", postprocess: TokenCombiner.FullWidthParentheses);
+			Assert.AreEqual("】［", result, "Unexpected combined text.");
+        }
+
+
+        [TestMethod]
+        public void Test_Combine_postprocess_00_0074()
+        {
+			var result = TokenCombiner.Combine("】{", postprocess: null);
+			Assert.AreEqual("】{", result, "Unexpected combined text.");
+        }
+
+
+        [TestMethod]
+        public void Test_Combine_postprocess_01_0074()
+        {
+			var result = TokenCombiner.Combine("】{", postprocess: TokenCombiner.AsciiParentheses);
+			Assert.AreEqual("】{", result, "Unexpected combined text.");
+        }
+
+
+        [TestMethod]
+        public void Test_Combine_postprocess_02_0074()
+        {
+			var result = TokenCombiner.Combine("】{", postprocess: TokenCombiner.FullWidthParentheses);
+			Assert.AreEqual("】｛", result, "Unexpected combined text.");
+        }
+
+
+        [TestMethod]
+        public void Test_Combine_postprocess_00_0075()
+        {
+			var result = TokenCombiner.Combine("】｛", postprocess: null);
+			Assert.AreEqual("】｛", result, "Unexpected combined text.");
+        }
+
+
+        [TestMethod]
+        public void Test_Combine_postprocess_01_0075()
+        {
+			var result = TokenCombiner.Combine("】｛", postprocess: TokenCombiner.AsciiParentheses);
+			Assert.AreEqual("】{", result, "Unexpected combined text.");
+        }
+
+
+        [TestMethod]
+        public void Test_Combine_postprocess_02_0075()
+        {
+			var result = TokenCombiner.Combine("】｛", postprocess: TokenCombiner.FullWidthParentheses);
+			Assert.AreEqual("】｛", result, "Unexpected combined text.");
+        }
+
+
+        [TestMethod]
+        public void Test_Combine_postprocess_00_0080()
+        {
+			var result = TokenCombiner.Combine(")【", postprocess: null);
+			Assert.AreEqual(")【", result, "Unexpected combined text.");
+        }
+
+
+        [TestMethod]
+        public void Test_Combine_postprocess_01_0080()
+        {
+			var result = TokenCombiner.Combine(")【", postprocess: TokenCombiner.AsciiParentheses);
+			Assert.AreEqual(")【", result, "Unexpected combined text.");
+        }
+
+
+        [TestMethod]
+        public void Test_Combine_postprocess_02_0080()
+        {
+			var result = TokenCombiner.Combine(")【", postprocess: TokenCombiner.FullWidthParentheses);
+			Assert.AreEqual("）【", result, "Unexpected combined text.");
+        }
+
+
+        [TestMethod]
+        public void Test_Combine_postprocess_00_0081()
+        {
+			var result = TokenCombiner.Combine("）【", postprocess: null);
+			Assert.AreEqual("）【", result, "Unexpected combined text.");
+        }
+
+
+        [TestMethod]
+        public void Test_Combine_postprocess_01_0081()
+        {
+			var result = TokenCombiner.Combine("）【", postprocess: TokenCombiner.AsciiParentheses);
+			Assert.AreEqual(")【", result, "Unexpected combined text.");
+        }
+
+
+        [TestMethod]
+        public void Test_Combine_postprocess_02_0081()
+        {
+			var result = TokenCombiner.Combine("）【", postprocess: TokenCombiner.FullWidthParentheses);
+			Assert.AreEqual("）【", result, "Unexpected combined text.");
+        }
+
+
+        [TestMethod]
+        public void Test_Combine_postprocess_00_0082()
+        {
+			var result = TokenCombiner.Combine("]【", postprocess: null);
+			Assert.AreEqual("]【", result, "Unexpected combined text.");
+        }
+
+
+        [TestMethod]
+        public void Test_Combine_postprocess_01_0082()
+        {
+			var result = TokenCombiner.Combine("]【", postprocess: TokenCombiner.AsciiParentheses);
+			Assert.AreEqual("]【", result, "Unexpected combined text.");
+        }
+
+
+        [TestMethod]
+        public void Test_Combine_postprocess_02_0082()
+        {
+			var result = TokenCombiner.Combine("]【", postprocess: TokenCombiner.FullWidthParentheses);
+			Assert.AreEqual("］【", result, "Unexpected combined text.");
+        }
+
+
+        [TestMethod]
+        public void Test_Combine_postprocess_00_0083()
+        {
+			var result = TokenCombiner.Combine("］【", postprocess: null);
+			Assert.AreEqual("］【", result, "Unexpected combined text.");
+        }
+
+
+        [TestMethod]
+        public void Test_Combine_postprocess_01_0083()
+        {
+			var result = TokenCombiner.Combine("］【", postprocess: TokenCombiner.AsciiParentheses);
+			Assert.AreEqual("]【", result, "Unexpected combined text.");
+        }
+
+
+        [TestMethod]
+        public void Test_Combine_postprocess_02_0083()
+        {
+			var result = TokenCombiner.Combine("］【", postprocess: TokenCombiner.FullWidthParentheses);
+			Assert.AreEqual("］【", result, "Unexpected combined text.");
+        }
+
+
+        [TestMethod]
+        public void Test_Combine_postprocess_00_0084()
+        {
+			var result = TokenCombiner.Combine("}【", postprocess: null);
+			Assert.AreEqual("}【", result, "Unexpected combined text.");
+        }
+
+
+        [TestMethod]
+        public void Test_Combine_postprocess_01_0084()
+        {
+			var result = TokenCombiner.Combine("}【", postprocess: TokenCombiner.AsciiParentheses);
+			Assert.AreEqual("}【", result, "Unexpected combined text.");
+        }
+
+
+        [TestMethod]
+        public void Test_Combine_postprocess_02_0084()
+        {
+			var result = TokenCombiner.Combine("}【", postprocess: TokenCombiner.FullWidthParentheses);
+			Assert.AreEqual("｝【", result, "Unexpected combined text.");
+        }
+
+
+        [TestMethod]
+        public void Test_Combine_postprocess_00_0085()
+        {
+			var result = TokenCombiner.Combine("｝【", postprocess: null);
+			Assert.AreEqual("｝【", result, "Unexpected combined text.");
+        }
+
+
+        [TestMethod]
+        public void Test_Combine_postprocess_01_0085()
+        {
+			var result = TokenCombiner.Combine("｝【", postprocess: TokenCombiner.AsciiParentheses);
+			Assert.AreEqual("}【", result, "Unexpected combined text.");
+        }
+
+
+        [TestMethod]
+        public void Test_Combine_postprocess_02_0085()
+        {
+			var result = TokenCombiner.Combine("｝【", postprocess: TokenCombiner.FullWidthParentheses);
+			Assert.AreEqual("｝【", result, "Unexpected combined text.");
+        }
+
+
 	}
 }
