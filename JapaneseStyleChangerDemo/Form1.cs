@@ -53,6 +53,15 @@ namespace JapaneseStyleChangerDemo
         {
             MSButton.Enabled = SpacingCheckBox.Checked;
             CGButton.Enabled = SpacingCheckBox.Checked;
+
+            HalfwidthButton.Enabled = ChangeWidths.Checked;
+            FullwidthButton.Enabled = ChangeWidths.Checked;
+            UseFullwidthAlphabets.Enabled = ChangeWidths.Checked;
+            UseFullwidthDigits.Enabled = ChangeWidths.Checked;
+            UseIdeographicSpace.Enabled = ChangeWidths.Checked;
+            UseFullwidthSymbols.Enabled = ChangeWidths.Checked;
+
+            SymbolsList.Enabled = ChangeWidths.Checked && UseFullwidthSymbols.Checked;
         }
 
         private bool _Busy;
@@ -69,6 +78,11 @@ namespace JapaneseStyleChangerDemo
             }
         }
 
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            SymbolsList.Text = string.Concat(TokenCombiner.OtherAsciiSymbols.Except(new[] { '\u0020' }));
+        }
+
         private async void GoButton_Click(object sender, EventArgs e)
         {
             Busy = true;
@@ -78,6 +92,24 @@ namespace JapaneseStyleChangerDemo
                 Changer.CombineMode = SpacingCheckBox.Checked
                     ? (MSButton.Checked ? CombineMode.MS : CombineMode.CG)
                     : CombineMode.Default;
+
+                var wp = WidthPreferences.None;
+                if (ChangeWidths.Checked)
+                {
+                    if (HalfwidthButton.Checked) wp |= WidthPreferences.HalfwidthParentheses;
+                    if (FullwidthButton.Checked) wp |= WidthPreferences.FullwidthParentheses;
+                    if (UseFullwidthAlphabets.Checked) wp |= WidthPreferences.FullwidthAlphabets;
+                    if (UseFullwidthDigits.Checked) wp |= WidthPreferences.FullwidthDigits;
+                    if (UseIdeographicSpace.Checked) wp |= WidthPreferences.CustomFullwidthSet;
+                    if (UseFullwidthSymbols.Checked) wp |= WidthPreferences.CustomFullwidthSet;
+                }
+                Changer.WidthPreferences = wp;
+
+                string fws = string.Empty;
+                if (UseFullwidthSymbols.Checked) fws = SymbolsList.Text;
+                if (UseIdeographicSpace.Checked) fws += '\u0020';
+                Changer.CustomFullwidthSet = fws;
+
                 var text = SourceText.Text;
                 var result = await Task.Run(() => Changer.ChangeText(text));
                 TargetText.Text = result;
