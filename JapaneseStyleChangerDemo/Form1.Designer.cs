@@ -263,6 +263,7 @@
             // 
             // SymbolsList
             // 
+            this.SymbolsList.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.SymbolsList.Location = new System.Drawing.Point(588, 334);
             this.SymbolsList.Name = "SymbolsList";
             this.SymbolsList.Size = new System.Drawing.Size(182, 19);
@@ -270,6 +271,7 @@
             // 
             // UseIdeographicSpace
             // 
+            this.UseIdeographicSpace.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.UseIdeographicSpace.AutoSize = true;
             this.UseIdeographicSpace.Location = new System.Drawing.Point(567, 290);
             this.UseIdeographicSpace.Name = "UseIdeographicSpace";
