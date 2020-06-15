@@ -47,6 +47,8 @@ namespace JapaneseStyleChanger
 
         public WidthPreferences WidthPreferences { get; set; }
 
+        public IEnumerable<char> CustomFullwidthSet { get; set; }
+
         public string ChangeText(string text)
         {
             IEnumerable<WNode> nodes = Tagger.Parse(text);
@@ -71,21 +73,18 @@ namespace JapaneseStyleChanger
                     break;
             }
             if (WidthPreferences.None != (WidthPreferences
-                & (WidthPreferences.FullwidthAlphabets | WidthPreferences.FullwidthDigits | WidthPreferences.FullwidthSymbols)))
+                & (WidthPreferences.FullwidthAlphabets
+                 | WidthPreferences.FullwidthDigits
+                 | WidthPreferences.FullwidthSymbols
+                 | WidthPreferences.CustomFullwidthSet)))
             {
                 var p = TokenCombiner.SimpleFullwidthPostprocess(
                     WidthPreferences.HasFlag(WidthPreferences.FullwidthAlphabets) ? TokenCombiner.AsciiAlphabets : null,
                     WidthPreferences.HasFlag(WidthPreferences.FullwidthDigits) ? TokenCombiner.AsciiDigits : null,
-                    WidthPreferences.HasFlag(WidthPreferences.FullwidthSymbols) ? TokenCombiner.OtherAsciiSymbols : null);
+                    WidthPreferences.HasFlag(WidthPreferences.FullwidthSymbols) ? TokenCombiner.OtherAsciiSymbols : null,
+                    WidthPreferences.HasFlag(WidthPreferences.CustomFullwidthSet) ? CustomFullwidthSet : null);
                 var q = Combiner.Postprocess;
-                if (q == null)
-                {
-                    Combiner.Postprocess = p;
-                }
-                else
-                {
-                    Combiner.Postprocess = sb => p(q(sb));
-                }
+                Combiner.Postprocess = (q == null) ? p : sb => p(q(sb));
             }
             var result = Combiner.Combine(nodes);
             return result;
@@ -103,5 +102,7 @@ namespace JapaneseStyleChanger
         FullwidthAlphabets = 16,
         FullwidthDigits = 64,
         FullwidthSymbols = 256,
+
+        CustomFullwidthSet = 32768,
     }
 }
