@@ -388,14 +388,14 @@ namespace JapaneseStyleChanger
             return sb;
         }
 
-        public static readonly IEnumerable<char> AsciiAlphabets
-            = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+        public static IEnumerable<char> AsciiAlphabets
+            => "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 
-        public static readonly IEnumerable<char> AsciiDigits
-            = "0123456789";
+        public static IEnumerable<char> AsciiDigits
+            => "0123456789";
 
-        public static readonly IEnumerable<char> OtherAsciiSymbols
-            = " !\"#$%&'*+,-./:;<=>?@\\^_`|~";
+        public static IEnumerable<char> OtherAsciiSymbols
+            => @" !""#$%&'*+,-./:;<=>?@\^_`|~";
 
         public static Func<StringBuilder, StringBuilder> SimpleFullwidthPostprocess(params object[] args)
         {
@@ -404,49 +404,42 @@ namespace JapaneseStyleChanger
             var mapper = new char[127];
             for (int i = 0; i < args.Length; i++)
             {
-                if (args[i] is null)
+                switch (args[i])
                 {
-                    // Consider it is an empty IEnumerable<char> and ignore it, like Linq to XML does.
+                    case IEnumerable<char> s:
+                        foreach (var c in s) AddChar(c);
+                        break;
+                    case null:
+                        // ignore as if it were Enumerable.Empty<char>
+                        break;
+                    case char c:
+                        AddChar(c);
+                        break;
+                    default:
+                        throw new ArgumentException($"{nameof(args)}[{i}] is not of type Char or IEnumerable<Char>", nameof(args));
                 }
-                else if (args[i] is char c)
-                {
-                    if (!AddChar(mapper, c))
-                    {
-                        throw new ArgumentException($"{nameof(args)}[{i}] is not an ASCII character", nameof(args));
-                    }
-                }
-                else if (args[i] is IEnumerable<char> s)
-                {
-                    if (!s.All(ch => AddChar(mapper, ch)))
-                    {
-                        throw new ArgumentException($"{nameof(args)}[{i}] includes a character that is not an ASCII character", nameof(args));
-                    }
-                }
-                else
-                {
-                    throw new ArgumentException($"{nameof(args)}[{i}] is not of type Char or IEnumerable<Char>", nameof(args));
-                }
-            }
 
-            for (int j = 0; j < mapper.Length; j++)
-            {
-                var c = mapper[j];
-                if (c == ' ')
+                void AddChar(char c)
                 {
-                    mapper[j] = '\u3000';
-                }
-                else if (c != 0)
-                {
-                    mapper[j] = (char)(c + ASCII_FULLWIDTH_SHIFT);
+                    if (c >= '\u0020' && c <= '\u007E')
+                    {
+                        mapper[c] = (c == ' ') ? '\u3000' : (char)(c + ASCII_FULLWIDTH_SHIFT);
+                    }
+                    else
+                    {
+                        throw new ArgumentException(
+                            $"{nameof(args)}[{i}] in {nameof(SimpleFullwidthPostprocess)} includes a non-ASCII character ('U+{(int)c:X4}')",
+                            nameof(args));
+                    }
                 }
             }
 
             return
-                sb =>
+                (StringBuilder sb) =>
                 {
                     for (int p = 0; p < sb.Length; p++)
                     {
-                        var c = sb[p];
+                        char c = sb[p];
                         if (c <= '\u007E' && (c = mapper[c]) != 0)
                         {
                             sb[p] = c;
@@ -454,19 +447,6 @@ namespace JapaneseStyleChanger
                     }
                     return sb;
                 };
-        }
-
-        private static bool AddChar(char[] mapper, char c)
-        {
-            if (c >= '\u0020' && c <= '\u007E')
-            {
-                mapper[c] = c;
-                return true;
-            }
-            else
-            {
-                return false;
-            }
         }
     }
 }
