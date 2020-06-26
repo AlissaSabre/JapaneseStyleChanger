@@ -41,7 +41,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="LibNMeCab, Version=0.10.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\LibNMeCab.0.10.0-bata.2\lib\netstandard2.0\LibNMeCab.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\NMeCab\src\LibNMeCab\bin\Debug\netstandard2.0\LibNMeCab.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.TestPlatform.TestFramework, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\MSTest.TestFramework.2.1.1\lib\net45\Microsoft.VisualStudio.TestPlatform.TestFramework.dll</HintPath>

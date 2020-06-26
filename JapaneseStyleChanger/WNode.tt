@@ -71,29 +71,27 @@ namespace JapaneseStyleChanger
 
         private void LoadFeatures()
         {
-			if (Feature == null)
+			string feature = Feature;
+			string[] features;
+			if (feature == null)
 			{
 <# foreach (var m in members) { #>
 				_<#= m.N #> = <#= DefaultFeatureValue(m.T) #>;
 <# } #>
 			}
+			else if ((features = StrUtils.SplitCsvRow(feature, 29, 16)).Length >= 29)
+			{
+<# foreach (var m in members) { #>
+				_<#= m.N #> = <#= Load(m.C, m.T) #>;
+<# } #>
+			}
 			else
 			{
-	            var features = StrUtils.SplitCsvRow(Feature, 29, 16);
-				if (features.Length >= 29)
-				{
 <# foreach (var m in members) { #>
-					_<#= m.N #> = <#= Load(m.C, m.T) #>;
+				_<#= m.N #> = features.Length >= <#= m.C + 1 #> ? <#= Load(m.C, m.T) #> : <#= DefaultFeatureValue(m.T) #>;
 <# } #>
-				}
-				else
-				{
-<# foreach (var m in members) { #>
-					_<#= m.N #> = features.Length >= <#= m.C + 1 #> ? <#= Load(m.C, m.T) #> : <#= DefaultFeatureValue(m.T) #>;
-<# } #>
-				}
-				Feature = null;
 			}
+			Feature = null;
             Loaded = true;
         }
 
