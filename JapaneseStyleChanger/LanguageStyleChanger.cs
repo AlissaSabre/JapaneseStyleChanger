@@ -159,5 +159,11 @@ namespace JapaneseStyleChanger
                 }
             }
         }
+
+        public IEnumerable<WNode> GetConjugations(WNode node)
+        {
+            return Conjugator.GetConjugations(node);
+        }
+
     }
 }

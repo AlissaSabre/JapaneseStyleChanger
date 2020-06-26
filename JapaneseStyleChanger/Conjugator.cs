@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,19 +13,19 @@ namespace JapaneseStyleChanger
     {
         private readonly DictionaryBundle<WNode> Dictionaries;
 
-        private readonly IDictionary<int, List<WNode>> ConjugationTable;
+        private readonly Dictionary<WNode, List<WNode>> ConjugationTable;
 
         public const double CostMixFactor = 0.7; // XXX XXX XXX
 
         public Conjugator(Tagger<WNode> tagger)
         {
             Dictionaries = Hack.GetDictionaries(tagger);
-            ConjugationTable = BuildConjugationTable();
+            ConjugationTable = BuildConjugationTable(Dictionaries);
         }
 
         public IList<WNode> ConjugateStrictly(WNode node, string cform)
         {
-            return Conjugate(node, n => n.CForm == cform && n.CType == node.CType && n.OrthBase == node.OrthBase);
+            return Conjugate(node, n => n.CForm == cform);
         }
 
         public IList<WNode> ConjugateLoosely(WNode node, string cform)
@@ -37,17 +36,31 @@ namespace JapaneseStyleChanger
             {
                 var f = n.CForm;
                 return f.StartsWith(loose_cform)
-                && (f.Length == loose_cform.Length || f[loose_cform.Length] == '-')
-                && n.CType == node.CType && n.OrthBase == node.OrthBase;
+                && (f.Length == loose_cform.Length || f[loose_cform.Length] == '-');
             });
         }
 
-        private IList<WNode> Conjugate(WNode node, Func<WNode, bool> chooser)
+        public IList<WNode> Conjugate(WNode node, Func<WNode, bool> chooser)
         {
-            if (!ConjugationTable.TryGetValue(node.Lemma_id, out var list)) return null;
+            List<WNode> list;
+            if (!ConjugationTable.TryGetValue(node, out list)) return null;
             list = list.Where(n => n.Surface != null && chooser(n)).ToList();
             if (list.Count == 0) return null;
             return list;
+        }
+
+        public IEnumerable<WNode> GetConjugations(WNode node)
+        {
+            if (node == null) return null;
+
+            if (ConjugationTable.TryGetValue(node, out var list))
+            {
+                return list;
+            }
+            else
+            {
+                return Enumerable.Empty<WNode>();
+            }
         }
 
         private struct Path
@@ -103,52 +116,48 @@ namespace JapaneseStyleChanger
             return result;
         }
 
-        private IDictionary<int, List<WNode>> BuildConjugationTable()
+        private Dictionary<WNode, List<WNode>> BuildConjugationTable(DictionaryBundle<WNode> dictionaries)
         {
-            var started = DateTime.UtcNow;
-
-            // Group conjugating nodes per their Lemma_id
-            var table = new ConcurrentDictionary<int, List<WNode>>();
-            Parallel.ForEach(Dictionaries.GetAllNodes(), node =>
+            // Group nodes per stems.
+            var table = new Dictionary<WNode, List<WNode>>(new ConjugationTableComparer());
+            foreach (var node in dictionaries.GetAllNodes())
             {
                 if (node.CType != "*")
                 {
                     node.Surface = node.Orth;
-                    var list = table.GetOrAdd(node.Lemma_id, key => new List<WNode>());
-                    lock (list)
+                    List<WNode> list;
+                    if (!table.TryGetValue(node, out list))
                     {
-                        list.Add(node);
+                        list = new List<WNode>();
+                        table.Add(node, list);
                     }
+                    list.Add(node);
                 }
-            });
+            }
 
             // Remove non-preferred (for the purpose of this app) entries.
-            Parallel.ForEach(table.Values, list =>
+            var redundant = new List<WNode>();
+            foreach (var list in table.Values)
             {
-                var redundant = new List<WNode>();
-
-                // Choose one preferred node among those sharing OrthBase, CType, and CForm.
-                foreach (var g in list.GroupBy(n => n.CType + ":" + n.CForm + ":" + n.OrthBase))
+                redundant.Clear();
+                foreach (var g in list.GroupBy(n => n.CForm))
                 {
                     if (g.Count() > 1)
                     {
                         redundant.AddRange(g.OrderBy(n =>
                         {
                             var lid = n.Lid;
-                            if ((lid & 0x01E0) == 0)
+                            if ((lid & 0x01E0) != 0)
                             {
-                                // Those with none of the bits at 5 thru 8 set in Lid are least preferred.
-                                return int.MaxValue;
+                                return (int)lid & 0x01FF;
                             }
                             else
                             {
-                                // Otherwise, the preference is induced by the lowest 9 bits of Lid.
-                                return (int)lid & 0x01FF;
+                                return int.MaxValue;
                             }
                         }).Skip(1));
                     }
                 }
-
                 foreach (var n in redundant)
                 {
 #if true
@@ -162,59 +171,24 @@ namespace JapaneseStyleChanger
                     list.Remove(n);
 #endif
                 }
-            });
-
-            var elapsed = DateTime.UtcNow - started;
-            ;
-
+            }
             return table;
         }
 
-        private const int BatchSize = 1; // this is a tuning parameter.
-
-        private static void ForEach1<T>(IEnumerable<T> items, Action<T> action) where T: class
+        private class ConjugationTableComparer : IEqualityComparer<WNode>
         {
-#if false
-            foreach (var item in items) action(item);
-#elif true
-            Parallel.ForEach(items, action);
-#else
-            Parallel.ForEach(Batcher(BatchSize, items), array =>
+            public bool Equals(WNode x, WNode y)
             {
-                for (int i = 0; i < array.Length; i++)
-                {
-                    action(array[i]);
-                }
-            });
-#endif
-        }
+                return x.Lemma_id == y.Lemma_id
+                    && x.OrthBase == y.OrthBase
+                    && x.CType == y.CType;
+            }
 
-        private static void ForEach2<T>(IEnumerable<T> items, Action<T> action) where T: class
-        {
-            Parallel.ForEach(items, action);
-        }
-
-        private static IEnumerable<T[]>Batcher<T>(int size, IEnumerable<T> items)
-        {
-            using (var enumerator = items.GetEnumerator())
+            public int GetHashCode(WNode node)
             {
-                for (; ;)
-                {
-                    var array = new T[size];
-                    int i;
-                    for (i = 0; i < array.Length && enumerator.MoveNext(); i++)
-                    {
-                        array[i] = enumerator.Current;
-                    }
-                    if (i < array.Length)
-                    {
-                        if (i == 0) break;
-                        var a2 = new T[i];
-                        Array.Copy(array, a2, i);
-                        array = a2;
-                    }
-                    yield return array;
-                }
+                return node.Lemma_id.GetHashCode()
+                    + (node.OrthBase.GetHashCode() ^ 0x5CCBF78E)
+                    + (node.CType.GetHashCode() ^ 0x5FF47E32);
             }
         }
     }

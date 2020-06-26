@@ -22,9 +22,7 @@ namespace JapaneseStyleChanger
 
         private void LoadFeatures()
         {
-			string feature = Feature;
-			string[] features;
-			if (feature == null)
+			if (Feature == null)
 			{
 				_Pos1 = string.Empty;
 				_Pos2 = string.Empty;
@@ -38,35 +36,39 @@ namespace JapaneseStyleChanger
 				_Lid = 0;
 				_Lemma_id = 0;
 			}
-			else if ((features = StrUtils.SplitCsvRow(feature, 29, 16)).Length >= 29)
-			{
-				_Pos1 = features[0];
-				_Pos2 = features[1];
-				_Pos3 = features[2];
-				_Pos4 = features[3];
-				_CType = features[4];
-				_CForm = features[5];
-				_Lemma = features[7];
-				_Orth = features[8];
-				_OrthBase = features[10];
-				_Lid = long.Parse(features[27]);
-				_Lemma_id = int.Parse(features[28]);
-			}
 			else
 			{
-				_Pos1 = features.Length >= 1 ? features[0] : string.Empty;
-				_Pos2 = features.Length >= 2 ? features[1] : string.Empty;
-				_Pos3 = features.Length >= 3 ? features[2] : string.Empty;
-				_Pos4 = features.Length >= 4 ? features[3] : string.Empty;
-				_CType = features.Length >= 5 ? features[4] : string.Empty;
-				_CForm = features.Length >= 6 ? features[5] : string.Empty;
-				_Lemma = features.Length >= 8 ? features[7] : string.Empty;
-				_Orth = features.Length >= 9 ? features[8] : string.Empty;
-				_OrthBase = features.Length >= 11 ? features[10] : string.Empty;
-				_Lid = features.Length >= 28 ? long.Parse(features[27]) : 0;
-				_Lemma_id = features.Length >= 29 ? int.Parse(features[28]) : 0;
+	            var features = StrUtils.SplitCsvRow(Feature, 29, 16);
+				if (features.Length >= 29)
+				{
+					_Pos1 = features[0];
+					_Pos2 = features[1];
+					_Pos3 = features[2];
+					_Pos4 = features[3];
+					_CType = features[4];
+					_CForm = features[5];
+					_Lemma = features[7];
+					_Orth = features[8];
+					_OrthBase = features[10];
+					_Lid = long.Parse(features[27]);
+					_Lemma_id = int.Parse(features[28]);
+				}
+				else
+				{
+					_Pos1 = features.Length >= 1 ? features[0] : string.Empty;
+					_Pos2 = features.Length >= 2 ? features[1] : string.Empty;
+					_Pos3 = features.Length >= 3 ? features[2] : string.Empty;
+					_Pos4 = features.Length >= 4 ? features[3] : string.Empty;
+					_CType = features.Length >= 5 ? features[4] : string.Empty;
+					_CForm = features.Length >= 6 ? features[5] : string.Empty;
+					_Lemma = features.Length >= 8 ? features[7] : string.Empty;
+					_Orth = features.Length >= 9 ? features[8] : string.Empty;
+					_OrthBase = features.Length >= 11 ? features[10] : string.Empty;
+					_Lid = features.Length >= 28 ? long.Parse(features[27]) : 0;
+					_Lemma_id = features.Length >= 29 ? int.Parse(features[28]) : 0;
+				}
+				Feature = null;
 			}
-			Feature = null;
             Loaded = true;
         }
 
