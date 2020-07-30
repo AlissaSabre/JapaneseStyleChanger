@@ -448,5 +448,69 @@ namespace JapaneseStyleChanger
                     return sb;
                 };
         }
+
+
+        public static Func<StringBuilder, StringBuilder> SimpleHalfwidthPostprocess(params object[] args)
+        {
+            if (args is null) throw new ArgumentNullException(nameof(args));
+
+            var half = new bool[127];
+            bool space = false;
+            for (int i = 0; i < args.Length; i++)
+            {
+                switch (args[i])
+                {
+                    case IEnumerable<char> s:
+                        foreach (var c in s) AddChar(c);
+                        break;
+                    case null:
+                        // ignore as if it were Enumerable.Empty<char>
+                        break;
+                    case char c:
+                        AddChar(c);
+                        break;
+                    default:
+                        throw new ArgumentException($"{nameof(args)}[{i}] is not of type Char or IEnumerable<Char>", nameof(args));
+                }
+
+                void AddChar(char c)
+                {
+                    if (c >= '\u0021' && c <= '\u007E')
+                    {
+                        half[c] = true;
+                    }
+                    else if (c == '\u0020')
+                    {
+                        space = true;
+                    }
+                    else
+                    {
+                        throw new ArgumentException(
+                            $"{nameof(args)}[{i}] in {nameof(SimpleFullwidthPostprocess)} includes a non-ASCII character ('U+{(int)c:X4}')",
+                            nameof(args));
+                    }
+                }
+            }
+
+            return
+                (StringBuilder sb) =>
+                {
+                    for (int p = 0; p < sb.Length; p++)
+                    {
+                        var c = sb[p];
+                        var a = c - ASCII_FULLWIDTH_SHIFT;
+                        if (a >= 0x0021 && a <= 0x007E && half[a])
+                        {
+                            sb[p] = (char)a;
+                        }
+                        else if (space && c == 0x3000)
+                        {
+                            sb[p] = ' ';
+                        }
+                    }
+                    return sb;
+                };
+        }
+
     }
 }

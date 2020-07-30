@@ -49,6 +49,8 @@ namespace JapaneseStyleChanger
 
         public IEnumerable<char> CustomFullwidthSet { get; set; }
 
+        public IEnumerable<char> CustomHalfwidthSet { get; set; }
+
         public string ChangeText(string text)
         {
             IEnumerable<WNode> nodes = Tagger.Parse(text);
@@ -86,6 +88,14 @@ namespace JapaneseStyleChanger
                 var q = Combiner.Postprocess;
                 Combiner.Postprocess = (q == null) ? p : sb => p(q(sb));
             }
+            if (WidthPreferences.None != (WidthPreferences
+                & WidthPreferences.CustomHalfwidthSet))
+            {
+                var p = TokenCombiner.SimpleHalfwidthPostprocess(
+                    WidthPreferences.HasFlag(WidthPreferences.CustomHalfwidthSet) ? CustomHalfwidthSet : null);
+                var q = Combiner.Postprocess;
+                Combiner.Postprocess = (q == null) ? p : sb => p(q(sb));
+            }
             var result = Combiner.Combine(nodes);
             return result;
         }
@@ -103,6 +113,7 @@ namespace JapaneseStyleChanger
         FullwidthDigits = 64,
         FullwidthSymbols = 256,
 
+        CustomHalfwidthSet = 16384,
         CustomFullwidthSet = 32768,
     }
 }
