@@ -9,7 +9,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 using NMeCab;
 using NMeCab.Alissa;
-using WNode = NMeCab.MeCabUniDicNode;
+using WNode = NMeCab.MeCabUniDic22Node;
 
 namespace LibNMeCab.Alissa.Test
 {

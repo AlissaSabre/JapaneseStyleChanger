@@ -4,7 +4,7 @@ using System.IO.MemoryMappedFiles;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Microsoft.Win32.SafeHandles;
 using NMeCab.Core;
 
 namespace NMeCab.Alissa
@@ -26,8 +26,7 @@ namespace NMeCab.Alissa
         /// </remarks>
         public static IEnumerable<TNode> GetNodes<TNode>(this DictionaryBundle<TNode> bundle, MeCabDictionary dictionary) where TNode: MeCabNodeBase<TNode>, new()
         {
-            var mmva = Hack.GetFieldValue(dictionary, "mmva") as MemoryMappedViewAccessor;
-            var h = mmva.SafeMemoryMappedViewHandle;
+            var h = GetSafeMemoryMappedViewHandle(dictionary);
             uint dsize = h.Read<uint>(24);
             uint tsize = h.Read<uint>(28);
             ulong token_table_starts = 72UL + dsize;
@@ -112,8 +111,7 @@ namespace NMeCab.Alissa
         /// <returns>A header.</returns>
         public static Header GetHeader<TNode>(this DictionaryBundle<TNode> bundle, MeCabDictionary dictionary) where TNode: MeCabNodeBase<TNode>, new()
         {
-            var mmva = Hack.GetFieldValue(dictionary, "mmva") as MemoryMappedViewAccessor;
-            var h = mmva.SafeMemoryMappedViewHandle;
+            var h = GetSafeMemoryMappedViewHandle(dictionary);
             var charset = new byte[32];
             h.ReadArray(40, charset, 0, charset.Length);
             return new Header()
@@ -130,6 +128,14 @@ namespace NMeCab.Alissa
                 Dummy = h.Read<uint>(36),
                 Charset = charset,
             };
+        }
+
+        private static SafeMemoryMappedViewHandle GetSafeMemoryMappedViewHandle(MeCabDictionary dictionary)
+        {
+            var mmfLoader = Hack.GetFieldValue(dictionary, "mmfLoader") as MemoryMappedFileLoader;
+            var mmva = Hack.GetFieldValue(mmfLoader, "mmva") as MemoryMappedViewAccessor;
+            var handle = mmva.SafeMemoryMappedViewHandle;
+            return handle;
         }
     }
 }

@@ -73,7 +73,7 @@
       <Version>2.3.0-beta4</Version>
     </PackageReference>
     <PackageReference Include="LibNMeCab">
-      <Version>0.10.0-beta</Version>
+      <Version>0.10.0-RC1</Version>
     </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

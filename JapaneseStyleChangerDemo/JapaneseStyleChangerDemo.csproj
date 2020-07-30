@@ -38,7 +38,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="LibNMeCab, Version=0.10.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\LibNMeCab.0.10.0-bata.2\lib\netstandard2.0\LibNMeCab.dll</HintPath>
+      <HintPath>..\packages\LibNMeCab.0.10.0-RC1\lib\netstandard2.0\LibNMeCab.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
