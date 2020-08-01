@@ -46,8 +46,10 @@
             this.UseFullwidthAlphabets = new System.Windows.Forms.CheckBox();
             this.UseFullwidthDigits = new System.Windows.Forms.CheckBox();
             this.UseFullwidthSymbols = new System.Windows.Forms.CheckBox();
-            this.SymbolsList = new System.Windows.Forms.TextBox();
+            this.FullwidthSymbolsList = new System.Windows.Forms.TextBox();
             this.UseIdeographicSpace = new System.Windows.Forms.CheckBox();
+            this.UseHalfwidthSymbols = new System.Windows.Forms.CheckBox();
+            this.HalfwidthSymbolsList = new System.Windows.Forms.TextBox();
             this.Initializing.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -263,11 +265,11 @@
             // 
             // SymbolsList
             // 
-            this.SymbolsList.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.SymbolsList.Location = new System.Drawing.Point(588, 334);
-            this.SymbolsList.Name = "SymbolsList";
-            this.SymbolsList.Size = new System.Drawing.Size(182, 19);
-            this.SymbolsList.TabIndex = 18;
+            this.FullwidthSymbolsList.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.FullwidthSymbolsList.Location = new System.Drawing.Point(588, 334);
+            this.FullwidthSymbolsList.Name = "SymbolsList";
+            this.FullwidthSymbolsList.Size = new System.Drawing.Size(182, 19);
+            this.FullwidthSymbolsList.TabIndex = 18;
             // 
             // UseIdeographicSpace
             // 
@@ -280,14 +282,33 @@
             this.UseIdeographicSpace.Text = "Use Ideographic space (全角スペース)";
             this.UseIdeographicSpace.UseVisualStyleBackColor = true;
             // 
+            // UseHalfwidthSymbols
+            // 
+            this.UseHalfwidthSymbols.AutoSize = true;
+            this.UseHalfwidthSymbols.Location = new System.Drawing.Point(567, 363);
+            this.UseHalfwidthSymbols.Name = "UseHalfwidthSymbols";
+            this.UseHalfwidthSymbols.Size = new System.Drawing.Size(169, 16);
+            this.UseHalfwidthSymbols.TabIndex = 20;
+            this.UseHalfwidthSymbols.Text = "Force halfwidth symbols for:";
+            this.UseHalfwidthSymbols.UseVisualStyleBackColor = true;
+            // 
+            // HalfwidthSymbolsList
+            // 
+            this.HalfwidthSymbolsList.Location = new System.Drawing.Point(588, 385);
+            this.HalfwidthSymbolsList.Name = "HalfwidthSymbolsList";
+            this.HalfwidthSymbolsList.Size = new System.Drawing.Size(182, 19);
+            this.HalfwidthSymbolsList.TabIndex = 21;
+            // 
             // Form1
             // 
             this.AcceptButton = this.GoButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 441);
+            this.Controls.Add(this.HalfwidthSymbolsList);
+            this.Controls.Add(this.UseHalfwidthSymbols);
             this.Controls.Add(this.UseIdeographicSpace);
-            this.Controls.Add(this.SymbolsList);
+            this.Controls.Add(this.FullwidthSymbolsList);
             this.Controls.Add(this.Initializing);
             this.Controls.Add(this.UseFullwidthSymbols);
             this.Controls.Add(this.UseFullwidthDigits);
@@ -342,8 +363,10 @@
         private System.Windows.Forms.CheckBox UseFullwidthAlphabets;
         private System.Windows.Forms.CheckBox UseFullwidthDigits;
         private System.Windows.Forms.CheckBox UseFullwidthSymbols;
-        private System.Windows.Forms.TextBox SymbolsList;
+        private System.Windows.Forms.TextBox FullwidthSymbolsList;
         private System.Windows.Forms.CheckBox UseIdeographicSpace;
+        private System.Windows.Forms.CheckBox UseHalfwidthSymbols;
+        private System.Windows.Forms.TextBox HalfwidthSymbolsList;
     }
 }
 

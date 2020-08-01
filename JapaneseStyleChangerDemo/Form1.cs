@@ -60,8 +60,10 @@ namespace JapaneseStyleChangerDemo
             UseFullwidthDigits.Enabled = ChangeWidths.Checked;
             UseIdeographicSpace.Enabled = ChangeWidths.Checked;
             UseFullwidthSymbols.Enabled = ChangeWidths.Checked;
+            UseHalfwidthSymbols.Enabled = ChangeWidths.Checked;
 
-            SymbolsList.Enabled = ChangeWidths.Checked && UseFullwidthSymbols.Checked;
+            FullwidthSymbolsList.Enabled = ChangeWidths.Checked && UseFullwidthSymbols.Checked;
+            HalfwidthSymbolsList.Enabled = ChangeWidths.Checked && UseHalfwidthSymbols.Checked;
         }
 
         private bool _Busy;
@@ -80,7 +82,7 @@ namespace JapaneseStyleChangerDemo
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            SymbolsList.Text = string.Concat(TokenCombiner.OtherAsciiSymbols.Except(new[] { '\u0020' }));
+            FullwidthSymbolsList.Text = string.Concat(TokenCombiner.OtherAsciiSymbols.Except(new[] { '\u0020' }));
         }
 
         private async void GoButton_Click(object sender, EventArgs e)
@@ -102,13 +104,16 @@ namespace JapaneseStyleChangerDemo
                     if (UseFullwidthDigits.Checked) wp |= WidthPreferences.FullwidthDigits;
                     if (UseIdeographicSpace.Checked) wp |= WidthPreferences.CustomFullwidthSet;
                     if (UseFullwidthSymbols.Checked) wp |= WidthPreferences.CustomFullwidthSet;
+                    if (UseHalfwidthSymbols.Checked) wp |= WidthPreferences.CustomHalfwidthSet;
                 }
                 Changer.WidthPreferences = wp;
 
                 string fws = string.Empty;
-                if (UseFullwidthSymbols.Checked) fws = SymbolsList.Text;
+                if (UseFullwidthSymbols.Checked) fws = FullwidthSymbolsList.Text;
                 if (UseIdeographicSpace.Checked) fws += '\u0020';
                 Changer.CustomFullwidthSet = fws;
+
+                Changer.CustomHalfwidthSet = HalfwidthSymbolsList.Text;
 
                 var text = SourceText.Text;
                 var result = await Task.Run(() => Changer.ChangeText(text));
