@@ -48,6 +48,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SpacingAndWidthsCases.tt</DependentUpon>
     </Compile>
+    <Compile Include="DearuCases.cs">
+      <DependentUpon>DearuCases.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="TokenCombinerPostprocessCases.cs">
       <DependentUpon>TokenCombinerPostprocessCases.tt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -69,6 +74,10 @@
     <Content Include="SpacingAndWidthsCases.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>SpacingAndWidthsCases.cs</LastGenOutput>
+    </Content>
+    <Content Include="DearuCases.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>DearuCases.cs</LastGenOutput>
     </Content>
     <Content Include="TokenCombinerPostprocessCases.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

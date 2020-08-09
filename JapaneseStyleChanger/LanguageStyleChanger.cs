@@ -40,6 +40,16 @@ namespace JapaneseStyleChanger
             Feature = "形容詞,非自立可能,*,*,形容詞,終止形,,,ない,,ない,,,,,,,,,,,,,,,,,0,27442"
         };
 
+        /// <summary>List of Lemma IDs of ending particles (終助詞) that don't need だ when rewriting a preceding です.</summary>
+        /// <remarks></remarks>
+        private static readonly int[] NoDaEndingParticles =
+        {
+            5569,   // か
+            6446,   // かしら
+            7175,   // かも
+            13520,  // さ
+        };
+
         public void ToJotai(EditBuffer buffer)
         {
             int p = 0;
@@ -53,25 +63,42 @@ namespace JapaneseStyleChanger
                         {
                             // Replace this です with だ (or である depending on the option
                             // and if it apparently terminates a sentence).
-                            // OR, if the です follows a 形容詞, just remove です,
-                            // unless it is in 意思推量形.
+                            // OR, if the です follows a 形容詞 or is followed by some particular 終助詞,
+                            // just remove です, regardless of the である preference, unless it is in 意思推量形.
                             IList<WNode>[] possibilities;
                             if (current.CForm != "意志推量形"
-                                && (current.Prev.Pos1 == "形容詞" || current.Prev.Pos1 == "助動詞"))
+                                && (current.Prev.Pos1 == "動詞" ||
+                                    current.Prev.Pos1 == "形容詞" || 
+                                    current.Prev.Pos1 == "助動詞" ||
+                                    NoDaEndingParticles.Contains(current.Next.Lemma_id) ||
+                                    current.Next.Lemma_id == 57 /* question mark */))
                             {
-                                possibilities = new IList<WNode>[2]
+                                // The case to remove です.
+                                var prev_conjugations = Conjugator.ConjugateLoosely(current.Prev, current.CForm);
+                                if (prev_conjugations == null)
                                 {
-                                    Conjugator.ConjugateLoosely(current.Prev, current.CForm),
-                                    new[] { current.Next },
-                                };
-                                var best_conjugations = Conjugator.ChooseBest(possibilities);
-                                buffer[p - 1] = best_conjugations[0];
+                                    // The preceding word to です was a non-conjugating word.
+                                    // We simply remove the です without changing any preceding/following words.
+                                }
+                                else
+                                {
+                                    // The preceding word to です was a conjugating word.
+                                    // We should find a best conjugation.
+                                    possibilities = new IList<WNode>[2]
+                                    {
+                                        prev_conjugations,
+                                        new[] { current.Next },
+                                    };
+                                    var best_conjugations = Conjugator.ChooseBest(possibilities);
+                                    buffer[p - 1] = best_conjugations[0];
+                                }
                                 buffer.RemoveAt(p);
                             }
                             else if (PreferDearu
                                 && current.CForm.StartsWith("終止形")
                                 && (current.Next.IsEos || current.Next.Pos1 == "補助記号"))
                             {
+                                // The case to change です to である.
                                 possibilities = new IList<WNode>[4]
                                 {
                                     new[] { current.Prev },
@@ -85,6 +112,7 @@ namespace JapaneseStyleChanger
                             }
                             else
                             {
+                                // The case to change です to だ.
                                 possibilities = new IList<WNode>[3]
                                 {
                                     new[] { current.Prev },
