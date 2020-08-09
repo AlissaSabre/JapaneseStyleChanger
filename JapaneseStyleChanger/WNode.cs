@@ -192,6 +192,27 @@ namespace JapaneseStyleChanger
 		}
 		private int _Lemma_id;
 
+
+        public bool IsNor
+        {
+            get { return Stat == MeCabNodeStat.Nor; }
+        }
+
+        public bool IsUnk
+        {
+            get { return Stat == MeCabNodeStat.Unk; }
+        }
+
+        public bool IsBos
+        {
+            get { return Stat == MeCabNodeStat.Bos; }
+        }
+
+        public bool IsEos
+        {
+            get { return Stat == MeCabNodeStat.Eos; }
+        }
+
 		public override string ToString()
 		{
 			return Surface

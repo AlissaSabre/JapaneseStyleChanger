@@ -50,6 +50,7 @@
             this.UseIdeographicSpace = new System.Windows.Forms.CheckBox();
             this.UseHalfwidthSymbols = new System.Windows.Forms.CheckBox();
             this.HalfwidthSymbolsList = new System.Windows.Forms.TextBox();
+            this.DearuCheckBox = new System.Windows.Forms.CheckBox();
             this.Initializing.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -97,7 +98,7 @@
             // 
             this.SpacingCheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.SpacingCheckBox.AutoSize = true;
-            this.SpacingCheckBox.Location = new System.Drawing.Point(546, 100);
+            this.SpacingCheckBox.Location = new System.Drawing.Point(546, 112);
             this.SpacingCheckBox.Name = "SpacingCheckBox";
             this.SpacingCheckBox.Size = new System.Drawing.Size(105, 16);
             this.SpacingCheckBox.TabIndex = 3;
@@ -182,7 +183,7 @@
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.Controls.Add(this.FullwidthButton);
             this.panel2.Controls.Add(this.HalfwidthButton);
-            this.panel2.Location = new System.Drawing.Point(564, 199);
+            this.panel2.Location = new System.Drawing.Point(564, 211);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(208, 44);
             this.panel2.TabIndex = 14;
@@ -213,7 +214,7 @@
             // 
             this.ChangeWidths.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.ChangeWidths.AutoSize = true;
-            this.ChangeWidths.Location = new System.Drawing.Point(546, 177);
+            this.ChangeWidths.Location = new System.Drawing.Point(546, 189);
             this.ChangeWidths.Name = "ChangeWidths";
             this.ChangeWidths.Size = new System.Drawing.Size(151, 16);
             this.ChangeWidths.TabIndex = 10;
@@ -225,7 +226,7 @@
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.Controls.Add(this.MSButton);
             this.panel1.Controls.Add(this.CGButton);
-            this.panel1.Location = new System.Drawing.Point(563, 119);
+            this.panel1.Location = new System.Drawing.Point(563, 131);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(209, 52);
             this.panel1.TabIndex = 13;
@@ -234,7 +235,7 @@
             // 
             this.UseFullwidthAlphabets.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.UseFullwidthAlphabets.AutoSize = true;
-            this.UseFullwidthAlphabets.Location = new System.Drawing.Point(567, 246);
+            this.UseFullwidthAlphabets.Location = new System.Drawing.Point(567, 258);
             this.UseFullwidthAlphabets.Name = "UseFullwidthAlphabets";
             this.UseFullwidthAlphabets.Size = new System.Drawing.Size(144, 16);
             this.UseFullwidthAlphabets.TabIndex = 15;
@@ -245,7 +246,7 @@
             // 
             this.UseFullwidthDigits.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.UseFullwidthDigits.AutoSize = true;
-            this.UseFullwidthDigits.Location = new System.Drawing.Point(567, 268);
+            this.UseFullwidthDigits.Location = new System.Drawing.Point(567, 280);
             this.UseFullwidthDigits.Name = "UseFullwidthDigits";
             this.UseFullwidthDigits.Size = new System.Drawing.Size(123, 16);
             this.UseFullwidthDigits.TabIndex = 16;
@@ -256,18 +257,18 @@
             // 
             this.UseFullwidthSymbols.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.UseFullwidthSymbols.AutoSize = true;
-            this.UseFullwidthSymbols.Location = new System.Drawing.Point(567, 312);
+            this.UseFullwidthSymbols.Location = new System.Drawing.Point(567, 324);
             this.UseFullwidthSymbols.Name = "UseFullwidthSymbols";
             this.UseFullwidthSymbols.Size = new System.Drawing.Size(157, 16);
             this.UseFullwidthSymbols.TabIndex = 17;
             this.UseFullwidthSymbols.Text = "Use fullwidth symbols for:";
             this.UseFullwidthSymbols.UseVisualStyleBackColor = true;
             // 
-            // SymbolsList
+            // FullwidthSymbolsList
             // 
             this.FullwidthSymbolsList.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.FullwidthSymbolsList.Location = new System.Drawing.Point(588, 334);
-            this.FullwidthSymbolsList.Name = "SymbolsList";
+            this.FullwidthSymbolsList.Location = new System.Drawing.Point(588, 346);
+            this.FullwidthSymbolsList.Name = "FullwidthSymbolsList";
             this.FullwidthSymbolsList.Size = new System.Drawing.Size(182, 19);
             this.FullwidthSymbolsList.TabIndex = 18;
             // 
@@ -275,7 +276,7 @@
             // 
             this.UseIdeographicSpace.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.UseIdeographicSpace.AutoSize = true;
-            this.UseIdeographicSpace.Location = new System.Drawing.Point(567, 290);
+            this.UseIdeographicSpace.Location = new System.Drawing.Point(567, 302);
             this.UseIdeographicSpace.Name = "UseIdeographicSpace";
             this.UseIdeographicSpace.Size = new System.Drawing.Size(214, 16);
             this.UseIdeographicSpace.TabIndex = 19;
@@ -285,7 +286,7 @@
             // UseHalfwidthSymbols
             // 
             this.UseHalfwidthSymbols.AutoSize = true;
-            this.UseHalfwidthSymbols.Location = new System.Drawing.Point(567, 363);
+            this.UseHalfwidthSymbols.Location = new System.Drawing.Point(567, 375);
             this.UseHalfwidthSymbols.Name = "UseHalfwidthSymbols";
             this.UseHalfwidthSymbols.Size = new System.Drawing.Size(169, 16);
             this.UseHalfwidthSymbols.TabIndex = 20;
@@ -294,10 +295,20 @@
             // 
             // HalfwidthSymbolsList
             // 
-            this.HalfwidthSymbolsList.Location = new System.Drawing.Point(588, 385);
+            this.HalfwidthSymbolsList.Location = new System.Drawing.Point(588, 397);
             this.HalfwidthSymbolsList.Name = "HalfwidthSymbolsList";
             this.HalfwidthSymbolsList.Size = new System.Drawing.Size(182, 19);
             this.HalfwidthSymbolsList.TabIndex = 21;
+            // 
+            // DearuCheckBox
+            // 
+            this.DearuCheckBox.AutoSize = true;
+            this.DearuCheckBox.Location = new System.Drawing.Point(567, 87);
+            this.DearuCheckBox.Name = "DearuCheckBox";
+            this.DearuCheckBox.Size = new System.Drawing.Size(164, 16);
+            this.DearuCheckBox.TabIndex = 22;
+            this.DearuCheckBox.Text = "Prefer である ending over だ";
+            this.DearuCheckBox.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -305,6 +316,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 441);
+            this.Controls.Add(this.DearuCheckBox);
             this.Controls.Add(this.HalfwidthSymbolsList);
             this.Controls.Add(this.UseHalfwidthSymbols);
             this.Controls.Add(this.UseIdeographicSpace);
@@ -367,6 +379,7 @@
         private System.Windows.Forms.CheckBox UseIdeographicSpace;
         private System.Windows.Forms.CheckBox UseHalfwidthSymbols;
         private System.Windows.Forms.TextBox HalfwidthSymbolsList;
+        private System.Windows.Forms.CheckBox DearuCheckBox;
     }
 }
 

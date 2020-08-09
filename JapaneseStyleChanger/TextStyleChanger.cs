@@ -43,6 +43,8 @@ namespace JapaneseStyleChanger
 
         public bool ChangeToJotai { get; set; }
 
+        public JotaiPreferences JotaiPreferences { get; set; }
+
         public CombineMode CombineMode { get; set; }
 
         public WidthPreferences WidthPreferences { get; set; }
@@ -56,6 +58,7 @@ namespace JapaneseStyleChanger
             IEnumerable<WNode> nodes = Tagger.Parse(text);
             if (ChangeToJotai)
             {
+                Changer.PreferDearu = (JotaiPreferences & JotaiPreferences.PreferDearu) != 0;
                 var buffer = new EditBuffer(nodes);
                 Changer.ToJotai(buffer);
                 nodes = buffer;
@@ -99,6 +102,13 @@ namespace JapaneseStyleChanger
             var result = Combiner.Combine(nodes);
             return result;
         }
+    }
+
+    [Flags]
+    public enum JotaiPreferences
+    {
+        None = 0,
+        PreferDearu = 1,
     }
 
     [Flags]

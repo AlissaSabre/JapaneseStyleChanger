@@ -11,6 +11,8 @@ namespace JapaneseStyleChanger
 {
     public class LanguageStyleChanger
     {
+        public bool PreferDearu;
+
         private readonly Conjugator Conjugator;
 
         public LanguageStyleChanger(Tagger<WNode> tagger)
@@ -26,6 +28,11 @@ namespace JapaneseStyleChanger
         private static readonly WNode DummyNode_22916 = new WNode()
         {
             Feature = "助動詞,*,*,*,助動詞-ダ,終止形,,,だ,,だ,,,,,,,,,,,,,,,,,0,22916"
+        };
+
+        private static readonly WNode DummyNode_1216 = new WNode()
+        {
+            Feature = "動詞,非自立可能,*,*,五段-ラ行,終止形,,,ある,,ある,,,,,,,,,,,,,,,,,0,1216"
         };
 
         private static readonly WNode DummyNode_27442 = new WNode()
@@ -44,15 +51,49 @@ namespace JapaneseStyleChanger
                 {
                     case 25653: // 助動詞「です」
                         {
-                            // Replace this です with だ.
-                            var possibilities = new IList<WNode>[3]
+                            // Replace this です with だ (or である depending on the option
+                            // and if it apparently terminates a sentence).
+                            // OR, if the です follows a 形容詞, just remove です,
+                            // unless it is in 意思推量形.
+                            IList<WNode>[] possibilities;
+                            if (current.CForm != "意志推量形"
+                                && (current.Prev.Pos1 == "形容詞" || current.Prev.Pos1 == "助動詞"))
                             {
-                                new[] { current.Prev },
-                                Conjugator.ConjugateLoosely(DummyNode_22916, current.CForm),
-                                new[] { current.Next },
-                            };
-                            var best_conjugations = Conjugator.ChooseBest(possibilities);
-                            buffer[p] = best_conjugations[1];
+                                possibilities = new IList<WNode>[2]
+                                {
+                                    Conjugator.ConjugateLoosely(current.Prev, current.CForm),
+                                    new[] { current.Next },
+                                };
+                                var best_conjugations = Conjugator.ChooseBest(possibilities);
+                                buffer[p - 1] = best_conjugations[0];
+                                buffer.RemoveAt(p);
+                            }
+                            else if (PreferDearu
+                                && current.CForm.StartsWith("終止形")
+                                && (current.Next.IsEos || current.Next.Pos1 == "補助記号"))
+                            {
+                                possibilities = new IList<WNode>[4]
+                                {
+                                    new[] { current.Prev },
+                                    Conjugator.ConjugateLoosely(DummyNode_22916, "連用形"),
+                                    Conjugator.ConjugateLoosely(DummyNode_1216, current.CForm),
+                                    new[] { current.Next },
+                                };
+                                var best_conjugations = Conjugator.ChooseBest(possibilities);
+                                buffer[p] = best_conjugations[1];
+                                buffer.Insert(p + 1, best_conjugations[2]);
+                            }
+                            else
+                            {
+                                possibilities = new IList<WNode>[3]
+                                {
+                                    new[] { current.Prev },
+                                    Conjugator.ConjugateLoosely(DummyNode_22916, current.CForm),
+                                    new[] { current.Next },
+                                };
+                                var best_conjugations = Conjugator.ChooseBest(possibilities);
+                                buffer[p] = best_conjugations[1];
+                            }
                         }
                         break;
                     case 35697: // 助動詞「ます」
@@ -119,13 +160,16 @@ namespace JapaneseStyleChanger
                             }
                         }
                         break;
+#if false
                     case 22916: // 助動詞「だ」
                         {
                             // If だ is placed after a 形容詞 (or a 助動詞 with 形容詞 conjugation type)
                             // remove this だ.
-                            // Also remove だ if it is placed after 助動詞「た」.
-                            // The cases are often produced by rewriting of です to だ.
+                            // Also remove だ if it is placed after 助動詞「た」
+                            // If such a だ was followed by ある, remove that ある, too.
+                            // The cases are often produced by rewriting of です to だ or である.
                             // (Note that we are talking about 助動詞「だ」 but だ form of 助動詞「た」.)
+                            // 
                             // However, we don't remove だ if it is in 意志推量形, because, for example,
                             // 青いだろう is preferred over 青かろう or 見ただろう is over 見たろう these days (IMHO)
                             if (current.CForm != "意志推量形"
@@ -149,6 +193,7 @@ namespace JapaneseStyleChanger
                             }
                         }
                         break;
+#endif
                     default:
                         break;
                 }

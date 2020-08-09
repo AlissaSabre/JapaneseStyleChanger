@@ -51,6 +51,8 @@ namespace JapaneseStyleChangerDemo
 
         private void Application_Idle(object sender, EventArgs e)
         {
+            DearuCheckBox.Enabled = JotaiCheckBox.Checked;
+
             MSButton.Enabled = SpacingCheckBox.Checked;
             CGButton.Enabled = SpacingCheckBox.Checked;
 
@@ -91,6 +93,7 @@ namespace JapaneseStyleChangerDemo
             try
             {
                 Changer.ChangeToJotai = JotaiCheckBox.Checked;
+                Changer.JotaiPreferences = DearuCheckBox.Checked ? JotaiPreferences.PreferDearu : JotaiPreferences.None;
                 Changer.CombineMode = SpacingCheckBox.Checked
                     ? (MSButton.Checked ? CombineMode.MS : CombineMode.CG)
                     : CombineMode.Default;
