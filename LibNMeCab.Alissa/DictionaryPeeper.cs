@@ -26,27 +26,42 @@ namespace NMeCab.Alissa
         /// </remarks>
         public static IEnumerable<TNode> GetNodes<TNode>(this DictionaryBundle<TNode> bundle, MeCabDictionary dictionary) where TNode: MeCabNodeBase<TNode>
         {
-            var h = GetSafeMemoryMappedViewHandle(dictionary);
-            uint dsize = h.Read<uint>(24);
-            uint tsize = h.Read<uint>(28);
-            ulong token_table_starts = 72UL + dsize;
-            ulong token_table_ends = token_table_starts + tsize;
+            var address = GetSafeMemoryMappedViewAddress(dictionary);
+            ulong token_table_starts;
+            ulong token_table_ends;
+            GetTokenTableLocations(address, out token_table_starts, out token_table_ends);
             for (ulong t = token_table_starts; t < token_table_ends; t += 16)
             {
                 var node = bundle.NodeAllocator();
-                node.LCAttr = h.Read<ushort>(t + 0);
-                node.RCAttr = h.Read<ushort>(t + 2);
-                node.PosId = h.Read<ushort>(t + 4);
-                node.WCost = h.Read<short>(t + 6);
-                node.Feature = GetFeature(h.Read<uint>(t + 8), bundle, dictionary);
+                LoadNodeData(t, node);
+                node.Feature = GetFeature(t, bundle, dictionary);
                 node.Stat = MeCabNodeStat.Nor;
                 yield return node;
             }
         }
 
-        public unsafe static string GetFeature<TNode>(uint featurePos, DictionaryBundle<TNode> bundle, MeCabDictionary dic) where TNode : MeCabNodeBase<TNode>
+        private unsafe static void GetTokenTableLocations(ulong address, out ulong starts, out ulong ends)
         {
-            return StrUtils.GetString(dic.GetFeature(featurePos), bundle.Tokenizer.Encoding);
+            var h = (byte*)address;
+            uint dsize = *(uint*)(h + 24);
+            uint tsize = *(uint*)(h + 28);
+            starts = address + 72UL + dsize;
+            ends = starts + tsize;
+        }
+
+        private unsafe static void LoadNodeData<TNode>(ulong address, TNode node) where TNode : MeCabNodeBase<TNode>
+        {
+            var h = (byte*)address;
+            node.LCAttr = *(ushort*)(h + 0);
+            node.RCAttr = *(ushort*)(h + 2);
+            node.PosId = *(ushort*)(h + 4);
+            node.WCost = *(short*)(h + 6);
+        }
+
+        private unsafe static string GetFeature<TNode>(ulong address, DictionaryBundle<TNode> bundle, MeCabDictionary dic) where TNode : MeCabNodeBase<TNode>
+        {
+            var h = (byte*)address;
+            return StrUtils.GetString(dic.GetFeature(*(uint*)(h + 8)), bundle.Tokenizer.Encoding);
         }
 
         /// <summary>
@@ -114,33 +129,34 @@ namespace NMeCab.Alissa
         /// <param name="bundle">The dictionary bundle containing <paramref name="dictionary"/>.</param>
         /// <param name="dictionary">A dictionary object to get the header from.</param>
         /// <returns>A header.</returns>
-        public static Header GetHeader<TNode>(this DictionaryBundle<TNode> bundle, MeCabDictionary dictionary) where TNode: MeCabNodeBase<TNode>
+        public unsafe static Header GetHeader<TNode>(this DictionaryBundle<TNode> bundle, MeCabDictionary dictionary) where TNode : MeCabNodeBase<TNode>
         {
-            var h = GetSafeMemoryMappedViewHandle(dictionary);
+            var h = (byte*)GetSafeMemoryMappedViewAddress(dictionary);
             var charset = new byte[32];
-            h.ReadArray(40, charset, 0, charset.Length);
+            for (int i = 0; i < charset.Length; i++) charset[i] = h[40 + i];
             return new Header()
             {
-                Magic = h.Read<uint>(0),
-                Version = h.Read<uint>(4),
-                Type = h.Read<uint>(8),
-                LexSize = h.Read<uint>(12),
-                LSize = h.Read<uint>(16),
-                RSize = h.Read<uint>(20),
-                DSize = h.Read<uint>(24),
-                TSize = h.Read<uint>(28),
-                FSize = h.Read<uint>(32),
-                Dummy = h.Read<uint>(36),
+                Magic = *(uint*)(h + 0),
+                Version = *(uint*)(h + 4),
+                Type = *(uint*)(h + 8),
+                LexSize = *(uint*)(h + 12),
+                LSize = *(uint*)(h + 16),
+                RSize = *(uint*)(h + 20),
+                DSize = *(uint*)(h + 24),
+                TSize = *(uint*)(h + 28),
+                FSize = *(uint*)(h + 32),
+                Dummy = *(uint*)(h + 36),
                 Charset = charset,
             };
         }
 
-        private static SafeMemoryMappedViewHandle GetSafeMemoryMappedViewHandle(MeCabDictionary dictionary)
+        private unsafe static ulong GetSafeMemoryMappedViewAddress(MeCabDictionary dictionary)
         {
             var mmfLoader = Hack.GetFieldValue(dictionary, "mmfLoader") as MemoryMappedFileLoader;
             var mmva = Hack.GetFieldValue(mmfLoader, "mmva") as MemoryMappedViewAccessor;
-            var handle = mmva.SafeMemoryMappedViewHandle;
-            return handle;
+            byte* pointer = null;
+            mmva.SafeMemoryMappedViewHandle.AcquirePointer(ref pointer);
+            return (ulong)pointer;
         }
     }
 }
