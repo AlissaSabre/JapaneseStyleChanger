@@ -131,9 +131,9 @@ namespace NMeCab.Alissa
             }
         }
 
-        public class ConditionConstraints : IEnumerable<Func<MeCabNodeSuperBase, bool>>
+        public class ConditionConstraints : IEnumerable<Func<MeCabNodeBase<TNode>, bool>>
         {
-            private readonly List<Func<MeCabNodeSuperBase, bool>> Conditions = new List<Func<MeCabNodeSuperBase, bool>>();
+            private readonly List<Func<MeCabNodeBase<TNode>, bool>> Conditions = new List<Func<MeCabNodeBase<TNode>, bool>>();
 
             public void Add(Func<TNode, bool> condition)
             {
@@ -142,7 +142,7 @@ namespace NMeCab.Alissa
 
             public void AddRange(IEnumerable<Func<TNode, bool>> conditions)
             {
-                Conditions.AddRange(conditions.Select<Func<TNode, bool>, Func<MeCabNodeSuperBase, bool>>(condition => node => condition(node as TNode)));
+                Conditions.AddRange(conditions.Select<Func<TNode, bool>, Func<MeCabNodeBase<TNode>, bool>>(condition => node => condition(node as TNode)));
             }
 
             public void Clear()
@@ -150,7 +150,7 @@ namespace NMeCab.Alissa
                 Conditions.Clear();
             }
 
-            public IEnumerator<Func<MeCabNodeSuperBase, bool>> GetEnumerator()
+            public IEnumerator<Func<MeCabNodeBase<TNode>, bool>> GetEnumerator()
             {
                 return Conditions.GetEnumerator();
             }

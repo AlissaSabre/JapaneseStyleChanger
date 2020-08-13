@@ -24,7 +24,7 @@ namespace NMeCab.Alissa
         /// <remarks>
         /// Iterating over all nodes may require some significant time, depending on the size of the dictionary.  Please be careful.
         /// </remarks>
-        public static IEnumerable<TNode> GetNodes<TNode>(this DictionaryBundle<TNode> bundle, MeCabDictionary dictionary) where TNode: MeCabNodeBase<TNode>, new()
+        public static IEnumerable<TNode> GetNodes<TNode>(this DictionaryBundle<TNode> bundle, MeCabDictionary dictionary) where TNode: MeCabNodeBase<TNode>
         {
             var h = GetSafeMemoryMappedViewHandle(dictionary);
             uint dsize = h.Read<uint>(24);
@@ -33,15 +33,20 @@ namespace NMeCab.Alissa
             ulong token_table_ends = token_table_starts + tsize;
             for (ulong t = token_table_starts; t < token_table_ends; t += 16)
             {
-                var node = new TNode();
+                var node = bundle.NodeAllocator();
                 node.LCAttr = h.Read<ushort>(t + 0);
                 node.RCAttr = h.Read<ushort>(t + 2);
                 node.PosId = h.Read<ushort>(t + 4);
                 node.WCost = h.Read<short>(t + 6);
-                node.SetFeature(h.Read<uint>(t + 8), dictionary);
+                node.Feature = GetFeature(h.Read<uint>(t + 8), bundle, dictionary);
                 node.Stat = MeCabNodeStat.Nor;
                 yield return node;
             }
+        }
+
+        public unsafe static string GetFeature<TNode>(uint featurePos, DictionaryBundle<TNode> bundle, MeCabDictionary dic) where TNode : MeCabNodeBase<TNode>
+        {
+            return StrUtils.GetString(dic.GetFeature(featurePos), bundle.Tokenizer.Encoding);
         }
 
         /// <summary>
@@ -53,7 +58,7 @@ namespace NMeCab.Alissa
         /// <remarks>
         /// Iterating over all nodes usually requires some significant time.  Please be careful.
         /// </remarks>
-        public static IEnumerable<TNode> GetAllNodes<TNode>(this DictionaryBundle<TNode> bundle) where TNode: MeCabNodeBase<TNode>, new()
+        public static IEnumerable<TNode> GetAllNodes<TNode>(this DictionaryBundle<TNode> bundle) where TNode: MeCabNodeBase<TNode>
         {
             return bundle.Dictionaries.SelectMany(dictionary => GetNodes(bundle, dictionary));
         }
@@ -109,7 +114,7 @@ namespace NMeCab.Alissa
         /// <param name="bundle">The dictionary bundle containing <paramref name="dictionary"/>.</param>
         /// <param name="dictionary">A dictionary object to get the header from.</param>
         /// <returns>A header.</returns>
-        public static Header GetHeader<TNode>(this DictionaryBundle<TNode> bundle, MeCabDictionary dictionary) where TNode: MeCabNodeBase<TNode>, new()
+        public static Header GetHeader<TNode>(this DictionaryBundle<TNode> bundle, MeCabDictionary dictionary) where TNode: MeCabNodeBase<TNode>
         {
             var h = GetSafeMemoryMappedViewHandle(dictionary);
             var charset = new byte[32];

@@ -9,7 +9,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 using NMeCab;
 using NMeCab.Alissa;
-using WNode = NMeCab.MeCabUniDic22Node;
+using WNode = NMeCab.Specialized.MeCabUniDic22Node;
 
 namespace LibNMeCab.Alissa.Test
 {
@@ -9857,7 +9857,7 @@ namespace LibNMeCab.Alissa.Test
         {
             var dir = Path.GetDirectoryName(typeof(CostMethodsVariousCases).Assembly.Location);
             var dic_dir = Path.Combine(dir, "UniDic-CWJ");
-            Tagger = Tagger<WNode>.Create(dic_dir);
+            Tagger = Tagger<WNode>.Create(() => new WNode(), dic_dir);
 			Bundle = Hack.GetDictionaries(Tagger);
         }
 

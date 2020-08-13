@@ -22,7 +22,7 @@ namespace NMeCab.Alissa
         /// <typeparam name="TNode">The type of nodes returned by the tagger that the dictionary bundle is built upon.</typeparam>
         /// <param name="tagger">A tagger instance.</param>
         /// <returns></returns>
-        public static DictionaryBundle<TNode> GetDictionaries<TNode>(MeCabTaggerBase<TNode> tagger) where TNode : MeCabNodeBase<TNode>, new()
+        public static DictionaryBundle<TNode> GetDictionaries<TNode>(MeCabTaggerBase<TNode> tagger) where TNode : MeCabNodeBase<TNode>
         {
             return new DictionaryBundle<TNode>(tagger);
         }

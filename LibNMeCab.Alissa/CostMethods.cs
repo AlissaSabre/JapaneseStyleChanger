@@ -32,7 +32,7 @@ namespace NMeCab.Alissa
         /// </para>
         /// </remarks>
         public static long TotalCost<TNode>(this DictionaryBundle<TNode> bundle, params TNode[] array)
-            where TNode : MeCabNodeBase<TNode>, new()
+            where TNode : MeCabNodeBase<TNode>
         {
             if (array.Length == 0) return 0;
             var connector = bundle.Connector;
@@ -60,7 +60,7 @@ namespace NMeCab.Alissa
         /// <paramref name="bundle"/> parameter is actually not needed.
         /// </remarks>
         public static long WordsCost<TNode>(this DictionaryBundle<TNode> bundle, params TNode[] array)
-            where TNode : MeCabNodeBase<TNode>, new()
+            where TNode : MeCabNodeBase<TNode>
         {
             return array.Sum(n => (long)n.WCost);
         }
@@ -78,7 +78,7 @@ namespace NMeCab.Alissa
         /// (in particular in <see cref="DictionaryBundle{TNode}.Connector"/>).
         /// </remarks>
         public static long PathsCost<TNode>(this DictionaryBundle<TNode> bundle, params TNode[] array)
-            where TNode : MeCabNodeBase<TNode>, new()
+            where TNode : MeCabNodeBase<TNode>
         {
             return TotalCost(bundle, array) - WordsCost(bundle, array);
         }
@@ -101,7 +101,7 @@ namespace NMeCab.Alissa
         /// <paramref name="weight"/> can be below 0 or above 1, though the returned value may be meaningless.
         /// </remarks>
         public static long MixedCost<TNode>(this DictionaryBundle<TNode> bundle, double weight, params TNode[] array)
-            where TNode : MeCabNodeBase<TNode>, new()
+            where TNode : MeCabNodeBase<TNode>
         {
             // Note that f * P + (1 - f) * W == f * (P + W) - (f * 2 - 1) * W,
             // and the right side is easier to calculate in this case.
@@ -117,7 +117,7 @@ namespace NMeCab.Alissa
         /// <param name="next">A node that would be added.</param>
         /// <returns>The total cost increase.</returns>
         public static long TotalCostIncrease<TNode>(this DictionaryBundle<TNode> bundle, TNode prev, TNode next)
-            where TNode : MeCabNodeBase<TNode>, new()
+            where TNode : MeCabNodeBase<TNode>
         {
             return bundle.Connector.Cost(prev, next);
         }
@@ -138,7 +138,7 @@ namespace NMeCab.Alissa
         /// </remarks>
         /// <seealso cref="MixedCostIncreaseRounded{TNode}(DictionaryBundle{TNode}, double, TNode, TNode)"/>
         public static double MixedCostIncrease<TNode>(this DictionaryBundle<TNode> bundle, double weight, TNode prev, TNode next)
-            where TNode : MeCabNodeBase<TNode>, new()
+            where TNode : MeCabNodeBase<TNode>
         {
             return weight * bundle.Connector.Cost(prev, next) - (weight * 2 - 1) * next.WCost;
         }
@@ -159,7 +159,7 @@ namespace NMeCab.Alissa
         /// The rounded value returned from this method may have some errors.
         /// </remarks>
         public static long MixedCostIncreaseRounded<TNode>(this DictionaryBundle<TNode> bundle, double weight, TNode prev, TNode next)
-            where TNode : MeCabNodeBase<TNode>, new()
+            where TNode : MeCabNodeBase<TNode>
         {
             return (long)Math.Round(MixedCostIncrease(bundle, weight, prev, next));
         }

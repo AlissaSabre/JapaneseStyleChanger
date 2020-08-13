@@ -27,8 +27,13 @@ namespace NMeCab.Alissa
     /// You should dispose the tagger instead after finished using it.
     /// </para>
     /// </remarks>
-    public class DictionaryBundle<TNode> where TNode : MeCabNodeBase<TNode>, new()
+    public class DictionaryBundle<TNode> where TNode : MeCabNodeBase<TNode>
     {
+        /// <summary>
+        /// A delegate to create a new instance of TNode.
+        /// </summary>
+        public readonly Func<TNode> NodeAllocator;
+
         /// <summary>
         /// Vierbi analysis engine.
         /// </summary>
@@ -67,6 +72,7 @@ namespace NMeCab.Alissa
         /// </remarks>
         public DictionaryBundle(MeCabTaggerBase<TNode> tagger)
         {
+            NodeAllocator = Hack.GetFieldValue(tagger, "nodeAllocator") as Func<TNode>;
             Viterbi = Hack.GetFieldValue(tagger, "viterbi") as Viterbi<TNode>;
             Connector = Hack.GetFieldValue(Viterbi, "connector") as Connector<TNode>;
             Tokenizer = Hack.GetFieldValue(Viterbi, "tokenizer") as Tokenizer<TNode>;

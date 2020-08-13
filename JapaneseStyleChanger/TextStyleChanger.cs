@@ -22,7 +22,7 @@ namespace JapaneseStyleChanger
             try
             {
                 var dir = Path.GetDirectoryName(GetType().Assembly.Location);
-                Tagger = Tagger<WNode>.Create(Path.Combine(dir, "UniDic-CWJ"));
+                Tagger = Tagger<WNode>.Create(() => new WNode(), Path.Combine(dir, "UniDic-CWJ"));
                 Changer = new LanguageStyleChanger(Tagger);
                 Combiner = new TokenCombiner<WNode>(n => n.Surface, n => n.RLength != n.Length);
             }
