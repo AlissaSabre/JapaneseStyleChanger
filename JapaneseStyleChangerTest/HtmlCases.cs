@@ -438,6 +438,34 @@ namespace JapaneseStyleChangerTest
 			Assert.AreEqual("その<i> 2 日</i>後", result, "Unexpected MS text.");
 		}
 
+		[TestMethod]
+		public void Html_100_CG()
+		{
+			var result = ConvertText("試してみましょう<i>", CombineMode.CG);
+			Assert.AreEqual("試してみよう<i>", result, "Unexpected CG text.");
+        }
+
+        [TestMethod]
+        public void Html_100_MS()
+        {
+			var result = ConvertText("試してみましょう<i>", CombineMode.MS);
+			Assert.AreEqual("試してみよう<i>", result, "Unexpected MS text.");
+		}
+
+		[TestMethod]
+		public void Html_101_CG()
+		{
+			var result = ConvertText("とても素敵です</i>", CombineMode.CG);
+			Assert.AreEqual("とても素敵だ</i>", result, "Unexpected CG text.");
+        }
+
+        [TestMethod]
+        public void Html_101_MS()
+        {
+			var result = ConvertText("とても素敵です</i>", CombineMode.MS);
+			Assert.AreEqual("とても素敵だ</i>", result, "Unexpected MS text.");
+		}
+
 		// Postamble
 
 		private static TextStyleChanger Changer;
