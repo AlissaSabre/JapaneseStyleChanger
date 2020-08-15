@@ -43,6 +43,8 @@
   <ItemGroup>
     <Compile Include="Conjugator.cs" />
     <Compile Include="EditBuffer.cs" />
+    <Compile Include="HtmlEntities.cs" />
+    <Compile Include="HtmlHandler.cs" />
     <Compile Include="LanguageStyleChanger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TextStyleChanger.cs" />

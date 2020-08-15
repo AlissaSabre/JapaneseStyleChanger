@@ -45,6 +45,8 @@ namespace JapaneseStyleChanger
 
         public JotaiPreferences JotaiPreferences { get; set; }
 
+        public bool HtmlSyntax { get; set; }
+
         public CombineMode CombineMode { get; set; }
 
         public WidthPreferences WidthPreferences { get; set; }
@@ -53,15 +55,33 @@ namespace JapaneseStyleChanger
 
         public IEnumerable<char> CustomHalfwidthSet { get; set; }
 
-        public string ChangeText(string text)
+        public string ChangeText(string input)
         {
-            IEnumerable<WNode> nodes = Tagger.Parse(text);
+            string text = input;
+
+            HtmlHandler html = null;
+            if (HtmlSyntax)
+            {
+                html = new HtmlHandler();
+                html.OriginalHtml = text;
+                text = html.GetCleanText();
+            }
+
+            IList<WNode> nodes = Tagger.Parse(text);
+            if (HtmlSyntax)
+            {
+                html.CleanNodes = nodes;
+            }
             if (ChangeToJotai)
             {
                 Changer.PreferDearu = (JotaiPreferences & JotaiPreferences.PreferDearu) != 0;
                 var buffer = new EditBuffer(nodes);
                 Changer.ToJotai(buffer);
                 nodes = buffer;
+            }
+            if (HtmlSyntax)
+            {
+                html.UpdatedNodes = nodes;
             }
             Combiner.CombineMode = CombineMode;
             switch (WidthPreferences
@@ -100,6 +120,11 @@ namespace JapaneseStyleChanger
                 Combiner.Postprocess = (q == null) ? p : sb => p(q(sb));
             }
             var result = Combiner.Combine(nodes);
+            if (HtmlSyntax)
+            {
+                html.UpdatedText = result;
+                result = html.GetUpdatedHtml();
+            }
             return result;
         }
     }
