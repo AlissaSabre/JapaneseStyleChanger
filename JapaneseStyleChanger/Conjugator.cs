@@ -112,6 +112,7 @@ namespace JapaneseStyleChanger
                 if (node.CType != "*")
                 {
                     node.Surface = node.Orth;
+                    node.Length = node.RLength = node.Surface.Length;
                     var list = table.GetOrAdd(node.Lemma_id, key => new List<WNode>());
                     lock (list)
                     {

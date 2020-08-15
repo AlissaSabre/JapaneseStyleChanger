@@ -179,7 +179,7 @@ namespace JapaneseStyleChanger
             var sb = new StringBuilder(utext.Length + tags.Count * 8);
 
             int p = 0;
-            int epos = 0;
+            int qpos, bpos, epos = 0;
             foreach (var u in unodes)
             {
                 int q = utext.IndexOfIgnoreWidth(u.Surface, p);
@@ -189,36 +189,80 @@ namespace JapaneseStyleChanger
                     // though we can safely keep going by simply ignoring it.
                     continue;
                 }
-                int bpos;
                 if (cnodes.IndexOf(u, cindex) >= 0)
                 {
-                    bpos = u.EPos - u.Length; // BPos points to the beginning of any preceding whitespaces.
-                    epos = u.EPos;
+                    // BPos points to the beginning of any preceding whitespaces
+                    // before the token.
+                    // EPos *may* point to the next character after this token
+                    // regardless it is a whitespace, but it *could* point to
+                    // the first non-whitespace character after this token.
+                    // I'm not sure under what condition either of the two cases occurs.
+                    // So, we just avoid using EPos.
+                    // Our epos always points to the next character even if
+                    // it is a whitespace.  qpos points to the beginning of a token
+                    // excluding any preceding whitespaces.
+                    qpos = u.BPos + (u.RLength - u.Length);
+                    bpos = u.BPos;
+                    epos = u.BPos + u.RLength;
                 }
                 else
                 {
+                    // The node u is not from the original node list.
+                    // We use the most passable estimation
+                    // for the purpose of tag placement in the case.
+                    qpos = epos;
                     bpos = epos;
                     // epos = epos;
                 }
-                while (tindex < tags.Count && tags[tindex].Pos <= bpos && !tags[tindex].IsOpen)
+
+                int r = p;
+                while (tindex < tags.Count && tags[tindex].Pos <= qpos && !tags[tindex].IsOpen)
                 {
+                    int original_preceding_padding = tags[tindex].Pos - bpos;
+                    if (original_preceding_padding > r - p)
+                    {
+                        sb.AppendEscaped(utext.Substring(r, Math.Min(q - r, original_preceding_padding)));
+                        r += Math.Min(q - r, original_preceding_padding);
+                    }
                     sb.Append(tags[tindex].TagText);
                     tindex++;
                 }
-                sb.AppendEscaped(utext.Substring(p, q - p));
-                while (tindex < tags.Count && tags[tindex].Pos <= bpos)
+                //sb.AppendEscaped(utext.Substring(p, q - p));
+                //p = q;
+                while (tindex < tags.Count && tags[tindex].Pos <= qpos)
                 {
+                    int original_succeeding_padding = qpos - tags[tindex].Pos;
+                    if (original_succeeding_padding < q - r)
+                    {
+                        sb.AppendEscaped(utext.Substring(r, q - r - original_succeeding_padding));
+                        r = q - original_succeeding_padding;
+                    }
                     sb.Append(tags[tindex].TagText);
                     tindex++;
                 }
-                sb.AppendEscaped(utext.Substring(q, u.Surface.Length));
-                p = q + u.Surface.Length;
+                if (r < q)
+                {
+                    sb.AppendEscaped(utext.Substring(r, q - r));
+                }
+                sb.AppendEscaped(utext.Substring(q, u.Length));
+                p = q + u.Length;
             }
-            while (tindex < tags.Count)
             {
-                sb.Append(tags[tindex++].TagText);
+                int q = utext.Length;
+                int r = p;
+                while (tindex < tags.Count)
+                {
+                    int original_preceding_padding = tags[tindex].Pos - epos;
+                    if (original_preceding_padding > r - p)
+                    {
+                        sb.AppendEscaped(utext.Substring(r, Math.Min(q - r, original_preceding_padding)));
+                        r += Math.Min(q - r, original_preceding_padding);
+                    }
+                    sb.Append(tags[tindex].TagText);
+                    tindex++;
+                }
+                sb.AppendEscaped(utext.Substring(r));
             }
-            sb.AppendEscaped(utext.Substring(p));
 
             return sb.ToString();
         }

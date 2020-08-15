@@ -8,18 +8,24 @@
 	int case_stride = 1;
 
 	var cases = new[]
-	{//	ID			HTML									Clean						Rebuilt
-
+	{
+		//	ID		HTML									Clean
 		Def("001",	"これはペンです",							"これはペンです"	),
 		Def("002",	"<i>これは</i>ペンです",					"これはペンです"	),
 		Def("003",	"<i>これは<b>ペン</b>です</i>",			"これはペンです"	),
 		Def("004",	"<i></i>これは<i><b>ペン</b></i>です",	"これはペンです"	),
 
-		Def("101",	"X&amp;Y",								"X&Y",						"X&amp;Y"		),
-		Def("102",	"&lt;span&gt;",							"<span>",					"&lt;span&gt;"	),
-		Def("103",	"&quot; and &apos;",					"\\\" and '",				"\\\" and '"	),
-		Def("104",	"$&#32;$&#x20;$",						"$ $ $",					"$ $ $"			),
-		Def("105",	"&Sigma;",								"Σ",						"Σ"				),
+		//	ID		HTML						Clean						Rebuilt
+		Def("101",	"X&amp;Y",					"X&Y",						"X&amp;Y"		),
+		Def("102",	"&lt;span&gt;",				"<span>",					"&lt;span&gt;"	),
+		Def("103",	"&quot; and &apos;",		"\\\" and '",				"\\\" and '"	),
+		Def("104",	"$&#32;$&#x20;$",			"$ $ $",					"$ $ $"			),
+		Def("105",	"&Sigma;",					"Σ",						"Σ"				),
+
+		//	ID		HTML						Clean
+		Def("201",	"<i>a</i>",					"a"		),
+		Def("202",	"<i> a </i>",				" a "	),
+		Def("203",	"<i> <i> </i> a </i>",		"   a "	),
 	};
 
 	// support functions

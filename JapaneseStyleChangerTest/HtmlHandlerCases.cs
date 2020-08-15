@@ -198,6 +198,66 @@ namespace JapaneseStyleChangerTest
 			Assert.AreEqual("Σ", updated_html, "updated html doesn't match");
         }
 
+		[TestMethod]
+		public void Test_HtmlHandler_201()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "<i>a</i>";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("a", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.CleanNodes = nodes;
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("<i>a</i>", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_202()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "<i> a </i>";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual(" a ", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.CleanNodes = nodes;
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("<i> a </i>", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_203()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "<i> <i> </i> a </i>";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("   a ", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.CleanNodes = nodes;
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("<i> <i> </i> a </i>", updated_html, "updated html doesn't match");
+        }
+
 		// Postamble
 
 		private static Tagger<WNode> Tagger;
