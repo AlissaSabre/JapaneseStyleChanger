@@ -171,13 +171,6 @@ namespace JapaneseStyleChanger
 
         public string GetUpdatedHtml()
         {
-            // I'm sorry, it is difficult to explain what the following code does... :(
-            // or, more precisely, the following code DOES insert tags
-            // separated from OriginalHtml into UpdatedText
-            // (as well as escaping some characters) to rebuild the
-            // corresponding HTML text.  What is difficult is how we decide the position
-            // in UpdatedText to insert each tag.
-
             var tags = Tags; int tindex = 0;
             var cnodes = CleanNodes; int cindex = 0;
             var unodes = UpdatedNodes;
@@ -186,19 +179,38 @@ namespace JapaneseStyleChanger
             var sb = new StringBuilder(utext.Length + tags.Count * 8);
 
             int p = 0;
+            int epos = 0;
             foreach (var u in unodes)
             {
-                int d = cnodes.IndexOf(u, cindex);
-                if (d < 0) continue;
                 int q = utext.IndexOfIgnoreWidth(u.Surface, p);
-                if (q < 0) continue;
-                int pos = u.BPos;
-                while (tindex < tags.Count && tags[tindex].Pos <= pos)
+                if (q < 0)
+                {
+                    // This case is unexpected,
+                    // though we can safely keep going by simply ignoring it.
+                    continue;
+                }
+                int bpos;
+                if (cnodes.IndexOf(u, cindex) >= 0)
+                {
+                    bpos = u.EPos - u.Length; // BPos points to the beginning of any preceding whitespaces.
+                    epos = u.EPos;
+                }
+                else
+                {
+                    bpos = epos;
+                    // epos = epos;
+                }
+                while (tindex < tags.Count && tags[tindex].Pos <= bpos && !tags[tindex].IsOpen)
                 {
                     sb.Append(tags[tindex].TagText);
                     tindex++;
                 }
                 sb.AppendEscaped(utext.Substring(p, q - p));
+                while (tindex < tags.Count && tags[tindex].Pos <= bpos)
+                {
+                    sb.Append(tags[tindex].TagText);
+                    tindex++;
+                }
                 sb.AppendEscaped(utext.Substring(q, u.Surface.Length));
                 p = q + u.Surface.Length;
             }

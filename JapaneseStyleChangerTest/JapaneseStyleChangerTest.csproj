@@ -43,6 +43,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseClass.cs" />
+    <Compile Include="HtmlHandlerCases.cs">
+      <DependentUpon>HtmlHandlerCases.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="HtmlCases.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HtmlCases.tt</DependentUpon>
+    </Compile>
     <Compile Include="SpacingAndWidthsCases.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -71,6 +81,14 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="HtmlHandlerCases.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>HtmlHandlerCases.cs</LastGenOutput>
+    </Content>
+    <Content Include="HtmlCases.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>HtmlCases.cs</LastGenOutput>
+    </Content>
     <Content Include="SpacingAndWidthsCases.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>SpacingAndWidthsCases.cs</LastGenOutput>
