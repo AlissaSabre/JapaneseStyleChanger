@@ -140,7 +140,7 @@ namespace JapaneseStyleChangerTest
 			handler.OriginalHtml = "&quot; and &apos;";
 			var clean = handler.GetCleanText();
 
-			Assert.AreEqual("\" and '", clean, "clean text doesn't match");
+			Assert.AreEqual("\" and \'", clean, "clean text doesn't match");
 
 			var nodes = Tagger.Parse(clean);
 
@@ -148,7 +148,7 @@ namespace JapaneseStyleChangerTest
 			handler.UpdatedText = clean;
 			var updated_html = handler.GetUpdatedHtml();
 
-			Assert.AreEqual("\" and '", updated_html, "updated html doesn't match");
+			Assert.AreEqual("\" and \'", updated_html, "updated html doesn't match");
         }
 
 		[TestMethod]
@@ -190,7 +190,2800 @@ namespace JapaneseStyleChangerTest
         }
 
 		[TestMethod]
-		public void Test_HtmlHandler_201()
+		public void Test_HtmlHandler_111()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#9;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("\t", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("\t", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_112()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#10;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("\n", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("\n", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_113()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#12;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("\f", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("\f", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_114()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#33;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("!", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("!", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_115()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#99;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("c", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("c", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_116()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#100;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("d", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("d", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_117()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#999;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("ϧ", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("ϧ", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_118()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#1000;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("Ϩ", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("Ϩ", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_119()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#9999;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("✏", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("✏", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_120()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#10000;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("✐", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("✐", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_121()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#99999;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("𘚟", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("𘚟", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_122()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#100000;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("𘚠", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("𘚠", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_123()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#999999;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("󴈿", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("󴈿", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_124()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#1000000;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("󴉀", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("󴉀", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_131()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#65533;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("�", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("�", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_132()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#65536;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("𐀀", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("𐀀", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_133()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#131069;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("🿽", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("🿽", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_134()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#131072;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("𠀀", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("𠀀", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_135()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#196605;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("𯿽", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("𯿽", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_136()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#196608;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("𰀀", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("𰀀", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_137()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#262141;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("𿿽", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("𿿽", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_138()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#262144;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("񀀀", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("񀀀", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_139()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#327677;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("񏿽", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("񏿽", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_140()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#327680;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("񐀀", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("񐀀", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_141()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#393213;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("񟿽", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("񟿽", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_142()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#393216;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("񠀀", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("񠀀", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_143()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#458749;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("񯿽", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("񯿽", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_144()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#458752;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("񰀀", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("񰀀", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_145()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#524285;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("񿿽", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("񿿽", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_146()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#524288;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("򀀀", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("򀀀", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_147()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#589821;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("򏿽", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("򏿽", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_148()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#589824;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("򐀀", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("򐀀", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_149()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#655357;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("򟿽", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("򟿽", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_150()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#655360;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("򠀀", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("򠀀", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_151()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#720893;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("򯿽", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("򯿽", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_152()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#720896;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("򰀀", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("򰀀", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_153()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#786429;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("򿿽", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("򿿽", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_154()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#786432;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("󀀀", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("󀀀", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_155()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#851965;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("󏿽", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("󏿽", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_156()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#851968;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("󐀀", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("󐀀", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_157()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#917501;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("󟿽", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("󟿽", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_158()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#917504;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("󠀀", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("󠀀", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_159()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#983037;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("󯿽", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("󯿽", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_160()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#983040;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("󰀀", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("󰀀", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_161()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#1048573;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("󿿽", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("󿿽", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_162()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#1048576;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("􀀀", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("􀀀", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_163()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#1114109;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("􏿽", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("􏿽", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_211()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#x9;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("\t", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("\t", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_212()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#xA;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("\n", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("\n", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_213()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#xC;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("\f", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("\f", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_214()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#x09;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("\t", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("\t", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_215()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#x0A;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("\n", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("\n", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_216()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#x0C;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("\f", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("\f", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_217()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#x20;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual(" ", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual(" ", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_218()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#x0009;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("\t", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("\t", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_219()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#x000A;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("\n", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("\n", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_220()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#x000C;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("\f", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("\f", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_221()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#x0020;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual(" ", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual(" ", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_222()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#x00FF;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("ÿ", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("ÿ", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_223()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#x0100;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("Ā", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("Ā", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_224()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#x0FFF;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("࿿", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("࿿", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_225()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#x1000;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("က", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("က", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_226()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#xD7FF;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("퟿", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("퟿", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_227()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#xC000;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("쀀", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("쀀", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_228()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#xFFFD;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("�", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("�", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_229()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#x10000;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("𐀀", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("𐀀", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_230()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#x1FFFD;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("🿽", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("🿽", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_231()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#x20000;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("𠀀", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("𠀀", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_232()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#x2FFFD;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("𯿽", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("𯿽", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_233()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#x30000;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("𰀀", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("𰀀", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_234()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#x3FFFD;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("𿿽", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("𿿽", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_235()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#x40000;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("񀀀", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("񀀀", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_236()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#x4FFFD;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("񏿽", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("񏿽", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_237()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#x50000;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("񐀀", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("񐀀", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_238()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#x5FFFD;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("񟿽", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("񟿽", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_239()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#x60000;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("񠀀", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("񠀀", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_240()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#x6FFFD;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("񯿽", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("񯿽", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_241()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#x70000;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("񰀀", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("񰀀", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_242()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#x7FFFD;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("񿿽", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("񿿽", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_243()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#x80000;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("򀀀", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("򀀀", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_244()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#x8FFFD;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("򏿽", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("򏿽", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_245()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#x90000;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("򐀀", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("򐀀", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_246()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#x9FFFD;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("򟿽", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("򟿽", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_247()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#xA0000;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("򠀀", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("򠀀", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_248()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#xAFFFD;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("򯿽", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("򯿽", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_249()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#xB0000;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("򰀀", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("򰀀", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_250()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#xBFFFD;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("򿿽", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("򿿽", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_251()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#xC0000;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("󀀀", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("󀀀", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_252()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#xCFFFD;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("󏿽", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("󏿽", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_253()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#xD0000;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("󐀀", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("󐀀", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_254()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#xDFFFD;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("󟿽", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("󟿽", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_255()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#xE0000;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("󠀀", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("󠀀", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_256()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#xEFFFD;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("󯿽", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("󯿽", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_257()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#xF0000;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("󰀀", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("󰀀", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_258()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#xFFFFD;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("󿿽", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("󿿽", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_259()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#x100000;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("􀀀", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("􀀀", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_260()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#x10FFFD;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("􏿽", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("􏿽", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_311()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#X9;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("\t", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("\t", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_312()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#XA;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("\n", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("\n", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_313()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#XC;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("\f", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("\f", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_314()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#X09;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("\t", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("\t", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_315()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#X0A;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("\n", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("\n", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_316()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#X0C;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("\f", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("\f", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_317()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#X20;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual(" ", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual(" ", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_318()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#X0009;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("\t", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("\t", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_319()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#X000A;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("\n", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("\n", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_320()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#X000C;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("\f", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("\f", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_321()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#X0020;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual(" ", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual(" ", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_322()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#X00FF;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("ÿ", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("ÿ", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_323()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#X0100;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("Ā", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("Ā", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_324()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#X0FFF;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("࿿", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("࿿", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_325()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#X1000;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("က", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("က", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_326()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#XD7FF;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("퟿", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("퟿", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_327()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#XC000;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("쀀", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("쀀", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_328()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#XFFFD;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("�", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("�", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_329()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#X10000;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("𐀀", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("𐀀", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_330()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#X1FFFD;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("🿽", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("🿽", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_331()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#X20000;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("𠀀", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("𠀀", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_332()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#X2FFFD;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("𯿽", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("𯿽", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_333()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#X30000;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("𰀀", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("𰀀", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_334()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#X3FFFD;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("𿿽", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("𿿽", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_335()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#X40000;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("񀀀", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("񀀀", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_336()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#X4FFFD;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("񏿽", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("񏿽", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_337()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#X50000;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("񐀀", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("񐀀", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_338()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#X5FFFD;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("񟿽", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("񟿽", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_339()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#X60000;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("񠀀", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("񠀀", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_340()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#X6FFFD;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("񯿽", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("񯿽", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_341()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#X70000;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("񰀀", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("񰀀", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_342()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#X7FFFD;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("񿿽", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("񿿽", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_343()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#X80000;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("򀀀", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("򀀀", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_344()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#X8FFFD;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("򏿽", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("򏿽", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_345()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#X90000;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("򐀀", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("򐀀", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_346()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#X9FFFD;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("򟿽", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("򟿽", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_347()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#XA0000;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("򠀀", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("򠀀", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_348()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#XAFFFD;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("򯿽", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("򯿽", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_349()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#XB0000;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("򰀀", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("򰀀", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_350()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#XBFFFD;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("򿿽", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("򿿽", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_351()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#XC0000;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("󀀀", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("󀀀", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_352()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#XCFFFD;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("󏿽", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("󏿽", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_353()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#XD0000;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("󐀀", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("󐀀", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_354()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#XDFFFD;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("󟿽", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("󟿽", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_355()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#XE0000;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("󠀀", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("󠀀", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_356()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#XEFFFD;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("󯿽", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("󯿽", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_357()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#XF0000;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("󰀀", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("󰀀", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_358()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#XFFFFD;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("󿿽", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("󿿽", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_359()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#X100000;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("􀀀", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("􀀀", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_360()
+		{
+			var handler = new HtmlHandler();
+			
+			handler.OriginalHtml = "&#X10FFFD;";
+			var clean = handler.GetCleanText();
+
+			Assert.AreEqual("􏿽", clean, "clean text doesn't match");
+
+			var nodes = Tagger.Parse(clean);
+
+			handler.UpdatedNodes = nodes;
+			handler.UpdatedText = clean;
+			var updated_html = handler.GetUpdatedHtml();
+
+			Assert.AreEqual("􏿽", updated_html, "updated html doesn't match");
+        }
+
+		[TestMethod]
+		public void Test_HtmlHandler_401()
 		{
 			var handler = new HtmlHandler();
 			
@@ -209,7 +3002,7 @@ namespace JapaneseStyleChangerTest
         }
 
 		[TestMethod]
-		public void Test_HtmlHandler_202()
+		public void Test_HtmlHandler_402()
 		{
 			var handler = new HtmlHandler();
 			
@@ -228,7 +3021,7 @@ namespace JapaneseStyleChangerTest
         }
 
 		[TestMethod]
-		public void Test_HtmlHandler_203()
+		public void Test_HtmlHandler_403()
 		{
 			var handler = new HtmlHandler();
 			

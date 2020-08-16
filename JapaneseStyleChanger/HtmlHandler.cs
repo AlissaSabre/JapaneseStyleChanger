@@ -46,117 +46,107 @@ namespace JapaneseStyleChanger
 
         public string GetCleanText()
         {
-            var s = OriginalHtml;
-            if (s.IndexOfAny(Specials) < 0) return s;
+            var html = OriginalHtml;
+            if (html.IndexOfAny(Specials) < 0)
+            {
+                // A shortcut.
+                // If the original _html_ text contained no special character,
+                // it means it has no tags and its text is already clean.
+                return html;
+            }
 
             // We parse the given html text in our own loose way, which behaves
             // differently from the one mandated by the recent HTML standards.
+            // The following code may behave incorrectly for unusual HTML inputs.
             // You have been warned.
 
-            var sb = new StringBuilder(s.Length);
-            for (int p = 0, q; p >= 0 && p < s.Length; p = q)
+            var sb = new StringBuilder(html.Length);
+            for (int p = 0, q; p < html.Length; p = q)
             {
-                q = s.IndexOfAny(Specials, p);
+                // Find the next special character and handle any preceding texts.
+                q = html.IndexOfAny(Specials, p);
                 if (q < 0)
                 {
-                    sb.Append(s.Substring(p));
+                    sb.Append(html.Substring(p));
+                    // this _preceding_ text covered the whole remaining text.
+                    // we can stop looping now.
+                    break;
                 }
-                else
+                else if (q > p)
                 {
-                    sb.Append(s.Substring(p, q - p));
+                    sb.Append(html.Substring(p, q - p));
                 }
-                if (q < 0)
-                {
 
-                }
-                else if (s[q] == '&')
+                switch (html[q])
                 {
-                    // Decode a character entity reference.
-                    var r = s.IndexOf(';', q + 1);
-                    if (r < q + 3) // the minimum length of a valid character entity reference is 4 (e.g., &#9; or &lt;).
-                    {
-                        sb.Append('&');
-                        q = q + 1;
-                    }
-                    else if (s[q + 1] != '#')
-                    {
-                        if (HtmlEntities.NameToString.TryGetValue(s.Substring(q + 1, r - q - 1), out var t))
+                    case '&':
                         {
-                            sb.Append(t);
-                            q = r + 1;
-                        }
-                        else
-                        {
-                            sb.Append('&');
-                            q = q + 1;
-                        }
-                    }
-                    else if (s[q + 2] != 'x' && s[q + 2] != 'X')
-                    {
-                        if (uint.TryParse(s.Substring(q + 2, r - q - 2), NumberStyles.None, CultureInfo.InvariantCulture, out var c))
-                        {
-                            if (c <= char.MaxValue)
+                            // Try to decode a character entity reference.
+                            var r = html.IndexOf(';', q + 1);
+                            if (r < q + 3)
                             {
-                                sb.Append((char)c);
+                                // the minimum length of a valid character entity reference is 4 (e.g., &#9; or &lt;).
+                                goto INVALID_AMPERSAND;
+                            }
+                            else if (html[q + 1] != '#')
+                            {
+                                // a named character reference.
+                                if (!HtmlEntities.NameToString.TryGetValue(html.Substring(q + 1, r - q - 1), out var s))
+                                {
+                                    goto INVALID_AMPERSAND;
+                                }
+                                sb.Append(s);
+                            }
+                            else if (html[q + 2] != 'x' && html[q + 2] != 'X')
+                            {
+                                // a decimal character reference.
+                                if (!uint.TryParse(html.Substring(q + 2, r - q - 2), NumberStyles.None, CultureInfo.InvariantCulture, out var c))
+                                {
+                                    goto INVALID_AMPERSAND;
+                                }
+                                sb.AppendScalar(c);
                             }
                             else
                             {
-                                sb.Append((char)(((c - char.MaxValue) >> 10)  + 0xD800));
-                                sb.Append((char)(((c - char.MaxValue) & 1023) + 0xDC00));
+                                // a hexadecimal character reference.
+                                if (!uint.TryParse(html.Substring(q + 3, r - q - 3), NumberStyles.AllowHexSpecifier, CultureInfo.InvariantCulture, out var c))
+                                {
+                                    goto INVALID_AMPERSAND;
+                                }
+                                sb.AppendScalar(c);
                             }
                             q = r + 1;
                         }
-                        else
+                        break;
+                    INVALID_AMPERSAND:
                         {
                             sb.Append('&');
                             q = q + 1;
                         }
-                    }
-                    else
-                    {
-                        if (uint.TryParse(s.Substring(q + 3, r - q - 3), NumberStyles.AllowHexSpecifier, CultureInfo.InvariantCulture, out var c))
+                        break;
+                    case '<':
                         {
-                            if (c <= char.MaxValue)
+                            // Grab a tag.
+                            var r = html.IndexOf('>', q + 1);
+                            if (r < q + 2) // the minimum length of a valid tag is 3, e.g., <i>.
                             {
-                                sb.Append((char)c);
+                                sb.Append('<');
+                                q = q + 1;
                             }
                             else
                             {
-                                sb.Append((char)(((c - char.MaxValue) >> 10) + 0xD800));
-                                sb.Append((char)(((c - char.MaxValue) & 1023) + 0xDC00));
+                                Tags.Add(new Tag
+                                {
+                                    TagText = html.Substring(q, r - q + 1),
+                                    IsCloseTag = html[q + 1] == '/',
+                                    Pos = sb.Length,
+                                });
+                                q = r + 1;
                             }
-                            q = r + 1;
                         }
-                        else
-                        {
-                            sb.Append('&');
-                            q = q + 1;
-                        }
-                    }
-                }
-                else if (s[q] == '<')
-                {
-                    // Grab a tag.
-                    var r = s.IndexOf('>', q + 1);
-                    if (r < q + 2) // the minimum length of a valid tag is 3, e.g., <i>.
-                    {
-                        sb.Append('<');
-                        q = q + 1;
-                    }
-                    else
-                    {
-                        Tags.Add(new Tag
-                        {
-                            TagText = s.Substring(q, r - q + 1),
-                            IsCloseTag = s[q + 1] == '/',
-                            Pos = sb.Length,
-                        });
-                        q = r + 1;
-                    }
-                }
-                else
-                {
-                    throw new ApplicationException();
+                        break;
+                    default:
+                        throw new ApplicationException();
                 }
             }
             return sb.ToString();
@@ -277,6 +267,24 @@ namespace JapaneseStyleChanger
                 p = q + 1;
             }
             sb.Append(text.Substring(p));
+        }
+
+        /// <summary>
+        /// Appends a Unicode character represented in a scalar value to <see cref="StringBuilder"/>.
+        /// </summary>
+        /// <param name="sb">A <see cref="StringBuilder"/> instance.</param>
+        /// <param name="scalar">The Unicode scalar value of a character to be appended.</param>
+        public static void AppendScalar(this StringBuilder sb, uint scalar)
+        {
+            if (scalar <= char.MaxValue)
+            {
+                sb.Append((char)scalar);
+            }
+            else
+            {
+                sb.Append((char)(((scalar - char.MaxValue - 1) >> 10) + 0xD800));
+                sb.Append((char)(((scalar - char.MaxValue - 1) & 1023) + 0xDC00));
+            }
         }
 
         public static int IndexOfIgnoreWidth(this string s, string text, int index)
