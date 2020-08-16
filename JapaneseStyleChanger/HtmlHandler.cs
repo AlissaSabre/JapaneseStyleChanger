@@ -94,7 +94,7 @@ namespace JapaneseStyleChanger
                             else if (html[q + 1] != '#')
                             {
                                 // a named character reference.
-                                HtmlEntities.NameToString.TryGetValue(html.Substring(q + 1, r - q - 1), out s);
+                                HtmlCharacterReferences.NameToString.TryGetValue(html.Substring(q + 1, r - q - 1), out s);
                             }
                             else if (html[q + 2] != 'x' && html[q + 2] != 'X')
                             {
@@ -316,10 +316,10 @@ namespace JapaneseStyleChanger
             int p = 0;
             for (; ; )
             {
-                int q = text.IndexOfAny(HtmlEntities.EscapeChars, p);
+                int q = text.IndexOfAny(HtmlCharacterReferences.CharsToBeEscaped, p);
                 if (q < 0) break;
                 sb.Append(text.Substring(p, q - p));
-                sb.Append(HtmlEntities.CharToRef[text[q]]);
+                sb.Append(HtmlCharacterReferences.CharToRef[text[q]]);
                 p = q + 1;
             }
             sb.Append(text.Substring(p));

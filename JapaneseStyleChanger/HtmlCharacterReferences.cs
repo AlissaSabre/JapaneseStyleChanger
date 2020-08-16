@@ -6,8 +6,11 @@ using System.Threading.Tasks;
 
 namespace JapaneseStyleChanger
 {
-    public static class HtmlEntities
+    public static class HtmlCharacterReferences
     {
+        /// <summary>
+        /// Maps a character in <see cref="CharsToBeEscaped"/> to its character reference (including "&" and ";").
+        /// </summary>
         public static readonly Dictionary<char, string> CharToRef = new Dictionary<char, string>()
         {
             { '&', "&amp;" },
@@ -15,8 +18,14 @@ namespace JapaneseStyleChanger
             { '>', "&gt;" },
         };
 
-        public static readonly char[] EscapeChars = { '&', '<', '>' };
+        /// <summary>
+        /// List of characters that are to be escaped in HTML.
+        /// </summary>
+        public static readonly char[] CharsToBeEscaped = { '&', '<', '>' };
 
+        /// <summary>
+        /// Maps a name of a named character reference (excluding "&" and ";") to the corresponding text.
+        /// </summary>
         public static readonly Dictionary<string, string> NameToString = new Dictionary<string, string>(StringComparer.Ordinal)
         {
             { "AElig", "\u00C6" },
