@@ -17,7 +17,6 @@ namespace JapaneseStyleChanger
     /// <description>Sets the original HTML text to <see cref="OriginalHtml"/>.</description>
     /// <description>Calls <see cref="GetCleanText"/> to get a plain text version of <see cref="OriginalHtml"/>.</description>
     /// <description>Parses the clean text into a list of <see cref="WNode"/>.  (An external operation.)</description>
-    /// <description>Sets the parsed list of <see cref="WNode"/> to <see cref="CleanNodes"/>.</description>
     /// <description>Makes appropriate updates to the list.  (An external operation.)</description>
     /// <description>Sets the updated list of <see cref="WNode"/> to <see cref="UpdatedNodes"/>.</description>
     /// <description>Combine the nodes into a single string.  (An external operation.)</description>
@@ -32,11 +31,11 @@ namespace JapaneseStyleChanger
             /// <summary>Raw tag string.</summary>
             public string TagText;
 
-            /// <summary>Character index in the clean text at which this tag was inserted.</summary>
+            /// <summary>Character index in the <em>clean</em> text at which this tag was inserted.</summary>
             public int Pos;
 
             /// <summary>This tag is an opening or empty tag.</summary>
-            public bool IsOpen;
+            public bool IsCloseTag;
         }
 
         private List<Tag> Tags = new List<Tag>();
@@ -149,7 +148,7 @@ namespace JapaneseStyleChanger
                         Tags.Add(new Tag
                         {
                             TagText = s.Substring(q, r - q + 1),
-                            IsOpen = s[q + 1] != '/',
+                            IsCloseTag = s[q + 1] == '/',
                             Pos = sb.Length,
                         });
                         q = r + 1;
@@ -170,23 +169,22 @@ namespace JapaneseStyleChanger
         public string GetUpdatedHtml()
         {
             var tags = Tags; int tindex = 0;
-            var unodes = UpdatedNodes;
-            var utext = UpdatedText;
+            var text = UpdatedText;
 
-            var sb = new StringBuilder(utext.Length + tags.Count * 8);
+            var sb = new StringBuilder(text.Length + tags.Count * 8);
 
             int p = 0;
             int qpos, bpos, epos = 0;
-            foreach (var u in unodes)
+            foreach (var node in UpdatedNodes)
             {
-                int q = utext.IndexOfIgnoreWidth(u.Surface, p);
+                int q = text.IndexOfIgnoreWidth(node.Surface, p);
                 if (q < 0)
                 {
                     // This case is unexpected,
                     // though we can safely keep going by simply ignoring it.
                     continue;
                 }
-                if (u.IsOriginalNode())
+                if (node.IsOriginalNode())
                 {
                     // BPos points to the beginning of any preceding whitespaces
                     // before the token.
@@ -198,9 +196,9 @@ namespace JapaneseStyleChanger
                     // Our epos always points to the next character even if
                     // it is a whitespace.  qpos points to the beginning of a token
                     // excluding any preceding whitespaces.
-                    qpos = u.BPos + (u.RLength - u.Length);
-                    bpos = u.BPos;
-                    epos = u.BPos + u.RLength;
+                    qpos = node.BPos + (node.RLength - node.Length);
+                    bpos = node.BPos;
+                    epos = node.BPos + node.RLength;
                 }
                 else
                 {
@@ -213,12 +211,12 @@ namespace JapaneseStyleChanger
                 }
 
                 int r = p;
-                while (tindex < tags.Count && tags[tindex].Pos <= qpos && !tags[tindex].IsOpen)
+                while (tindex < tags.Count && tags[tindex].Pos <= qpos && tags[tindex].IsCloseTag)
                 {
                     int original_preceding_padding = tags[tindex].Pos - bpos;
                     if (original_preceding_padding > r - p)
                     {
-                        sb.AppendEscaped(utext.Substring(r, Math.Min(q - r, original_preceding_padding)));
+                        sb.AppendEscaped(text.Substring(r, Math.Min(q - r, original_preceding_padding)));
                         r += Math.Min(q - r, original_preceding_padding);
                     }
                     sb.Append(tags[tindex].TagText);
@@ -231,7 +229,7 @@ namespace JapaneseStyleChanger
                     int original_succeeding_padding = qpos - tags[tindex].Pos;
                     if (original_succeeding_padding < q - r)
                     {
-                        sb.AppendEscaped(utext.Substring(r, q - r - original_succeeding_padding));
+                        sb.AppendEscaped(text.Substring(r, q - r - original_succeeding_padding));
                         r = q - original_succeeding_padding;
                     }
                     sb.Append(tags[tindex].TagText);
@@ -239,26 +237,26 @@ namespace JapaneseStyleChanger
                 }
                 if (r < q)
                 {
-                    sb.AppendEscaped(utext.Substring(r, q - r));
+                    sb.AppendEscaped(text.Substring(r, q - r));
                 }
-                sb.AppendEscaped(utext.Substring(q, u.Length));
-                p = q + u.Length;
+                sb.AppendEscaped(text.Substring(q, node.Length));
+                p = q + node.Length;
             }
             {
-                int q = utext.Length;
+                int q = text.Length;
                 int r = p;
                 while (tindex < tags.Count)
                 {
                     int original_preceding_padding = tags[tindex].Pos - epos;
                     if (original_preceding_padding > r - p)
                     {
-                        sb.AppendEscaped(utext.Substring(r, Math.Min(q - r, original_preceding_padding)));
+                        sb.AppendEscaped(text.Substring(r, Math.Min(q - r, original_preceding_padding)));
                         r += Math.Min(q - r, original_preceding_padding);
                     }
                     sb.Append(tags[tindex].TagText);
                     tindex++;
                 }
-                sb.AppendEscaped(utext.Substring(r));
+                sb.AppendEscaped(text.Substring(r));
             }
 
             return sb.ToString();
