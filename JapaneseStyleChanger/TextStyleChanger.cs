@@ -68,10 +68,6 @@ namespace JapaneseStyleChanger
             }
 
             IList<WNode> nodes = Tagger.Parse(text);
-            if (HtmlSyntax)
-            {
-                html.CleanNodes = nodes;
-            }
             if (ChangeToJotai)
             {
                 Changer.PreferDearu = (JotaiPreferences & JotaiPreferences.PreferDearu) != 0;

@@ -30,7 +30,6 @@ namespace JapaneseStyleChangerTest
 
 			var nodes = Tagger.Parse(clean);
 
-			handler.CleanNodes = nodes;
 			handler.UpdatedNodes = nodes;
 			handler.UpdatedText = clean;
 			var updated_html = handler.GetUpdatedHtml();
@@ -50,7 +49,6 @@ namespace JapaneseStyleChangerTest
 
 			var nodes = Tagger.Parse(clean);
 
-			handler.CleanNodes = nodes;
 			handler.UpdatedNodes = nodes;
 			handler.UpdatedText = clean;
 			var updated_html = handler.GetUpdatedHtml();
@@ -70,7 +68,6 @@ namespace JapaneseStyleChangerTest
 
 			var nodes = Tagger.Parse(clean);
 
-			handler.CleanNodes = nodes;
 			handler.UpdatedNodes = nodes;
 			handler.UpdatedText = clean;
 			var updated_html = handler.GetUpdatedHtml();
@@ -90,7 +87,6 @@ namespace JapaneseStyleChangerTest
 
 			var nodes = Tagger.Parse(clean);
 
-			handler.CleanNodes = nodes;
 			handler.UpdatedNodes = nodes;
 			handler.UpdatedText = clean;
 			var updated_html = handler.GetUpdatedHtml();
@@ -110,7 +106,6 @@ namespace JapaneseStyleChangerTest
 
 			var nodes = Tagger.Parse(clean);
 
-			handler.CleanNodes = nodes;
 			handler.UpdatedNodes = nodes;
 			handler.UpdatedText = clean;
 			var updated_html = handler.GetUpdatedHtml();
@@ -130,7 +125,6 @@ namespace JapaneseStyleChangerTest
 
 			var nodes = Tagger.Parse(clean);
 
-			handler.CleanNodes = nodes;
 			handler.UpdatedNodes = nodes;
 			handler.UpdatedText = clean;
 			var updated_html = handler.GetUpdatedHtml();
@@ -150,7 +144,6 @@ namespace JapaneseStyleChangerTest
 
 			var nodes = Tagger.Parse(clean);
 
-			handler.CleanNodes = nodes;
 			handler.UpdatedNodes = nodes;
 			handler.UpdatedText = clean;
 			var updated_html = handler.GetUpdatedHtml();
@@ -170,7 +163,6 @@ namespace JapaneseStyleChangerTest
 
 			var nodes = Tagger.Parse(clean);
 
-			handler.CleanNodes = nodes;
 			handler.UpdatedNodes = nodes;
 			handler.UpdatedText = clean;
 			var updated_html = handler.GetUpdatedHtml();
@@ -190,7 +182,6 @@ namespace JapaneseStyleChangerTest
 
 			var nodes = Tagger.Parse(clean);
 
-			handler.CleanNodes = nodes;
 			handler.UpdatedNodes = nodes;
 			handler.UpdatedText = clean;
 			var updated_html = handler.GetUpdatedHtml();
@@ -210,7 +201,6 @@ namespace JapaneseStyleChangerTest
 
 			var nodes = Tagger.Parse(clean);
 
-			handler.CleanNodes = nodes;
 			handler.UpdatedNodes = nodes;
 			handler.UpdatedText = clean;
 			var updated_html = handler.GetUpdatedHtml();
@@ -230,7 +220,6 @@ namespace JapaneseStyleChangerTest
 
 			var nodes = Tagger.Parse(clean);
 
-			handler.CleanNodes = nodes;
 			handler.UpdatedNodes = nodes;
 			handler.UpdatedText = clean;
 			var updated_html = handler.GetUpdatedHtml();
@@ -250,7 +239,6 @@ namespace JapaneseStyleChangerTest
 
 			var nodes = Tagger.Parse(clean);
 
-			handler.CleanNodes = nodes;
 			handler.UpdatedNodes = nodes;
 			handler.UpdatedText = clean;
 			var updated_html = handler.GetUpdatedHtml();

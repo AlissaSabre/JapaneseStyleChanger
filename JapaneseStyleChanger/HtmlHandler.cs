@@ -163,8 +163,6 @@ namespace JapaneseStyleChanger
             return sb.ToString();
         }
 
-        public IList<WNode> CleanNodes { get; set; }
-
         public IList<WNode> UpdatedNodes { get; set; }
 
         public string UpdatedText { get; set; }
@@ -172,7 +170,6 @@ namespace JapaneseStyleChanger
         public string GetUpdatedHtml()
         {
             var tags = Tags; int tindex = 0;
-            var cnodes = CleanNodes; int cindex = 0;
             var unodes = UpdatedNodes;
             var utext = UpdatedText;
 
@@ -189,7 +186,7 @@ namespace JapaneseStyleChanger
                     // though we can safely keep going by simply ignoring it.
                     continue;
                 }
-                if (cnodes.IndexOf(u, cindex) >= 0)
+                if (u.IsOriginalNode())
                 {
                     // BPos points to the beginning of any preceding whitespaces
                     // before the token.
@@ -314,6 +311,16 @@ namespace JapaneseStyleChanger
                 if (ReferenceEquals(node, list[i])) return i;
             }
             return -1;
+        }
+
+        /// <summary>
+        /// Checks if a node is from the original list returned by Tagger.Parse method.
+        /// </summary>
+        /// <param name="node"></param>
+        /// <returns></returns>
+        public static bool IsOriginalNode(this WNode node)
+        {
+            return node.EPos > 0;
         }
     }
 }
