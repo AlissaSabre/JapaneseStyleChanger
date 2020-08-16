@@ -82,46 +82,46 @@ namespace JapaneseStyleChanger
                     case '&':
                         {
                             // Try to decode a character entity reference.
+                            string s = null;
+                            uint c = default(uint);
                             var r = html.IndexOf(';', q + 1);
                             if (r < q + 3)
                             {
-                                // the minimum length of a valid character entity reference is 4 (e.g., &#9; or &lt;).
-                                goto INVALID_AMPERSAND;
+                                // the minimum length of a valid character entity reference is 4 (e.g., &#9; or &lt;),
+                                // so this is invalid.
                             }
                             else if (html[q + 1] != '#')
                             {
                                 // a named character reference.
-                                if (!HtmlEntities.NameToString.TryGetValue(html.Substring(q + 1, r - q - 1), out var s))
-                                {
-                                    goto INVALID_AMPERSAND;
-                                }
-                                sb.Append(s);
+                                HtmlEntities.NameToString.TryGetValue(html.Substring(q + 1, r - q - 1), out s);
                             }
                             else if (html[q + 2] != 'x' && html[q + 2] != 'X')
                             {
                                 // a decimal character reference.
-                                if (!uint.TryParse(html.Substring(q + 2, r - q - 2), NumberStyles.None, CultureInfo.InvariantCulture, out var c))
-                                {
-                                    goto INVALID_AMPERSAND;
-                                }
-                                sb.AppendScalar(c);
+                                uint.TryParse(html.Substring(q + 2, r - q - 2), NumberStyles.None, CultureInfo.InvariantCulture, out c);
                             }
                             else
                             {
                                 // a hexadecimal character reference.
-                                if (!uint.TryParse(html.Substring(q + 3, r - q - 3), NumberStyles.AllowHexSpecifier, CultureInfo.InvariantCulture, out var c))
-                                {
-                                    goto INVALID_AMPERSAND;
-                                }
-                                sb.AppendScalar(c);
+                                uint.TryParse(html.Substring(q + 3, r - q - 3), NumberStyles.AllowHexSpecifier, CultureInfo.InvariantCulture, out c);
                             }
-                            q = r + 1;
-                        }
-                        break;
-                    INVALID_AMPERSAND:
-                        {
-                            sb.Append('&');
-                            q = q + 1;
+                            if (s != null)
+                            {
+                                sb.Append(s);
+                                q = r + 1;
+                            }
+                            else if (c != default(uint))
+                            {
+                                // Note that we consider a numeric character reference to U+0000 is invalid.
+                                // (HTML5 spec prohibits it, too.)
+                                sb.AppendScalar(c);
+                                q = r + 1;
+                            }
+                            else
+                            {
+                                sb.Append('&');
+                                q = q + 1;
+                            }
                         }
                         break;
                     case '<':
