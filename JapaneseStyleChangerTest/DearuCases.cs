@@ -13,7 +13,7 @@ using JapaneseStyleChanger;
 namespace JapaneseStyleChangerTest
 {
     [TestClass]
-    public class DearuCases : BaseClass
+    public class DearuCases
     {
 		// Generated text cases.
 
@@ -3110,26 +3110,30 @@ namespace JapaneseStyleChangerTest
 
 		// Postamble
 
+		private static TextStyleChanger Changer;
+
         [ClassInitialize]
-        public new static void ClassInitialize(TestContext context)
+        public static void ClassInitialize(TestContext context)
         {
-			BaseClass.ClassInitialize(context);
+			Changer = new TextStyleChanger
+			{
+				ChangeToJotai = true,
+				HtmlSyntax = true,
+			};
         }
 
         [ClassCleanup]
-        public new static void ClassCleanup()
+        public static void ClassCleanup()
         {
-			BaseClass.ClassCleanup();
+			Changer.Dispose();
+			Changer = null;
         }
 
         private static string ConvertText(string ketai, bool dearu)
         {
-            var analysis = Tagger.Parse(ketai);
-            var buffer = new EditBuffer(analysis);
-			Changer.PreferDearu = dearu;
-            Changer.ToJotai(buffer);
-            var jotai = Combiner.Combine(buffer);
-            return jotai;
+	        Changer.ChangeToJotai = true;
+			Changer.JotaiPreferences = dearu ? JotaiPreferences.PreferDearu : JotaiPreferences.None;
+			return Changer.ChangeText(ketai);
         }
     }
 }

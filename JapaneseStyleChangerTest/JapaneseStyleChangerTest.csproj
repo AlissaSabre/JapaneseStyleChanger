@@ -42,7 +42,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BaseClass.cs" />
+    <Compile Include="Helpers.cs" />
     <Compile Include="HtmlHandlerCases.cs">
       <DependentUpon>HtmlHandlerCases.tt</DependentUpon>
       <AutoGen>True</AutoGen>

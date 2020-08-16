@@ -127,7 +127,7 @@ using JapaneseStyleChanger;
 namespace JapaneseStyleChangerTest
 {
     [TestClass]
-    public class TextPairCases : BaseClass
+    public class TextPairCases
     {
 		// Generated text cases.
 
@@ -142,25 +142,27 @@ namespace JapaneseStyleChangerTest
 
 		// Postamble
 
+		private static TextStyleChanger Changer;
+
         [ClassInitialize]
-        public new static void ClassInitialize(TestContext context)
+        public static void ClassInitialize(TestContext context)
         {
-			BaseClass.ClassInitialize(context);
+			Changer = new TextStyleChanger
+			{
+				ChangeToJotai = true,
+			};
         }
 
         [ClassCleanup]
-        public new static void ClassCleanup()
+        public static void ClassCleanup()
         {
-			BaseClass.ClassCleanup();
+			Changer.Dispose();
+			Changer = null;
         }
 
         private static string ConvertText(string ketai)
         {
-            var analysis = Tagger.Parse(ketai);
-            var buffer = new EditBuffer(analysis);
-            Changer.ToJotai(buffer);
-            var jotai = Combiner.Combine(buffer);
-            return jotai;
+			return Changer.ChangeText(ketai);
         }
     }
 }

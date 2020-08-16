@@ -50,7 +50,7 @@ using JapaneseStyleChanger;
 namespace JapaneseStyleChangerTest
 {
     [TestClass]
-    public class SpacingAndWidthsCases : BaseClass
+    public class SpacingAndWidthsCases
     {
 		// Generated text cases.
 
@@ -71,24 +71,31 @@ namespace JapaneseStyleChangerTest
 
 		// Postamble
 
+		private static Tagger<WNode> Tagger;
+
+		private static TokenCombiner<WNode> Combiner;
+
 		[ClassInitialize]
-		public new static void ClassInitialize(TestContext context)
+		public static void ClassInitialize(TestContext context)
         {
-			BaseClass.ClassInitialize(context);
+			Tagger = Helpers.CreateTagger();
+			Combiner = Helpers.CreateTokenCombiner();
         }
 
 		[ClassCleanup]
-        public new static void ClassCleanup()
+        public static void ClassCleanup()
         {
-			BaseClass.ClassCleanup();
+			Combiner = null;
+			Tagger?.Dispose();
+			Tagger = null;
 		}
 
 		static string Rewrite(string source, CombineMode mode)
 		{
-			var analysis = Tagger.Parse(source);
+			var analyzed = Tagger.Parse(source);
 			Combiner.CombineMode = mode;
-            var jotai = Combiner.Combine(analysis);
-            return jotai;
+            var combined = Combiner.Combine(analyzed);
+            return combined;
 		}
 	}
 }
