@@ -177,10 +177,22 @@
 		DeX("359",	"&#X100000;",	"\U00100000"	),
 		DeX("360",	"&#X10FFFD;",	"\U0010FFFD"	),
 
+		//	ID		HTML			Clean
+		DeX("401",	"&plus;",		"+"				),
+		DeX("402",	"&Aacute;",		"\u00C1"		),
+		DeX("403",	"&aacute;",		"\u00E1"		),
+		DeX("404",	"&zwnj;",		"\u200C"		),
+		DeX("405",	"&zwj;",		"\u200D"		),
+		DeX("406",	"&notindot;",	"\u22F5\u0338"	),
+		DeX("407",	"&ThickSpace;",	"\u205F\u200A"	),
+		DeX("408",	"&nGt;",		"\u226B\u20D2"	),
+		DeX("409",	"&cups;",		"\u222A\uFE00"	),
+		DeX("410",	"&Mfr;",		"\U0001D510"	),
+
 		//	ID		HTML						Clean
-		Def("401",	"<i>a</i>",					"a"		),
-		Def("402",	"<i> a </i>",				" a "	),
-		Def("403",	"<i> <i> </i> a </i>",		"   a "	),
+		Def("501",	"<i>a</i>",					"a"		),
+		Def("502",	"<i> a </i>",				" a "	),
+		Def("503",	"<i> <i> </i> a </i>",		"   a "	),
 	};
 
 	// support functions
