@@ -16,7 +16,7 @@ namespace JapaneseStyleChanger
 
         private readonly IDictionary<int, List<WNode>> ConjugationTable;
 
-        public const double CostMixFactor = 0.7; // XXX XXX XXX
+        public const double CostMixFactor = 0.5; // 0.7; // So, finally, I'm stopping it... soon...
 
         public Conjugator(Tagger<WNode> tagger)
         {
@@ -58,6 +58,9 @@ namespace JapaneseStyleChanger
 
         public WNode[] ChooseBest(IList<IList<WNode>> nodes)
         {
+#if DEBUG
+            var cacs = DumpAllCosts(nodes);
+#endif
             var paths = new Path[nodes.Count][];
             paths[0] = new Path[nodes[0].Count];
             for (int i = 0; i < paths[0].Length; i++)
@@ -102,6 +105,57 @@ namespace JapaneseStyleChanger
             }
             return result;
         }
+
+#if DEBUG
+
+        public class CostAndCandidate
+        {
+            public double Cost;
+            public WNode[] Nodes;
+
+            public override string ToString()
+            {
+                return string.Format("{0,12:F2} {1}", Cost, string.Join("|", Nodes.Select(n => n.Surface)));
+            }
+        }
+
+        public IList<CostAndCandidate> DumpAllCosts(IList<IList<WNode>> candidate_nodes, int index = -1)
+        {
+            if (index < 0)
+            {
+                return DumpAllCosts(candidate_nodes, candidate_nodes.Count - 1).OrderBy(cap => cap.Cost).ToList();
+            }
+            else if (index == 0)
+            {
+                var list = new List<CostAndCandidate>(candidate_nodes[index].Count);
+                foreach (var n in candidate_nodes[index])
+                {
+                    var cost = n.WCost * (1 - CostMixFactor);
+                    var nodes = new WNode[] { n };
+                    list.Add(new CostAndCandidate { Cost = cost, Nodes = nodes });
+                }
+                return list;
+            }
+            else
+            {
+                var p = DumpAllCosts(candidate_nodes, index - 1);
+                var list = new List<CostAndCandidate>(p.Count * candidate_nodes[index].Count);
+                foreach (var n in candidate_nodes[index])
+                {
+                    foreach (var cac in p)
+                    {
+                        var cost = cac.Cost + Dictionaries.MixedCostIncrease(CostMixFactor, cac.Nodes[cac.Nodes.Length - 1], n);
+                        var nodes = new WNode[cac.Nodes.Length + 1];
+                        Array.Copy(cac.Nodes, nodes, cac.Nodes.Length);
+                        nodes[cac.Nodes.Length] = n;
+                        list.Add(new CostAndCandidate { Cost = cost, Nodes = nodes });
+                    }
+                }
+                return list;
+            }
+        }
+
+#endif
 
         private IDictionary<int, List<WNode>> BuildConjugationTable()
         {

@@ -20,7 +20,7 @@ namespace JapaneseStyleChanger
             Conjugator = new Conjugator(tagger);
         }
 
-        private static readonly WNode DummyNode_21642 = new WNode()
+        private static readonly WNode DummyNode_21642_da = new WNode()
         {
             Feature = "助動詞,*,*,*,助動詞-タ,終止形,,,だ,,だ,,,,,,,,,,,,,,,,,0,21642"
         };
@@ -48,6 +48,16 @@ namespace JapaneseStyleChanger
             6446,   // かしら
             7175,   // かも
             13520,  // さ
+        };
+
+        /// <summary>List of cTypes that require だ forms of 21642 (た/だ).</summary>
+        /// <param name="buffer"></param>
+        private static readonly string[] CTypesRequiringDa =
+        {
+            "五段-ガ行",
+            "五段-ナ行",
+            "五段-マ行",
+            "五段-バ行",
         };
 
         public void ToJotai(EditBuffer buffer)
@@ -102,7 +112,7 @@ namespace JapaneseStyleChanger
                                 possibilities = new IList<WNode>[4]
                                 {
                                     new[] { current.Prev },
-                                    Conjugator.ConjugateLoosely(DummyNode_22916, "連用形"),
+                                    Conjugator.ConjugateStrictly(DummyNode_22916, "連用形-一般"), // XXX
                                     Conjugator.ConjugateLoosely(DummyNode_1216, current.CForm),
                                     new[] { current.Next },
                                 };
@@ -154,8 +164,15 @@ namespace JapaneseStyleChanger
                                     // We handle several special cases manually.
                                     if (current.Next.Lemma_id == 21642) // 助動詞「た/だ」
                                     {
-                                        // consider both た forms and だ forms.
-                                        conjugations2 = conjugations2.Concat(Conjugator.ConjugateLoosely(DummyNode_21642, current.Next.CForm)).ToList();
+                                        // UniDic considers た and だ are the same word (lemma) with different orth.
+                                        // In UniDic, orth differences for a same word are usually differences in
+                                        // meaning (sentiment), so we usually try to preserve orth when conjugating.
+                                        // However, the distinction of た and だ is purely a grammatical phenomenon (IMHO),
+                                        // and we need to handle it in an exceptional way.
+                                        if (CTypesRequiringDa.Contains(current.Prev.CType))
+                                        {
+                                            conjugations2 = Conjugator.ConjugateLoosely(DummyNode_21642_da, current.Next.CForm);
+                                        }
                                     }
                                     else if (current.Next.Lemma_id == 19587) // 助動詞「ず」
                                     {

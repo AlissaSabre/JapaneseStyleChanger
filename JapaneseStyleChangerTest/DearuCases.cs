@@ -358,7 +358,7 @@ namespace JapaneseStyleChangerTest
 			Assert.AreEqual("欲しかった", result2, "Unexpected dearu text.");
         }
         [TestMethod]
-		[Ignore]
+		
         public void Test_Dearu_0034_欲しそうです()
         {
 			var result1 = ConvertText("欲しそうです", false);
@@ -608,7 +608,7 @@ namespace JapaneseStyleChangerTest
 			Assert.AreEqual("静かだった", result2, "Unexpected dearu text.");
         }
         [TestMethod]
-		[Ignore]
+		
         public void Test_Dearu_0059_読みそうです()
         {
 			var result1 = ConvertText("読みそうです", false);
@@ -638,7 +638,7 @@ namespace JapaneseStyleChangerTest
 			Assert.AreEqual("読みそうだった", result2, "Unexpected dearu text.");
         }
         [TestMethod]
-		[Ignore]
+		
         public void Test_Dearu_0062_来るようです()
         {
 			var result1 = ConvertText("来るようです", false);
@@ -1218,14 +1218,14 @@ namespace JapaneseStyleChangerTest
 			Assert.AreEqual("行くんだよ", result2, "Unexpected dearu text.");
         }
         [TestMethod]
-		[Ignore]
+		
         public void Test_Dearu_0120_行ったんです()
         {
 			var result1 = ConvertText("行ったんです", false);
 			Assert.AreEqual("行ったんだ", result1, "Unexpected jotai text (default).");
 
 			var result2 = ConvertText("行ったんです", true);
-			Assert.AreEqual("行ったのである", result2, "Unexpected dearu text.");
+			Assert.AreEqual("行ったんである", result2, "Unexpected dearu text.");
         }
         [TestMethod]
 		
@@ -1259,7 +1259,47 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0124_困りました()
+        public void Test_Dearu_0124_行ったのです()
+        {
+			var result1 = ConvertText("行ったのです", false);
+			Assert.AreEqual("行ったのだ", result1, "Unexpected jotai text (default).");
+
+			var result2 = ConvertText("行ったのです", true);
+			Assert.AreEqual("行ったのである", result2, "Unexpected dearu text.");
+        }
+        [TestMethod]
+		
+        public void Test_Dearu_0125_行ったのですな()
+        {
+			var result1 = ConvertText("行ったのですな", false);
+			Assert.AreEqual("行ったのだな", result1, "Unexpected jotai text (default).");
+
+			var result2 = ConvertText("行ったのですな", true);
+			Assert.AreEqual("行ったのだな", result2, "Unexpected dearu text.");
+        }
+        [TestMethod]
+		
+        public void Test_Dearu_0126_行ったのですね()
+        {
+			var result1 = ConvertText("行ったのですね", false);
+			Assert.AreEqual("行ったのだね", result1, "Unexpected jotai text (default).");
+
+			var result2 = ConvertText("行ったのですね", true);
+			Assert.AreEqual("行ったのだね", result2, "Unexpected dearu text.");
+        }
+        [TestMethod]
+		
+        public void Test_Dearu_0127_行ったのですよ()
+        {
+			var result1 = ConvertText("行ったのですよ", false);
+			Assert.AreEqual("行ったのだよ", result1, "Unexpected jotai text (default).");
+
+			var result2 = ConvertText("行ったのですよ", true);
+			Assert.AreEqual("行ったのだよ", result2, "Unexpected dearu text.");
+        }
+        [TestMethod]
+		
+        public void Test_Dearu_0128_困りました()
         {
 			var result1 = ConvertText("困りました", false);
 			Assert.AreEqual("困った", result1, "Unexpected jotai text (default).");
@@ -1269,7 +1309,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0125_三時ですね()
+        public void Test_Dearu_0129_三時ですね()
         {
 			var result1 = ConvertText("三時ですね", false);
 			Assert.AreEqual("三時だね", result1, "Unexpected jotai text (default).");
@@ -1279,7 +1319,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0126_出かけましたが()
+        public void Test_Dearu_0130_出かけましたが()
         {
 			var result1 = ConvertText("出かけましたが", false);
 			Assert.AreEqual("出かけたが", result1, "Unexpected jotai text (default).");
@@ -1289,7 +1329,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0127_暑いですな()
+        public void Test_Dearu_0131_暑いですな()
         {
 			var result1 = ConvertText("暑いですな", false);
 			Assert.AreEqual("暑いな", result1, "Unexpected jotai text (default).");
@@ -1299,7 +1339,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0128_暑いですなあ()
+        public void Test_Dearu_0132_暑いですなあ()
         {
 			var result1 = ConvertText("暑いですなあ", false);
 			Assert.AreEqual("暑いなあ", result1, "Unexpected jotai text (default).");
@@ -1309,7 +1349,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0129_暑いですね()
+        public void Test_Dearu_0133_暑いですね()
         {
 			var result1 = ConvertText("暑いですね", false);
 			Assert.AreEqual("暑いね", result1, "Unexpected jotai text (default).");
@@ -1319,7 +1359,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0130_暑いですよ()
+        public void Test_Dearu_0134_暑いですよ()
         {
 			var result1 = ConvertText("暑いですよ", false);
 			Assert.AreEqual("暑いよ", result1, "Unexpected jotai text (default).");
@@ -1329,7 +1369,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0131_暑いですわ()
+        public void Test_Dearu_0135_暑いですわ()
         {
 			var result1 = ConvertText("暑いですわ", false);
 			Assert.AreEqual("暑いわ", result1, "Unexpected jotai text (default).");
@@ -1339,7 +1379,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0132_食事にしましょうか()
+        public void Test_Dearu_0136_食事にしましょうか()
         {
 			var result1 = ConvertText("食事にしましょうか", false);
 			Assert.AreEqual("食事にしようか", result1, "Unexpected jotai text (default).");
@@ -1349,7 +1389,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0133_大丈夫ですか()
+        public void Test_Dearu_0137_大丈夫ですか()
         {
 			var result1 = ConvertText("大丈夫ですか", false);
 			Assert.AreEqual("大丈夫か", result1, "Unexpected jotai text (default).");
@@ -1359,7 +1399,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0134_田中さんは来ました_()
+        public void Test_Dearu_0138_田中さんは来ました_()
         {
 			var result1 = ConvertText("田中さんは来ました？", false);
 			Assert.AreEqual("田中さんは来た？", result1, "Unexpected jotai text (default).");
@@ -1369,7 +1409,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0135_田中さんは来るでしょうか()
+        public void Test_Dearu_0139_田中さんは来るでしょうか()
         {
 			var result1 = ConvertText("田中さんは来るでしょうか", false);
 			Assert.AreEqual("田中さんは来るだろうか", result1, "Unexpected jotai text (default).");
@@ -1379,7 +1419,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0136_読みましょうや()
+        public void Test_Dearu_0140_読みましょうや()
         {
 			var result1 = ConvertText("読みましょうや", false);
 			Assert.AreEqual("読もうや", result1, "Unexpected jotai text (default).");
@@ -1389,7 +1429,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0137_読みますか()
+        public void Test_Dearu_0141_読みますか()
         {
 			var result1 = ConvertText("読みますか", false);
 			Assert.AreEqual("読むか", result1, "Unexpected jotai text (default).");
@@ -1399,7 +1439,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0138_読みますかい()
+        public void Test_Dearu_0142_読みますかい()
         {
 			var result1 = ConvertText("読みますかい", false);
 			Assert.AreEqual("読むかい", result1, "Unexpected jotai text (default).");
@@ -1409,7 +1449,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0139_読みますかしら()
+        public void Test_Dearu_0143_読みますかしら()
         {
 			var result1 = ConvertText("読みますかしら", false);
 			Assert.AreEqual("読むかしら", result1, "Unexpected jotai text (default).");
@@ -1419,7 +1459,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0140_読みますかな()
+        public void Test_Dearu_0144_読みますかな()
         {
 			var result1 = ConvertText("読みますかな", false);
 			Assert.AreEqual("読むかな", result1, "Unexpected jotai text (default).");
@@ -1429,7 +1469,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0141_読みますかね()
+        public void Test_Dearu_0145_読みますかね()
         {
 			var result1 = ConvertText("読みますかね", false);
 			Assert.AreEqual("読むかね", result1, "Unexpected jotai text (default).");
@@ -1439,7 +1479,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0142_読みますかよ()
+        public void Test_Dearu_0146_読みますかよ()
         {
 			var result1 = ConvertText("読みますかよ", false);
 			Assert.AreEqual("読むかよ", result1, "Unexpected jotai text (default).");
@@ -1449,7 +1489,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0143_読みますこと()
+        public void Test_Dearu_0147_読みますこと()
         {
 			var result1 = ConvertText("読みますこと", false);
 			Assert.AreEqual("読むこと", result1, "Unexpected jotai text (default).");
@@ -1459,7 +1499,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0144_読みますぜ()
+        public void Test_Dearu_0148_読みますぜ()
         {
 			var result1 = ConvertText("読みますぜ", false);
 			Assert.AreEqual("読むぜ", result1, "Unexpected jotai text (default).");
@@ -1469,7 +1509,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0145_読みますぞ()
+        public void Test_Dearu_0149_読みますぞ()
         {
 			var result1 = ConvertText("読みますぞ", false);
 			Assert.AreEqual("読むぞ", result1, "Unexpected jotai text (default).");
@@ -1479,7 +1519,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0146_読みますとも()
+        public void Test_Dearu_0150_読みますとも()
         {
 			var result1 = ConvertText("読みますとも", false);
 			Assert.AreEqual("読むとも", result1, "Unexpected jotai text (default).");
@@ -1489,7 +1529,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0147_読みますな()
+        public void Test_Dearu_0151_読みますな()
         {
 			var result1 = ConvertText("読みますな", false);
 			Assert.AreEqual("読むな", result1, "Unexpected jotai text (default).");
@@ -1499,7 +1539,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0148_読みますなあ()
+        public void Test_Dearu_0152_読みますなあ()
         {
 			var result1 = ConvertText("読みますなあ", false);
 			Assert.AreEqual("読むなあ", result1, "Unexpected jotai text (default).");
@@ -1509,7 +1549,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0149_読みますね()
+        public void Test_Dearu_0153_読みますね()
         {
 			var result1 = ConvertText("読みますね", false);
 			Assert.AreEqual("読むね", result1, "Unexpected jotai text (default).");
@@ -1519,7 +1559,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0150_読みますの()
+        public void Test_Dearu_0154_読みますの()
         {
 			var result1 = ConvertText("読みますの", false);
 			Assert.AreEqual("読むの", result1, "Unexpected jotai text (default).");
@@ -1529,7 +1569,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0151_読みますよ()
+        public void Test_Dearu_0155_読みますよ()
         {
 			var result1 = ConvertText("読みますよ", false);
 			Assert.AreEqual("読むよ", result1, "Unexpected jotai text (default).");
@@ -1539,7 +1579,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0152_読みますわ()
+        public void Test_Dearu_0156_読みますわ()
         {
 			var result1 = ConvertText("読みますわ", false);
 			Assert.AreEqual("読むわ", result1, "Unexpected jotai text (default).");
@@ -1549,7 +1589,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0153_読みまっさ()
+        public void Test_Dearu_0157_読みまっさ()
         {
 			var result1 = ConvertText("読みまっさ", false);
 			Assert.AreEqual("読むさ", result1, "Unexpected jotai text (default).");
@@ -1558,8 +1598,8 @@ namespace JapaneseStyleChangerTest
 			Assert.AreEqual("読むさ", result2, "Unexpected dearu text.");
         }
         [TestMethod]
-		[Ignore]
-        public void Test_Dearu_0154_読みましたか()
+		
+        public void Test_Dearu_0158_読みましたか()
         {
 			var result1 = ConvertText("読みましたか", false);
 			Assert.AreEqual("読んだか", result1, "Unexpected jotai text (default).");
@@ -1568,8 +1608,8 @@ namespace JapaneseStyleChangerTest
 			Assert.AreEqual("読んだか", result2, "Unexpected dearu text.");
         }
         [TestMethod]
-		[Ignore]
-        public void Test_Dearu_0155_読みましたかい()
+		
+        public void Test_Dearu_0159_読みましたかい()
         {
 			var result1 = ConvertText("読みましたかい", false);
 			Assert.AreEqual("読んだかい", result1, "Unexpected jotai text (default).");
@@ -1578,8 +1618,8 @@ namespace JapaneseStyleChangerTest
 			Assert.AreEqual("読んだかい", result2, "Unexpected dearu text.");
         }
         [TestMethod]
-		[Ignore]
-        public void Test_Dearu_0156_読みましたかしら()
+		
+        public void Test_Dearu_0160_読みましたかしら()
         {
 			var result1 = ConvertText("読みましたかしら", false);
 			Assert.AreEqual("読んだかしら", result1, "Unexpected jotai text (default).");
@@ -1588,8 +1628,8 @@ namespace JapaneseStyleChangerTest
 			Assert.AreEqual("読んだかしら", result2, "Unexpected dearu text.");
         }
         [TestMethod]
-		[Ignore]
-        public void Test_Dearu_0157_読みましたかな()
+		
+        public void Test_Dearu_0161_読みましたかな()
         {
 			var result1 = ConvertText("読みましたかな", false);
 			Assert.AreEqual("読んだかな", result1, "Unexpected jotai text (default).");
@@ -1598,8 +1638,8 @@ namespace JapaneseStyleChangerTest
 			Assert.AreEqual("読んだかな", result2, "Unexpected dearu text.");
         }
         [TestMethod]
-		[Ignore]
-        public void Test_Dearu_0158_読みましたかね()
+		
+        public void Test_Dearu_0162_読みましたかね()
         {
 			var result1 = ConvertText("読みましたかね", false);
 			Assert.AreEqual("読んだかね", result1, "Unexpected jotai text (default).");
@@ -1608,8 +1648,8 @@ namespace JapaneseStyleChangerTest
 			Assert.AreEqual("読んだかね", result2, "Unexpected dearu text.");
         }
         [TestMethod]
-		[Ignore]
-        public void Test_Dearu_0159_読みましたかよ()
+		
+        public void Test_Dearu_0163_読みましたかよ()
         {
 			var result1 = ConvertText("読みましたかよ", false);
 			Assert.AreEqual("読んだかよ", result1, "Unexpected jotai text (default).");
@@ -1618,8 +1658,8 @@ namespace JapaneseStyleChangerTest
 			Assert.AreEqual("読んだかよ", result2, "Unexpected dearu text.");
         }
         [TestMethod]
-		[Ignore]
-        public void Test_Dearu_0160_読みましたこと()
+		
+        public void Test_Dearu_0164_読みましたこと()
         {
 			var result1 = ConvertText("読みましたこと", false);
 			Assert.AreEqual("読んだこと", result1, "Unexpected jotai text (default).");
@@ -1628,8 +1668,8 @@ namespace JapaneseStyleChangerTest
 			Assert.AreEqual("読んだこと", result2, "Unexpected dearu text.");
         }
         [TestMethod]
-		[Ignore]
-        public void Test_Dearu_0161_読みましたぜ()
+		
+        public void Test_Dearu_0165_読みましたぜ()
         {
 			var result1 = ConvertText("読みましたぜ", false);
 			Assert.AreEqual("読んだぜ", result1, "Unexpected jotai text (default).");
@@ -1638,8 +1678,8 @@ namespace JapaneseStyleChangerTest
 			Assert.AreEqual("読んだぜ", result2, "Unexpected dearu text.");
         }
         [TestMethod]
-		[Ignore]
-        public void Test_Dearu_0162_読みましたぞ()
+		
+        public void Test_Dearu_0166_読みましたぞ()
         {
 			var result1 = ConvertText("読みましたぞ", false);
 			Assert.AreEqual("読んだぞ", result1, "Unexpected jotai text (default).");
@@ -1648,8 +1688,8 @@ namespace JapaneseStyleChangerTest
 			Assert.AreEqual("読んだぞ", result2, "Unexpected dearu text.");
         }
         [TestMethod]
-		[Ignore]
-        public void Test_Dearu_0163_読みましたとも()
+		
+        public void Test_Dearu_0167_読みましたとも()
         {
 			var result1 = ConvertText("読みましたとも", false);
 			Assert.AreEqual("読んだとも", result1, "Unexpected jotai text (default).");
@@ -1658,8 +1698,8 @@ namespace JapaneseStyleChangerTest
 			Assert.AreEqual("読んだとも", result2, "Unexpected dearu text.");
         }
         [TestMethod]
-		[Ignore]
-        public void Test_Dearu_0164_読みましたな()
+		
+        public void Test_Dearu_0168_読みましたな()
         {
 			var result1 = ConvertText("読みましたな", false);
 			Assert.AreEqual("読んだな", result1, "Unexpected jotai text (default).");
@@ -1668,8 +1708,8 @@ namespace JapaneseStyleChangerTest
 			Assert.AreEqual("読んだな", result2, "Unexpected dearu text.");
         }
         [TestMethod]
-		[Ignore]
-        public void Test_Dearu_0165_読みましたなあ()
+		
+        public void Test_Dearu_0169_読みましたなあ()
         {
 			var result1 = ConvertText("読みましたなあ", false);
 			Assert.AreEqual("読んだなあ", result1, "Unexpected jotai text (default).");
@@ -1678,8 +1718,8 @@ namespace JapaneseStyleChangerTest
 			Assert.AreEqual("読んだなあ", result2, "Unexpected dearu text.");
         }
         [TestMethod]
-		[Ignore]
-        public void Test_Dearu_0166_読みましたね()
+		
+        public void Test_Dearu_0170_読みましたね()
         {
 			var result1 = ConvertText("読みましたね", false);
 			Assert.AreEqual("読んだね", result1, "Unexpected jotai text (default).");
@@ -1688,8 +1728,8 @@ namespace JapaneseStyleChangerTest
 			Assert.AreEqual("読んだね", result2, "Unexpected dearu text.");
         }
         [TestMethod]
-		[Ignore]
-        public void Test_Dearu_0167_読みましたの()
+		
+        public void Test_Dearu_0171_読みましたの()
         {
 			var result1 = ConvertText("読みましたの", false);
 			Assert.AreEqual("読んだの", result1, "Unexpected jotai text (default).");
@@ -1698,8 +1738,8 @@ namespace JapaneseStyleChangerTest
 			Assert.AreEqual("読んだの", result2, "Unexpected dearu text.");
         }
         [TestMethod]
-		[Ignore]
-        public void Test_Dearu_0168_読みましたよ()
+		
+        public void Test_Dearu_0172_読みましたよ()
         {
 			var result1 = ConvertText("読みましたよ", false);
 			Assert.AreEqual("読んだよ", result1, "Unexpected jotai text (default).");
@@ -1708,8 +1748,8 @@ namespace JapaneseStyleChangerTest
 			Assert.AreEqual("読んだよ", result2, "Unexpected dearu text.");
         }
         [TestMethod]
-		[Ignore]
-        public void Test_Dearu_0169_読みましたわ()
+		
+        public void Test_Dearu_0173_読みましたわ()
         {
 			var result1 = ConvertText("読みましたわ", false);
 			Assert.AreEqual("読んだわ", result1, "Unexpected jotai text (default).");
@@ -1718,8 +1758,8 @@ namespace JapaneseStyleChangerTest
 			Assert.AreEqual("読んだわ", result2, "Unexpected dearu text.");
         }
         [TestMethod]
-		[Ignore]
-        public void Test_Dearu_0170_読みましたさ()
+		
+        public void Test_Dearu_0174_読みましたさ()
         {
 			var result1 = ConvertText("読みましたさ", false);
 			Assert.AreEqual("読んださ", result1, "Unexpected jotai text (default).");
@@ -1729,7 +1769,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0171_書きましたか()
+        public void Test_Dearu_0175_書きましたか()
         {
 			var result1 = ConvertText("書きましたか", false);
 			Assert.AreEqual("書いたか", result1, "Unexpected jotai text (default).");
@@ -1739,7 +1779,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0172_書きましたかい()
+        public void Test_Dearu_0176_書きましたかい()
         {
 			var result1 = ConvertText("書きましたかい", false);
 			Assert.AreEqual("書いたかい", result1, "Unexpected jotai text (default).");
@@ -1749,7 +1789,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0173_書きましたかしら()
+        public void Test_Dearu_0177_書きましたかしら()
         {
 			var result1 = ConvertText("書きましたかしら", false);
 			Assert.AreEqual("書いたかしら", result1, "Unexpected jotai text (default).");
@@ -1759,7 +1799,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0174_書きましたかな()
+        public void Test_Dearu_0178_書きましたかな()
         {
 			var result1 = ConvertText("書きましたかな", false);
 			Assert.AreEqual("書いたかな", result1, "Unexpected jotai text (default).");
@@ -1769,7 +1809,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0175_書きましたかね()
+        public void Test_Dearu_0179_書きましたかね()
         {
 			var result1 = ConvertText("書きましたかね", false);
 			Assert.AreEqual("書いたかね", result1, "Unexpected jotai text (default).");
@@ -1779,7 +1819,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0176_書きましたかよ()
+        public void Test_Dearu_0180_書きましたかよ()
         {
 			var result1 = ConvertText("書きましたかよ", false);
 			Assert.AreEqual("書いたかよ", result1, "Unexpected jotai text (default).");
@@ -1789,7 +1829,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0177_書きましたこと()
+        public void Test_Dearu_0181_書きましたこと()
         {
 			var result1 = ConvertText("書きましたこと", false);
 			Assert.AreEqual("書いたこと", result1, "Unexpected jotai text (default).");
@@ -1799,7 +1839,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0178_書きましたぜ()
+        public void Test_Dearu_0182_書きましたぜ()
         {
 			var result1 = ConvertText("書きましたぜ", false);
 			Assert.AreEqual("書いたぜ", result1, "Unexpected jotai text (default).");
@@ -1809,7 +1849,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0179_書きましたぞ()
+        public void Test_Dearu_0183_書きましたぞ()
         {
 			var result1 = ConvertText("書きましたぞ", false);
 			Assert.AreEqual("書いたぞ", result1, "Unexpected jotai text (default).");
@@ -1819,7 +1859,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0180_書きましたとも()
+        public void Test_Dearu_0184_書きましたとも()
         {
 			var result1 = ConvertText("書きましたとも", false);
 			Assert.AreEqual("書いたとも", result1, "Unexpected jotai text (default).");
@@ -1829,7 +1869,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0181_書きましたな()
+        public void Test_Dearu_0185_書きましたな()
         {
 			var result1 = ConvertText("書きましたな", false);
 			Assert.AreEqual("書いたな", result1, "Unexpected jotai text (default).");
@@ -1839,7 +1879,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0182_書きましたなあ()
+        public void Test_Dearu_0186_書きましたなあ()
         {
 			var result1 = ConvertText("書きましたなあ", false);
 			Assert.AreEqual("書いたなあ", result1, "Unexpected jotai text (default).");
@@ -1849,7 +1889,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0183_書きましたね()
+        public void Test_Dearu_0187_書きましたね()
         {
 			var result1 = ConvertText("書きましたね", false);
 			Assert.AreEqual("書いたね", result1, "Unexpected jotai text (default).");
@@ -1859,7 +1899,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0184_書きましたの()
+        public void Test_Dearu_0188_書きましたの()
         {
 			var result1 = ConvertText("書きましたの", false);
 			Assert.AreEqual("書いたの", result1, "Unexpected jotai text (default).");
@@ -1869,7 +1909,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0185_書きましたよ()
+        public void Test_Dearu_0189_書きましたよ()
         {
 			var result1 = ConvertText("書きましたよ", false);
 			Assert.AreEqual("書いたよ", result1, "Unexpected jotai text (default).");
@@ -1879,7 +1919,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0186_書きましたわ()
+        public void Test_Dearu_0190_書きましたわ()
         {
 			var result1 = ConvertText("書きましたわ", false);
 			Assert.AreEqual("書いたわ", result1, "Unexpected jotai text (default).");
@@ -1889,7 +1929,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0187_書きましたさ()
+        public void Test_Dearu_0191_書きましたさ()
         {
 			var result1 = ConvertText("書きましたさ", false);
 			Assert.AreEqual("書いたさ", result1, "Unexpected jotai text (default).");
@@ -1899,7 +1939,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0188_待ちましたか()
+        public void Test_Dearu_0192_待ちましたか()
         {
 			var result1 = ConvertText("待ちましたか", false);
 			Assert.AreEqual("待ったか", result1, "Unexpected jotai text (default).");
@@ -1909,7 +1949,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0189_待ちましたかい()
+        public void Test_Dearu_0193_待ちましたかい()
         {
 			var result1 = ConvertText("待ちましたかい", false);
 			Assert.AreEqual("待ったかい", result1, "Unexpected jotai text (default).");
@@ -1919,7 +1959,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0190_待ちましたかしら()
+        public void Test_Dearu_0194_待ちましたかしら()
         {
 			var result1 = ConvertText("待ちましたかしら", false);
 			Assert.AreEqual("待ったかしら", result1, "Unexpected jotai text (default).");
@@ -1929,7 +1969,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0191_待ちましたかな()
+        public void Test_Dearu_0195_待ちましたかな()
         {
 			var result1 = ConvertText("待ちましたかな", false);
 			Assert.AreEqual("待ったかな", result1, "Unexpected jotai text (default).");
@@ -1939,7 +1979,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0192_待ちましたかね()
+        public void Test_Dearu_0196_待ちましたかね()
         {
 			var result1 = ConvertText("待ちましたかね", false);
 			Assert.AreEqual("待ったかね", result1, "Unexpected jotai text (default).");
@@ -1949,7 +1989,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0193_待ちましたかよ()
+        public void Test_Dearu_0197_待ちましたかよ()
         {
 			var result1 = ConvertText("待ちましたかよ", false);
 			Assert.AreEqual("待ったかよ", result1, "Unexpected jotai text (default).");
@@ -1959,7 +1999,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0194_待ちましたこと()
+        public void Test_Dearu_0198_待ちましたこと()
         {
 			var result1 = ConvertText("待ちましたこと", false);
 			Assert.AreEqual("待ったこと", result1, "Unexpected jotai text (default).");
@@ -1969,7 +2009,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0195_待ちましたぜ()
+        public void Test_Dearu_0199_待ちましたぜ()
         {
 			var result1 = ConvertText("待ちましたぜ", false);
 			Assert.AreEqual("待ったぜ", result1, "Unexpected jotai text (default).");
@@ -1979,7 +2019,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0196_待ちましたぞ()
+        public void Test_Dearu_0200_待ちましたぞ()
         {
 			var result1 = ConvertText("待ちましたぞ", false);
 			Assert.AreEqual("待ったぞ", result1, "Unexpected jotai text (default).");
@@ -1989,7 +2029,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0197_待ちましたとも()
+        public void Test_Dearu_0201_待ちましたとも()
         {
 			var result1 = ConvertText("待ちましたとも", false);
 			Assert.AreEqual("待ったとも", result1, "Unexpected jotai text (default).");
@@ -1999,7 +2039,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0198_待ちましたな()
+        public void Test_Dearu_0202_待ちましたな()
         {
 			var result1 = ConvertText("待ちましたな", false);
 			Assert.AreEqual("待ったな", result1, "Unexpected jotai text (default).");
@@ -2009,7 +2049,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0199_待ちましたなあ()
+        public void Test_Dearu_0203_待ちましたなあ()
         {
 			var result1 = ConvertText("待ちましたなあ", false);
 			Assert.AreEqual("待ったなあ", result1, "Unexpected jotai text (default).");
@@ -2019,7 +2059,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0200_待ちましたね()
+        public void Test_Dearu_0204_待ちましたね()
         {
 			var result1 = ConvertText("待ちましたね", false);
 			Assert.AreEqual("待ったね", result1, "Unexpected jotai text (default).");
@@ -2029,7 +2069,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0201_待ちましたの()
+        public void Test_Dearu_0205_待ちましたの()
         {
 			var result1 = ConvertText("待ちましたの", false);
 			Assert.AreEqual("待ったの", result1, "Unexpected jotai text (default).");
@@ -2039,7 +2079,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0202_待ちましたよ()
+        public void Test_Dearu_0206_待ちましたよ()
         {
 			var result1 = ConvertText("待ちましたよ", false);
 			Assert.AreEqual("待ったよ", result1, "Unexpected jotai text (default).");
@@ -2049,7 +2089,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0203_待ちましたわ()
+        public void Test_Dearu_0207_待ちましたわ()
         {
 			var result1 = ConvertText("待ちましたわ", false);
 			Assert.AreEqual("待ったわ", result1, "Unexpected jotai text (default).");
@@ -2059,7 +2099,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0204_待ちましたさ()
+        public void Test_Dearu_0208_待ちましたさ()
         {
 			var result1 = ConvertText("待ちましたさ", false);
 			Assert.AreEqual("待ったさ", result1, "Unexpected jotai text (default).");
@@ -2069,7 +2109,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0205_話しましたか()
+        public void Test_Dearu_0209_話しましたか()
         {
 			var result1 = ConvertText("話しましたか", false);
 			Assert.AreEqual("話したか", result1, "Unexpected jotai text (default).");
@@ -2079,7 +2119,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0206_話しましたかい()
+        public void Test_Dearu_0210_話しましたかい()
         {
 			var result1 = ConvertText("話しましたかい", false);
 			Assert.AreEqual("話したかい", result1, "Unexpected jotai text (default).");
@@ -2089,7 +2129,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0207_話しましたかしら()
+        public void Test_Dearu_0211_話しましたかしら()
         {
 			var result1 = ConvertText("話しましたかしら", false);
 			Assert.AreEqual("話したかしら", result1, "Unexpected jotai text (default).");
@@ -2099,7 +2139,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0208_話しましたかな()
+        public void Test_Dearu_0212_話しましたかな()
         {
 			var result1 = ConvertText("話しましたかな", false);
 			Assert.AreEqual("話したかな", result1, "Unexpected jotai text (default).");
@@ -2109,7 +2149,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0209_話しましたかね()
+        public void Test_Dearu_0213_話しましたかね()
         {
 			var result1 = ConvertText("話しましたかね", false);
 			Assert.AreEqual("話したかね", result1, "Unexpected jotai text (default).");
@@ -2119,7 +2159,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0210_話しましたかよ()
+        public void Test_Dearu_0214_話しましたかよ()
         {
 			var result1 = ConvertText("話しましたかよ", false);
 			Assert.AreEqual("話したかよ", result1, "Unexpected jotai text (default).");
@@ -2129,7 +2169,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0211_話しましたこと()
+        public void Test_Dearu_0215_話しましたこと()
         {
 			var result1 = ConvertText("話しましたこと", false);
 			Assert.AreEqual("話したこと", result1, "Unexpected jotai text (default).");
@@ -2139,7 +2179,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0212_話しましたぜ()
+        public void Test_Dearu_0216_話しましたぜ()
         {
 			var result1 = ConvertText("話しましたぜ", false);
 			Assert.AreEqual("話したぜ", result1, "Unexpected jotai text (default).");
@@ -2149,7 +2189,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0213_話しましたぞ()
+        public void Test_Dearu_0217_話しましたぞ()
         {
 			var result1 = ConvertText("話しましたぞ", false);
 			Assert.AreEqual("話したぞ", result1, "Unexpected jotai text (default).");
@@ -2159,7 +2199,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0214_話しましたとも()
+        public void Test_Dearu_0218_話しましたとも()
         {
 			var result1 = ConvertText("話しましたとも", false);
 			Assert.AreEqual("話したとも", result1, "Unexpected jotai text (default).");
@@ -2169,7 +2209,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0215_話しましたな()
+        public void Test_Dearu_0219_話しましたな()
         {
 			var result1 = ConvertText("話しましたな", false);
 			Assert.AreEqual("話したな", result1, "Unexpected jotai text (default).");
@@ -2179,7 +2219,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0216_話しましたなあ()
+        public void Test_Dearu_0220_話しましたなあ()
         {
 			var result1 = ConvertText("話しましたなあ", false);
 			Assert.AreEqual("話したなあ", result1, "Unexpected jotai text (default).");
@@ -2189,7 +2229,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0217_話しましたね()
+        public void Test_Dearu_0221_話しましたね()
         {
 			var result1 = ConvertText("話しましたね", false);
 			Assert.AreEqual("話したね", result1, "Unexpected jotai text (default).");
@@ -2199,7 +2239,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0218_話しましたの()
+        public void Test_Dearu_0222_話しましたの()
         {
 			var result1 = ConvertText("話しましたの", false);
 			Assert.AreEqual("話したの", result1, "Unexpected jotai text (default).");
@@ -2209,7 +2249,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0219_話しましたよ()
+        public void Test_Dearu_0223_話しましたよ()
         {
 			var result1 = ConvertText("話しましたよ", false);
 			Assert.AreEqual("話したよ", result1, "Unexpected jotai text (default).");
@@ -2219,7 +2259,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0220_話しましたわ()
+        public void Test_Dearu_0224_話しましたわ()
         {
 			var result1 = ConvertText("話しましたわ", false);
 			Assert.AreEqual("話したわ", result1, "Unexpected jotai text (default).");
@@ -2229,7 +2269,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0221_話しましたさ()
+        public void Test_Dearu_0225_話しましたさ()
         {
 			var result1 = ConvertText("話しましたさ", false);
 			Assert.AreEqual("話したさ", result1, "Unexpected jotai text (default).");
@@ -2239,7 +2279,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0222_捨てましたか()
+        public void Test_Dearu_0226_捨てましたか()
         {
 			var result1 = ConvertText("捨てましたか", false);
 			Assert.AreEqual("捨てたか", result1, "Unexpected jotai text (default).");
@@ -2249,7 +2289,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0223_捨てましたかい()
+        public void Test_Dearu_0227_捨てましたかい()
         {
 			var result1 = ConvertText("捨てましたかい", false);
 			Assert.AreEqual("捨てたかい", result1, "Unexpected jotai text (default).");
@@ -2259,7 +2299,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0224_捨てましたかしら()
+        public void Test_Dearu_0228_捨てましたかしら()
         {
 			var result1 = ConvertText("捨てましたかしら", false);
 			Assert.AreEqual("捨てたかしら", result1, "Unexpected jotai text (default).");
@@ -2269,7 +2309,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0225_捨てましたかな()
+        public void Test_Dearu_0229_捨てましたかな()
         {
 			var result1 = ConvertText("捨てましたかな", false);
 			Assert.AreEqual("捨てたかな", result1, "Unexpected jotai text (default).");
@@ -2279,7 +2319,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0226_捨てましたかね()
+        public void Test_Dearu_0230_捨てましたかね()
         {
 			var result1 = ConvertText("捨てましたかね", false);
 			Assert.AreEqual("捨てたかね", result1, "Unexpected jotai text (default).");
@@ -2289,7 +2329,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0227_捨てましたかよ()
+        public void Test_Dearu_0231_捨てましたかよ()
         {
 			var result1 = ConvertText("捨てましたかよ", false);
 			Assert.AreEqual("捨てたかよ", result1, "Unexpected jotai text (default).");
@@ -2299,7 +2339,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0228_捨てましたこと()
+        public void Test_Dearu_0232_捨てましたこと()
         {
 			var result1 = ConvertText("捨てましたこと", false);
 			Assert.AreEqual("捨てたこと", result1, "Unexpected jotai text (default).");
@@ -2309,7 +2349,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0229_捨てましたぜ()
+        public void Test_Dearu_0233_捨てましたぜ()
         {
 			var result1 = ConvertText("捨てましたぜ", false);
 			Assert.AreEqual("捨てたぜ", result1, "Unexpected jotai text (default).");
@@ -2319,7 +2359,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0230_捨てましたぞ()
+        public void Test_Dearu_0234_捨てましたぞ()
         {
 			var result1 = ConvertText("捨てましたぞ", false);
 			Assert.AreEqual("捨てたぞ", result1, "Unexpected jotai text (default).");
@@ -2329,7 +2369,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0231_捨てましたとも()
+        public void Test_Dearu_0235_捨てましたとも()
         {
 			var result1 = ConvertText("捨てましたとも", false);
 			Assert.AreEqual("捨てたとも", result1, "Unexpected jotai text (default).");
@@ -2339,7 +2379,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0232_捨てましたな()
+        public void Test_Dearu_0236_捨てましたな()
         {
 			var result1 = ConvertText("捨てましたな", false);
 			Assert.AreEqual("捨てたな", result1, "Unexpected jotai text (default).");
@@ -2349,7 +2389,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0233_捨てましたなあ()
+        public void Test_Dearu_0237_捨てましたなあ()
         {
 			var result1 = ConvertText("捨てましたなあ", false);
 			Assert.AreEqual("捨てたなあ", result1, "Unexpected jotai text (default).");
@@ -2359,7 +2399,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0234_捨てましたね()
+        public void Test_Dearu_0238_捨てましたね()
         {
 			var result1 = ConvertText("捨てましたね", false);
 			Assert.AreEqual("捨てたね", result1, "Unexpected jotai text (default).");
@@ -2369,7 +2409,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0235_捨てましたの()
+        public void Test_Dearu_0239_捨てましたの()
         {
 			var result1 = ConvertText("捨てましたの", false);
 			Assert.AreEqual("捨てたの", result1, "Unexpected jotai text (default).");
@@ -2379,7 +2419,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0236_捨てましたよ()
+        public void Test_Dearu_0240_捨てましたよ()
         {
 			var result1 = ConvertText("捨てましたよ", false);
 			Assert.AreEqual("捨てたよ", result1, "Unexpected jotai text (default).");
@@ -2389,7 +2429,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0237_捨てましたわ()
+        public void Test_Dearu_0241_捨てましたわ()
         {
 			var result1 = ConvertText("捨てましたわ", false);
 			Assert.AreEqual("捨てたわ", result1, "Unexpected jotai text (default).");
@@ -2399,7 +2439,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0238_捨てましたさ()
+        public void Test_Dearu_0242_捨てましたさ()
         {
 			var result1 = ConvertText("捨てましたさ", false);
 			Assert.AreEqual("捨てたさ", result1, "Unexpected jotai text (default).");
@@ -2409,7 +2449,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0239_生きましたか()
+        public void Test_Dearu_0243_生きましたか()
         {
 			var result1 = ConvertText("生きましたか", false);
 			Assert.AreEqual("生きたか", result1, "Unexpected jotai text (default).");
@@ -2419,7 +2459,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0240_生きましたかい()
+        public void Test_Dearu_0244_生きましたかい()
         {
 			var result1 = ConvertText("生きましたかい", false);
 			Assert.AreEqual("生きたかい", result1, "Unexpected jotai text (default).");
@@ -2429,7 +2469,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0241_生きましたかしら()
+        public void Test_Dearu_0245_生きましたかしら()
         {
 			var result1 = ConvertText("生きましたかしら", false);
 			Assert.AreEqual("生きたかしら", result1, "Unexpected jotai text (default).");
@@ -2439,7 +2479,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0242_生きましたかな()
+        public void Test_Dearu_0246_生きましたかな()
         {
 			var result1 = ConvertText("生きましたかな", false);
 			Assert.AreEqual("生きたかな", result1, "Unexpected jotai text (default).");
@@ -2449,7 +2489,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0243_生きましたかね()
+        public void Test_Dearu_0247_生きましたかね()
         {
 			var result1 = ConvertText("生きましたかね", false);
 			Assert.AreEqual("生きたかね", result1, "Unexpected jotai text (default).");
@@ -2459,7 +2499,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0244_生きましたかよ()
+        public void Test_Dearu_0248_生きましたかよ()
         {
 			var result1 = ConvertText("生きましたかよ", false);
 			Assert.AreEqual("生きたかよ", result1, "Unexpected jotai text (default).");
@@ -2469,7 +2509,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0245_生きましたこと()
+        public void Test_Dearu_0249_生きましたこと()
         {
 			var result1 = ConvertText("生きましたこと", false);
 			Assert.AreEqual("生きたこと", result1, "Unexpected jotai text (default).");
@@ -2479,7 +2519,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0246_生きましたぜ()
+        public void Test_Dearu_0250_生きましたぜ()
         {
 			var result1 = ConvertText("生きましたぜ", false);
 			Assert.AreEqual("生きたぜ", result1, "Unexpected jotai text (default).");
@@ -2489,7 +2529,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0247_生きましたぞ()
+        public void Test_Dearu_0251_生きましたぞ()
         {
 			var result1 = ConvertText("生きましたぞ", false);
 			Assert.AreEqual("生きたぞ", result1, "Unexpected jotai text (default).");
@@ -2499,7 +2539,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0248_生きましたとも()
+        public void Test_Dearu_0252_生きましたとも()
         {
 			var result1 = ConvertText("生きましたとも", false);
 			Assert.AreEqual("生きたとも", result1, "Unexpected jotai text (default).");
@@ -2509,7 +2549,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0249_生きましたな()
+        public void Test_Dearu_0253_生きましたな()
         {
 			var result1 = ConvertText("生きましたな", false);
 			Assert.AreEqual("生きたな", result1, "Unexpected jotai text (default).");
@@ -2519,7 +2559,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0250_生きましたなあ()
+        public void Test_Dearu_0254_生きましたなあ()
         {
 			var result1 = ConvertText("生きましたなあ", false);
 			Assert.AreEqual("生きたなあ", result1, "Unexpected jotai text (default).");
@@ -2529,7 +2569,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0251_生きましたね()
+        public void Test_Dearu_0255_生きましたね()
         {
 			var result1 = ConvertText("生きましたね", false);
 			Assert.AreEqual("生きたね", result1, "Unexpected jotai text (default).");
@@ -2539,7 +2579,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0252_生きましたの()
+        public void Test_Dearu_0256_生きましたの()
         {
 			var result1 = ConvertText("生きましたの", false);
 			Assert.AreEqual("生きたの", result1, "Unexpected jotai text (default).");
@@ -2549,7 +2589,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0253_生きましたよ()
+        public void Test_Dearu_0257_生きましたよ()
         {
 			var result1 = ConvertText("生きましたよ", false);
 			Assert.AreEqual("生きたよ", result1, "Unexpected jotai text (default).");
@@ -2559,7 +2599,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0254_生きましたわ()
+        public void Test_Dearu_0258_生きましたわ()
         {
 			var result1 = ConvertText("生きましたわ", false);
 			Assert.AreEqual("生きたわ", result1, "Unexpected jotai text (default).");
@@ -2569,7 +2609,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0255_生きましたさ()
+        public void Test_Dearu_0259_生きましたさ()
         {
 			var result1 = ConvertText("生きましたさ", false);
 			Assert.AreEqual("生きたさ", result1, "Unexpected jotai text (default).");
@@ -2579,7 +2619,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0256_読むでしょうや()
+        public void Test_Dearu_0260_読むでしょうや()
         {
 			var result1 = ConvertText("読むでしょうや", false);
 			Assert.AreEqual("読むだろうや", result1, "Unexpected jotai text (default).");
@@ -2589,7 +2629,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0257_読むですか()
+        public void Test_Dearu_0261_読むですか()
         {
 			var result1 = ConvertText("読むですか", false);
 			Assert.AreEqual("読むか", result1, "Unexpected jotai text (default).");
@@ -2599,7 +2639,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0258_読むですかい()
+        public void Test_Dearu_0262_読むですかい()
         {
 			var result1 = ConvertText("読むですかい", false);
 			Assert.AreEqual("読むかい", result1, "Unexpected jotai text (default).");
@@ -2609,7 +2649,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0259_読むですかしら()
+        public void Test_Dearu_0263_読むですかしら()
         {
 			var result1 = ConvertText("読むですかしら", false);
 			Assert.AreEqual("読むかしら", result1, "Unexpected jotai text (default).");
@@ -2619,7 +2659,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0260_読むですかな()
+        public void Test_Dearu_0264_読むですかな()
         {
 			var result1 = ConvertText("読むですかな", false);
 			Assert.AreEqual("読むかな", result1, "Unexpected jotai text (default).");
@@ -2629,7 +2669,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0261_読むですかね()
+        public void Test_Dearu_0265_読むですかね()
         {
 			var result1 = ConvertText("読むですかね", false);
 			Assert.AreEqual("読むかね", result1, "Unexpected jotai text (default).");
@@ -2639,7 +2679,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0262_読むですかよ()
+        public void Test_Dearu_0266_読むですかよ()
         {
 			var result1 = ConvertText("読むですかよ", false);
 			Assert.AreEqual("読むかよ", result1, "Unexpected jotai text (default).");
@@ -2649,7 +2689,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0263_読むですこと()
+        public void Test_Dearu_0267_読むですこと()
         {
 			var result1 = ConvertText("読むですこと", false);
 			Assert.AreEqual("読むこと", result1, "Unexpected jotai text (default).");
@@ -2659,7 +2699,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0264_読むですぜ()
+        public void Test_Dearu_0268_読むですぜ()
         {
 			var result1 = ConvertText("読むですぜ", false);
 			Assert.AreEqual("読むぜ", result1, "Unexpected jotai text (default).");
@@ -2669,7 +2709,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0265_読むですぞ()
+        public void Test_Dearu_0269_読むですぞ()
         {
 			var result1 = ConvertText("読むですぞ", false);
 			Assert.AreEqual("読むぞ", result1, "Unexpected jotai text (default).");
@@ -2679,7 +2719,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0266_読むですとも()
+        public void Test_Dearu_0270_読むですとも()
         {
 			var result1 = ConvertText("読むですとも", false);
 			Assert.AreEqual("読むとも", result1, "Unexpected jotai text (default).");
@@ -2689,7 +2729,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0267_読むですな()
+        public void Test_Dearu_0271_読むですな()
         {
 			var result1 = ConvertText("読むですな", false);
 			Assert.AreEqual("読むな", result1, "Unexpected jotai text (default).");
@@ -2699,7 +2739,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0268_読むですなあ()
+        public void Test_Dearu_0272_読むですなあ()
         {
 			var result1 = ConvertText("読むですなあ", false);
 			Assert.AreEqual("読むなあ", result1, "Unexpected jotai text (default).");
@@ -2709,7 +2749,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0269_読むですね()
+        public void Test_Dearu_0273_読むですね()
         {
 			var result1 = ConvertText("読むですね", false);
 			Assert.AreEqual("読むね", result1, "Unexpected jotai text (default).");
@@ -2719,7 +2759,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0270_読むですの()
+        public void Test_Dearu_0274_読むですの()
         {
 			var result1 = ConvertText("読むですの", false);
 			Assert.AreEqual("読むの", result1, "Unexpected jotai text (default).");
@@ -2729,7 +2769,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0271_読むですよ()
+        public void Test_Dearu_0275_読むですよ()
         {
 			var result1 = ConvertText("読むですよ", false);
 			Assert.AreEqual("読むよ", result1, "Unexpected jotai text (default).");
@@ -2739,7 +2779,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0272_読むですわ()
+        public void Test_Dearu_0276_読むですわ()
         {
 			var result1 = ConvertText("読むですわ", false);
 			Assert.AreEqual("読むわ", result1, "Unexpected jotai text (default).");
@@ -2749,7 +2789,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0273_熱いでしょうや()
+        public void Test_Dearu_0277_熱いでしょうや()
         {
 			var result1 = ConvertText("熱いでしょうや", false);
 			Assert.AreEqual("熱いだろうや", result1, "Unexpected jotai text (default).");
@@ -2759,7 +2799,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0274_熱いですか()
+        public void Test_Dearu_0278_熱いですか()
         {
 			var result1 = ConvertText("熱いですか", false);
 			Assert.AreEqual("熱いか", result1, "Unexpected jotai text (default).");
@@ -2769,7 +2809,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0275_熱いですかい()
+        public void Test_Dearu_0279_熱いですかい()
         {
 			var result1 = ConvertText("熱いですかい", false);
 			Assert.AreEqual("熱いかい", result1, "Unexpected jotai text (default).");
@@ -2779,7 +2819,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0276_熱いですかな()
+        public void Test_Dearu_0280_熱いですかな()
         {
 			var result1 = ConvertText("熱いですかな", false);
 			Assert.AreEqual("熱いかな", result1, "Unexpected jotai text (default).");
@@ -2789,7 +2829,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0277_熱いですかね()
+        public void Test_Dearu_0281_熱いですかね()
         {
 			var result1 = ConvertText("熱いですかね", false);
 			Assert.AreEqual("熱いかね", result1, "Unexpected jotai text (default).");
@@ -2799,7 +2839,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0278_熱いですこと()
+        public void Test_Dearu_0282_熱いですこと()
         {
 			var result1 = ConvertText("熱いですこと", false);
 			Assert.AreEqual("熱いこと", result1, "Unexpected jotai text (default).");
@@ -2809,7 +2849,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0279_熱いですぜ()
+        public void Test_Dearu_0283_熱いですぜ()
         {
 			var result1 = ConvertText("熱いですぜ", false);
 			Assert.AreEqual("熱いぜ", result1, "Unexpected jotai text (default).");
@@ -2819,7 +2859,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0280_熱いですぞ()
+        public void Test_Dearu_0284_熱いですぞ()
         {
 			var result1 = ConvertText("熱いですぞ", false);
 			Assert.AreEqual("熱いぞ", result1, "Unexpected jotai text (default).");
@@ -2829,7 +2869,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0281_熱いですとも()
+        public void Test_Dearu_0285_熱いですとも()
         {
 			var result1 = ConvertText("熱いですとも", false);
 			Assert.AreEqual("熱いとも", result1, "Unexpected jotai text (default).");
@@ -2839,7 +2879,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0282_熱いですな()
+        public void Test_Dearu_0286_熱いですな()
         {
 			var result1 = ConvertText("熱いですな", false);
 			Assert.AreEqual("熱いな", result1, "Unexpected jotai text (default).");
@@ -2849,7 +2889,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0283_熱いですなあ()
+        public void Test_Dearu_0287_熱いですなあ()
         {
 			var result1 = ConvertText("熱いですなあ", false);
 			Assert.AreEqual("熱いなあ", result1, "Unexpected jotai text (default).");
@@ -2859,7 +2899,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0284_熱いですね()
+        public void Test_Dearu_0288_熱いですね()
         {
 			var result1 = ConvertText("熱いですね", false);
 			Assert.AreEqual("熱いね", result1, "Unexpected jotai text (default).");
@@ -2869,7 +2909,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0285_熱いですの()
+        public void Test_Dearu_0289_熱いですの()
         {
 			var result1 = ConvertText("熱いですの", false);
 			Assert.AreEqual("熱いの", result1, "Unexpected jotai text (default).");
@@ -2879,7 +2919,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0286_熱いですよ()
+        public void Test_Dearu_0290_熱いですよ()
         {
 			var result1 = ConvertText("熱いですよ", false);
 			Assert.AreEqual("熱いよ", result1, "Unexpected jotai text (default).");
@@ -2889,7 +2929,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0287_熱いですわ()
+        public void Test_Dearu_0291_熱いですわ()
         {
 			var result1 = ConvertText("熱いですわ", false);
 			Assert.AreEqual("熱いわ", result1, "Unexpected jotai text (default).");
@@ -2899,7 +2939,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0288_本でしょうや()
+        public void Test_Dearu_0292_本でしょうや()
         {
 			var result1 = ConvertText("本でしょうや", false);
 			Assert.AreEqual("本だろうや", result1, "Unexpected jotai text (default).");
@@ -2909,7 +2949,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0289_本ですか()
+        public void Test_Dearu_0293_本ですか()
         {
 			var result1 = ConvertText("本ですか", false);
 			Assert.AreEqual("本か", result1, "Unexpected jotai text (default).");
@@ -2919,7 +2959,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0290_本ですかい()
+        public void Test_Dearu_0294_本ですかい()
         {
 			var result1 = ConvertText("本ですかい", false);
 			Assert.AreEqual("本かい", result1, "Unexpected jotai text (default).");
@@ -2929,7 +2969,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0291_本ですかしら()
+        public void Test_Dearu_0295_本ですかしら()
         {
 			var result1 = ConvertText("本ですかしら", false);
 			Assert.AreEqual("本かしら", result1, "Unexpected jotai text (default).");
@@ -2939,7 +2979,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0292_本ですかな()
+        public void Test_Dearu_0296_本ですかな()
         {
 			var result1 = ConvertText("本ですかな", false);
 			Assert.AreEqual("本かな", result1, "Unexpected jotai text (default).");
@@ -2949,7 +2989,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0293_本ですかね()
+        public void Test_Dearu_0297_本ですかね()
         {
 			var result1 = ConvertText("本ですかね", false);
 			Assert.AreEqual("本かね", result1, "Unexpected jotai text (default).");
@@ -2959,7 +2999,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0294_本ですかよ()
+        public void Test_Dearu_0298_本ですかよ()
         {
 			var result1 = ConvertText("本ですかよ", false);
 			Assert.AreEqual("本かよ", result1, "Unexpected jotai text (default).");
@@ -2968,18 +3008,8 @@ namespace JapaneseStyleChangerTest
 			Assert.AreEqual("本かよ", result2, "Unexpected dearu text.");
         }
         [TestMethod]
-		[Ignore]
-        public void Test_Dearu_0295_本ですこと()
-        {
-			var result1 = ConvertText("本ですこと", false);
-			Assert.AreEqual("本だこと", result1, "Unexpected jotai text (default).");
-
-			var result2 = ConvertText("本ですこと", true);
-			Assert.AreEqual("本だこと", result2, "Unexpected dearu text.");
-        }
-        [TestMethod]
 		
-        public void Test_Dearu_0296_本ですぜ()
+        public void Test_Dearu_0299_本ですぜ()
         {
 			var result1 = ConvertText("本ですぜ", false);
 			Assert.AreEqual("本だぜ", result1, "Unexpected jotai text (default).");
@@ -2989,7 +3019,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0297_本ですぞ()
+        public void Test_Dearu_0300_本ですぞ()
         {
 			var result1 = ConvertText("本ですぞ", false);
 			Assert.AreEqual("本だぞ", result1, "Unexpected jotai text (default).");
@@ -2999,7 +3029,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0298_本ですとも()
+        public void Test_Dearu_0301_本ですとも()
         {
 			var result1 = ConvertText("本ですとも", false);
 			Assert.AreEqual("本だとも", result1, "Unexpected jotai text (default).");
@@ -3009,7 +3039,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0299_本ですな()
+        public void Test_Dearu_0302_本ですな()
         {
 			var result1 = ConvertText("本ですな", false);
 			Assert.AreEqual("本だな", result1, "Unexpected jotai text (default).");
@@ -3019,7 +3049,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0300_本ですなあ()
+        public void Test_Dearu_0303_本ですなあ()
         {
 			var result1 = ConvertText("本ですなあ", false);
 			Assert.AreEqual("本だなあ", result1, "Unexpected jotai text (default).");
@@ -3029,7 +3059,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0301_本ですね()
+        public void Test_Dearu_0304_本ですね()
         {
 			var result1 = ConvertText("本ですね", false);
 			Assert.AreEqual("本だね", result1, "Unexpected jotai text (default).");
@@ -3038,8 +3068,8 @@ namespace JapaneseStyleChangerTest
 			Assert.AreEqual("本だね", result2, "Unexpected dearu text.");
         }
         [TestMethod]
-		[Ignore]
-        public void Test_Dearu_0302_本ですの()
+		
+        public void Test_Dearu_0305_本ですの()
         {
 			var result1 = ConvertText("本ですの", false);
 			Assert.AreEqual("本だの", result1, "Unexpected jotai text (default).");
@@ -3049,7 +3079,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0303_本ですよ()
+        public void Test_Dearu_0306_本ですよ()
         {
 			var result1 = ConvertText("本ですよ", false);
 			Assert.AreEqual("本だよ", result1, "Unexpected jotai text (default).");
@@ -3059,7 +3089,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0304_本ですわ()
+        public void Test_Dearu_0307_本ですわ()
         {
 			var result1 = ConvertText("本ですわ", false);
 			Assert.AreEqual("本だわ", result1, "Unexpected jotai text (default).");
@@ -3069,7 +3099,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0305_眠くなったでしょうか()
+        public void Test_Dearu_0308_眠くなったでしょうか()
         {
 			var result1 = ConvertText("眠くなったでしょうか", false);
 			Assert.AreEqual("眠くなっただろうか", result1, "Unexpected jotai text (default).");
@@ -3079,7 +3109,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0306_眠くなったのでしょうか()
+        public void Test_Dearu_0309_眠くなったのでしょうか()
         {
 			var result1 = ConvertText("眠くなったのでしょうか", false);
 			Assert.AreEqual("眠くなったのだろうか", result1, "Unexpected jotai text (default).");
@@ -3089,7 +3119,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0307_話しますな()
+        public void Test_Dearu_0310_話しますな()
         {
 			var result1 = ConvertText("話しますな", false);
 			Assert.AreEqual("話すな", result1, "Unexpected jotai text (default).");
@@ -3099,7 +3129,7 @@ namespace JapaneseStyleChangerTest
         }
         [TestMethod]
 		
-        public void Test_Dearu_0308_赤勝ちませ白勝ちませ()
+        public void Test_Dearu_0311_赤勝ちませ白勝ちませ()
         {
 			var result1 = ConvertText("赤勝ちませ白勝ちませ", false);
 			Assert.AreEqual("赤勝て白勝て", result1, "Unexpected jotai text (default).");
