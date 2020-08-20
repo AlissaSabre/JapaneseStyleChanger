@@ -3137,6 +3137,196 @@ namespace JapaneseStyleChangerTest
 			var result2 = ConvertText("赤勝ちませ白勝ちませ", true);
 			Assert.AreEqual("赤勝て白勝て", result2, "Unexpected dearu text.");
         }
+        [TestMethod]
+		
+        public void Test_Dearu_0312_これです()
+        {
+			var result1 = ConvertText("これです", false);
+			Assert.AreEqual("これだ", result1, "Unexpected jotai text (default).");
+
+			var result2 = ConvertText("これです", true);
+			Assert.AreEqual("これである", result2, "Unexpected dearu text.");
+        }
+        [TestMethod]
+		
+        public void Test_Dearu_0313_これのです()
+        {
+			var result1 = ConvertText("これのです", false);
+			Assert.AreEqual("これのだ", result1, "Unexpected jotai text (default).");
+
+			var result2 = ConvertText("これのです", true);
+			Assert.AreEqual("これのである", result2, "Unexpected dearu text.");
+        }
+        [TestMethod]
+		
+        public void Test_Dearu_0314_これをです()
+        {
+			var result1 = ConvertText("これをです", false);
+			Assert.AreEqual("これをだ", result1, "Unexpected jotai text (default).");
+
+			var result2 = ConvertText("これをです", true);
+			Assert.AreEqual("これをである", result2, "Unexpected dearu text.");
+        }
+        [TestMethod]
+		
+        public void Test_Dearu_0315_これにです()
+        {
+			var result1 = ConvertText("これにです", false);
+			Assert.AreEqual("これにだ", result1, "Unexpected jotai text (default).");
+
+			var result2 = ConvertText("これにです", true);
+			Assert.AreEqual("これにである", result2, "Unexpected dearu text.");
+        }
+        [TestMethod]
+		
+        public void Test_Dearu_0316_これへです()
+        {
+			var result1 = ConvertText("これへです", false);
+			Assert.AreEqual("これへだ", result1, "Unexpected jotai text (default).");
+
+			var result2 = ConvertText("これへです", true);
+			Assert.AreEqual("これへである", result2, "Unexpected dearu text.");
+        }
+        [TestMethod]
+		
+        public void Test_Dearu_0317_これとです()
+        {
+			var result1 = ConvertText("これとです", false);
+			Assert.AreEqual("これとだ", result1, "Unexpected jotai text (default).");
+
+			var result2 = ConvertText("これとです", true);
+			Assert.AreEqual("これとである", result2, "Unexpected dearu text.");
+        }
+        [TestMethod]
+		
+        public void Test_Dearu_0318_これからです()
+        {
+			var result1 = ConvertText("これからです", false);
+			Assert.AreEqual("これからだ", result1, "Unexpected jotai text (default).");
+
+			var result2 = ConvertText("これからです", true);
+			Assert.AreEqual("これからである", result2, "Unexpected dearu text.");
+        }
+        [TestMethod]
+		
+        public void Test_Dearu_0319_これだけです()
+        {
+			var result1 = ConvertText("これだけです", false);
+			Assert.AreEqual("これだけだ", result1, "Unexpected jotai text (default).");
+
+			var result2 = ConvertText("これだけです", true);
+			Assert.AreEqual("これだけである", result2, "Unexpected dearu text.");
+        }
+        [TestMethod]
+		
+        public void Test_Dearu_0320_これのみです()
+        {
+			var result1 = ConvertText("これのみです", false);
+			Assert.AreEqual("これのみだ", result1, "Unexpected jotai text (default).");
+
+			var result2 = ConvertText("これのみです", true);
+			Assert.AreEqual("これのみである", result2, "Unexpected dearu text.");
+        }
+        [TestMethod]
+		
+        public void Test_Dearu_0321_これほどです()
+        {
+			var result1 = ConvertText("これほどです", false);
+			Assert.AreEqual("これほどだ", result1, "Unexpected jotai text (default).");
+
+			var result2 = ConvertText("これほどです", true);
+			Assert.AreEqual("これほどである", result2, "Unexpected dearu text.");
+        }
+        [TestMethod]
+		
+        public void Test_Dearu_0322_これこそです()
+        {
+			var result1 = ConvertText("これこそです", false);
+			Assert.AreEqual("これこそだ", result1, "Unexpected jotai text (default).");
+
+			var result2 = ConvertText("これこそです", true);
+			Assert.AreEqual("これこそである", result2, "Unexpected dearu text.");
+        }
+        [TestMethod]
+		
+        public void Test_Dearu_0323_これさえです()
+        {
+			var result1 = ConvertText("これさえです", false);
+			Assert.AreEqual("これさえだ", result1, "Unexpected jotai text (default).");
+
+			var result2 = ConvertText("これさえです", true);
+			Assert.AreEqual("これさえである", result2, "Unexpected dearu text.");
+        }
+        [TestMethod]
+		
+        public void Test_Dearu_0324_これもです()
+        {
+			var result1 = ConvertText("これもです", false);
+			Assert.AreEqual("これもだ", result1, "Unexpected jotai text (default).");
+
+			var result2 = ConvertText("これもです", true);
+			Assert.AreEqual("これもである", result2, "Unexpected dearu text.");
+        }
+        [TestMethod]
+		
+        public void Test_Dearu_0325_こればかりです()
+        {
+			var result1 = ConvertText("こればかりです", false);
+			Assert.AreEqual("こればかりだ", result1, "Unexpected jotai text (default).");
+
+			var result2 = ConvertText("こればかりです", true);
+			Assert.AreEqual("こればかりである", result2, "Unexpected dearu text.");
+        }
+        [TestMethod]
+		
+        public void Test_Dearu_0326_これまでです()
+        {
+			var result1 = ConvertText("これまでです", false);
+			Assert.AreEqual("これまでだ", result1, "Unexpected jotai text (default).");
+
+			var result2 = ConvertText("これまでです", true);
+			Assert.AreEqual("これまでである", result2, "Unexpected dearu text.");
+        }
+        [TestMethod]
+		
+        public void Test_Dearu_0327_これなどです()
+        {
+			var result1 = ConvertText("これなどです", false);
+			Assert.AreEqual("これなどだ", result1, "Unexpected jotai text (default).");
+
+			var result2 = ConvertText("これなどです", true);
+			Assert.AreEqual("これなどである", result2, "Unexpected dearu text.");
+        }
+        [TestMethod]
+		
+        public void Test_Dearu_0328_これです()
+        {
+			var result1 = ConvertText("これです", false);
+			Assert.AreEqual("これだ", result1, "Unexpected jotai text (default).");
+
+			var result2 = ConvertText("これです", true);
+			Assert.AreEqual("これである", result2, "Unexpected dearu text.");
+        }
+        [TestMethod]
+		
+        public void Test_Dearu_0329_これです()
+        {
+			var result1 = ConvertText("これです", false);
+			Assert.AreEqual("これだ", result1, "Unexpected jotai text (default).");
+
+			var result2 = ConvertText("これです", true);
+			Assert.AreEqual("これである", result2, "Unexpected dearu text.");
+        }
+        [TestMethod]
+		
+        public void Test_Dearu_0330_これです()
+        {
+			var result1 = ConvertText("これです", false);
+			Assert.AreEqual("これだ", result1, "Unexpected jotai text (default).");
+
+			var result2 = ConvertText("これです", true);
+			Assert.AreEqual("これである", result2, "Unexpected dearu text.");
+        }
 
 		// Postamble
 
