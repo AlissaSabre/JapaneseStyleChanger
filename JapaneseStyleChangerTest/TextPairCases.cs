@@ -1061,6 +1061,18 @@ namespace JapaneseStyleChangerTest
 			var result = ConvertText("雨ですのに外に出ます");
 			Assert.AreEqual("雨なのに外に出る", result, "Unexpected jotai text.");
         }
+        [TestMethod]
+        public void Test_JT_0174_置いてありません()
+        {
+			var result = ConvertText("置いてありません");
+			Assert.AreEqual("置いてない", result, "Unexpected jotai text.");
+        }
+        [TestMethod]
+        public void Test_JT_0175_置いてありませんでした()
+        {
+			var result = ConvertText("置いてありませんでした");
+			Assert.AreEqual("置いてなかった", result, "Unexpected jotai text.");
+        }
 
 		// Postamble
 
