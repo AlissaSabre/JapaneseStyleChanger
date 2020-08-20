@@ -168,5 +168,12 @@ namespace JapaneseStyleChanger
         {
             return (List as IEnumerable).GetEnumerator();
         }
+
+        /// <summary>Returns a string representation primarily for debugging.</summary>
+        /// <returns>A series of <see cref="WNode.Surface"/> strings.</returns>
+        public override string ToString()
+        {
+            return string.Join("/", List.Select(n => n.Surface));
+        }
     }
 }
