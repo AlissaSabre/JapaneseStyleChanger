@@ -108,62 +108,72 @@ namespace JapaneseStyleChanger
 
 #if DEBUG
 
-        public class CostAndCandidate
+        public struct CostAndCandidate
         {
-            public double Cost;
+            public long Cost;
             public WNode[] Nodes;
 
             public override string ToString()
             {
-                return string.Format("{0,12:F2} {1}", Cost, string.Join("|", Nodes.Select(n => n.Surface)));
+                return string.Format("{0,12} {1}", Cost, string.Join("/", Nodes.Select(n => n.Surface)));
             }
         }
 
-        public IList<CostAndCandidate> DumpAllCosts(IList<IList<WNode>> candidate_nodes, int index = -1)
+        public IList<CostAndCandidate> DumpAllCosts(IList<IList<WNode>> candidate_nodes)
         {
-            if (index < 0)
+            if (candidate_nodes.Count == 0) return new CostAndCandidate[0];
+
+            var list = new List<CostAndCandidate>();
+            foreach (var n in candidate_nodes[0])
             {
-                return DumpAllCosts(candidate_nodes, candidate_nodes.Count - 1).OrderBy(cap => cap.Cost).ToList();
+                var cost = n.WCost;
+                var nodes = new WNode[] { n };
+                list.Add(new CostAndCandidate { Cost = cost, Nodes = nodes });
             }
-            else if (index == 0)
+
+            var p = new List<CostAndCandidate>();
+            for (int index = 1; index < candidate_nodes.Count; index++)
             {
-                var list = new List<CostAndCandidate>(candidate_nodes[index].Count);
-                foreach (var n in candidate_nodes[index])
-                {
-                    var cost = n.WCost * (1 - CostMixFactor);
-                    var nodes = new WNode[] { n };
-                    list.Add(new CostAndCandidate { Cost = cost, Nodes = nodes });
-                }
-                return list;
-            }
-            else
-            {
-                var p = DumpAllCosts(candidate_nodes, index - 1);
-                var list = new List<CostAndCandidate>(p.Count * candidate_nodes[index].Count);
+                (list, p) = (p, list);
+                list.Clear();
                 foreach (var n in candidate_nodes[index])
                 {
                     foreach (var cac in p)
                     {
-                        var cost = cac.Cost + Dictionaries.MixedCostIncrease(CostMixFactor, cac.Nodes[cac.Nodes.Length - 1], n);
+                        var cost = cac.Cost + Dictionaries.TotalCostIncrease(cac.Nodes[cac.Nodes.Length - 1], n);
                         var nodes = new WNode[cac.Nodes.Length + 1];
                         Array.Copy(cac.Nodes, nodes, cac.Nodes.Length);
                         nodes[cac.Nodes.Length] = n;
                         list.Add(new CostAndCandidate { Cost = cost, Nodes = nodes });
                     }
                 }
-                return list;
             }
+
+            list.Sort((x, y) => Comparer<long>.Default.Compare(x.Cost, y.Cost));
+
+            return list;
         }
 
 #endif
 
+        /// <summary>
+        /// Collects nodes for conjugating words from dictionaries.
+        /// </summary>
+        /// <returns>Nodes for conjugating words grouped by their lemma_ids.</returns>
+        /// <remarks>
+        /// We put all 助詞 nodes in the resulting dictionary,
+        /// although they are usually not considered conjugating,
+        /// so that <see cref="ConjugateLoosely(WNode, string)"/> returns useful results
+        /// for those 助詞 that changes forms like たり/だり.
+        /// See <see cref="LanguageStyleChanger.VocalizedWords"/> and its use for details.
+        /// </remarks>
         private IDictionary<int, List<WNode>> BuildConjugationTable()
         {
             // Group conjugating nodes per their Lemma_id
             var table = new ConcurrentDictionary<int, List<WNode>>();
             Parallel.ForEach(Dictionaries.GetAllNodes(), node =>
             {
-                if (node.CType != "*")
+                if (node.CType != "*" || node.Pos1 == "助詞")
                 {
                     node.Surface = node.Orth;
                     node.Length = node.RLength = node.Surface.Length;
