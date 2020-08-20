@@ -16,7 +16,7 @@ namespace JapaneseStyleChanger
 
         private readonly IDictionary<int, List<WNode>> ConjugationTable;
 
-        public const double CostMixFactor = 0.5; // 0.7; // So, finally, I'm stopping it... soon...
+        public const double CostMixFactor = 0.6; // 
 
         public Conjugator(Tagger<WNode> tagger)
         {
@@ -110,12 +110,12 @@ namespace JapaneseStyleChanger
 
         public struct CostAndCandidate
         {
-            public long Cost;
+            public double Cost;
             public WNode[] Nodes;
 
             public override string ToString()
             {
-                return string.Format("{0,12} {1}", Cost, string.Join("/", Nodes.Select(n => n.Surface)));
+                return string.Format("{0,12:F1} {1}", Cost, string.Join("/", Nodes.Select(n => n.Surface)));
             }
         }
 
@@ -126,7 +126,7 @@ namespace JapaneseStyleChanger
             var list = new List<CostAndCandidate>();
             foreach (var n in candidate_nodes[0])
             {
-                var cost = n.WCost;
+                var cost = (1 - CostMixFactor) * n.WCost;
                 var nodes = new WNode[] { n };
                 list.Add(new CostAndCandidate { Cost = cost, Nodes = nodes });
             }
@@ -140,7 +140,7 @@ namespace JapaneseStyleChanger
                 {
                     foreach (var cac in p)
                     {
-                        var cost = cac.Cost + Dictionaries.TotalCostIncrease(cac.Nodes[cac.Nodes.Length - 1], n);
+                        var cost = cac.Cost + Dictionaries.MixedCostIncrease(CostMixFactor, cac.Nodes[cac.Nodes.Length - 1], n);
                         var nodes = new WNode[cac.Nodes.Length + 1];
                         Array.Copy(cac.Nodes, nodes, cac.Nodes.Length);
                         nodes[cac.Nodes.Length] = n;
@@ -149,7 +149,7 @@ namespace JapaneseStyleChanger
                 }
             }
 
-            list.Sort((x, y) => Comparer<long>.Default.Compare(x.Cost, y.Cost));
+            list.Sort((x, y) => Comparer<double>.Default.Compare(x.Cost, y.Cost));
 
             return list;
         }

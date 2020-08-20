@@ -164,6 +164,12 @@ namespace JapaneseStyleChanger
                                 if (VocalizingCTypes.Contains(current.Prev.CType))
                                 {
                                     conjugations2 = Conjugator.ConjugateLoosely(vocalized_node, current.Next.CForm) ?? new[] { vocalized_node };
+                                    // We've been relying only on MeCab's cost to choose an appropriate set of conjugations.
+                                    // However, jotaing a phrase 泳ぎましたり causes comparison of 泳ぎだり and 泳いだり,
+                                    // and it seems UniDic gives the former a lower cost (and CostMixFactor can't workaround it).
+                                    // To avoid producing 泳ぎだり, I decided to add a special non-cost criteria here.
+                                    var euphonism = conjugations1.Where(n => n.CForm.EndsWith("音便")).ToArray();
+                                    if (euphonism.Length > 0) conjugations1 = euphonism;
                                 }
                             }
                             else if (current.Next.Lemma_id == 19587) // 助動詞「ず」
