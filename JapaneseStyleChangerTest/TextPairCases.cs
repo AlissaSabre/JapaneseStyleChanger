@@ -90,901 +90,973 @@ namespace JapaneseStyleChangerTest
 			Assert.AreEqual("包む", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0012_書きましょう()
+        public void Test_JT_0012_書きました()
+        {
+			var result = ConvertText("書きました");
+			Assert.AreEqual("書いた", result, "Unexpected jotai text.");
+        }
+        [TestMethod]
+        public void Test_JT_0013_見ました()
+        {
+			var result = ConvertText("見ました");
+			Assert.AreEqual("見た", result, "Unexpected jotai text.");
+        }
+        [TestMethod]
+        public void Test_JT_0014_食べました()
+        {
+			var result = ConvertText("食べました");
+			Assert.AreEqual("食べた", result, "Unexpected jotai text.");
+        }
+        [TestMethod]
+        public void Test_JT_0015_読みました()
+        {
+			var result = ConvertText("読みました");
+			Assert.AreEqual("読んだ", result, "Unexpected jotai text.");
+        }
+        [TestMethod]
+        public void Test_JT_0016_貼りました()
+        {
+			var result = ConvertText("貼りました");
+			Assert.AreEqual("貼った", result, "Unexpected jotai text.");
+        }
+        [TestMethod]
+        public void Test_JT_0017_来ました()
+        {
+			var result = ConvertText("来ました");
+			Assert.AreEqual("来た", result, "Unexpected jotai text.");
+        }
+        [TestMethod]
+        public void Test_JT_0018_勉強しました()
+        {
+			var result = ConvertText("勉強しました");
+			Assert.AreEqual("勉強した", result, "Unexpected jotai text.");
+        }
+        [TestMethod]
+        public void Test_JT_0019_命じました()
+        {
+			var result = ConvertText("命じました");
+			Assert.AreEqual("命じた", result, "Unexpected jotai text.");
+        }
+        [TestMethod]
+        public void Test_JT_0020_泳ぎました()
+        {
+			var result = ConvertText("泳ぎました");
+			Assert.AreEqual("泳いだ", result, "Unexpected jotai text.");
+        }
+        [TestMethod]
+        public void Test_JT_0021_死にました()
+        {
+			var result = ConvertText("死にました");
+			Assert.AreEqual("死んだ", result, "Unexpected jotai text.");
+        }
+        [TestMethod]
+        public void Test_JT_0022_転びました()
+        {
+			var result = ConvertText("転びました");
+			Assert.AreEqual("転んだ", result, "Unexpected jotai text.");
+        }
+        [TestMethod]
+        public void Test_JT_0023_包みました()
+        {
+			var result = ConvertText("包みました");
+			Assert.AreEqual("包んだ", result, "Unexpected jotai text.");
+        }
+        [TestMethod]
+        public void Test_JT_0024_書きましょう()
         {
 			var result = ConvertText("書きましょう");
 			Assert.AreEqual("書こう", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0013_見ましょう()
+        public void Test_JT_0025_見ましょう()
         {
 			var result = ConvertText("見ましょう");
 			Assert.AreEqual("見よう", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0014_食べましょう()
+        public void Test_JT_0026_食べましょう()
         {
 			var result = ConvertText("食べましょう");
 			Assert.AreEqual("食べよう", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0015_読みましょう()
+        public void Test_JT_0027_読みましょう()
         {
 			var result = ConvertText("読みましょう");
 			Assert.AreEqual("読もう", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0016_貼りましょう()
+        public void Test_JT_0028_貼りましょう()
         {
 			var result = ConvertText("貼りましょう");
 			Assert.AreEqual("貼ろう", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0017_来ましょう()
+        public void Test_JT_0029_来ましょう()
         {
 			var result = ConvertText("来ましょう");
 			Assert.AreEqual("来よう", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0018_勉強しましょう()
+        public void Test_JT_0030_勉強しましょう()
         {
 			var result = ConvertText("勉強しましょう");
 			Assert.AreEqual("勉強しよう", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0019_命じましょう()
+        public void Test_JT_0031_命じましょう()
         {
 			var result = ConvertText("命じましょう");
 			Assert.AreEqual("命じよう", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0020_泳ぎましょう()
+        public void Test_JT_0032_泳ぎましょう()
         {
 			var result = ConvertText("泳ぎましょう");
 			Assert.AreEqual("泳ごう", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0021_死にましょう()
+        public void Test_JT_0033_死にましょう()
         {
 			var result = ConvertText("死にましょう");
 			Assert.AreEqual("死のう", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0022_転びましょう()
+        public void Test_JT_0034_転びましょう()
         {
 			var result = ConvertText("転びましょう");
 			Assert.AreEqual("転ぼう", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0023_包みましょう()
+        public void Test_JT_0035_包みましょう()
         {
 			var result = ConvertText("包みましょう");
 			Assert.AreEqual("包もう", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0024_書きません()
+        public void Test_JT_0036_書きません()
         {
 			var result = ConvertText("書きません");
 			Assert.AreEqual("書かない", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0025_見ません()
+        public void Test_JT_0037_見ません()
         {
 			var result = ConvertText("見ません");
 			Assert.AreEqual("見ない", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0026_食べません()
+        public void Test_JT_0038_食べません()
         {
 			var result = ConvertText("食べません");
 			Assert.AreEqual("食べない", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0027_読みません()
+        public void Test_JT_0039_読みません()
         {
 			var result = ConvertText("読みません");
 			Assert.AreEqual("読まない", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0028_貼りません()
+        public void Test_JT_0040_貼りません()
         {
 			var result = ConvertText("貼りません");
 			Assert.AreEqual("貼らない", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0029_来ません()
+        public void Test_JT_0041_来ません()
         {
 			var result = ConvertText("来ません");
 			Assert.AreEqual("来ない", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0030_勉強しません()
+        public void Test_JT_0042_勉強しません()
         {
 			var result = ConvertText("勉強しません");
 			Assert.AreEqual("勉強しない", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0031_命じません()
+        public void Test_JT_0043_命じません()
         {
 			var result = ConvertText("命じません");
 			Assert.AreEqual("命じない", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0032_泳ぎません()
+        public void Test_JT_0044_泳ぎません()
         {
 			var result = ConvertText("泳ぎません");
 			Assert.AreEqual("泳がない", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0033_死にません()
+        public void Test_JT_0045_死にません()
         {
 			var result = ConvertText("死にません");
 			Assert.AreEqual("死なない", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0034_転びません()
+        public void Test_JT_0046_転びません()
         {
 			var result = ConvertText("転びません");
 			Assert.AreEqual("転ばない", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0035_包みません()
+        public void Test_JT_0047_包みません()
         {
 			var result = ConvertText("包みません");
 			Assert.AreEqual("包まない", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0036_ありません()
+        public void Test_JT_0048_ありません()
         {
 			var result = ConvertText("ありません");
 			Assert.AreEqual("ない", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0037_ありませんでした()
+        public void Test_JT_0049_ありませんでした()
         {
 			var result = ConvertText("ありませんでした");
 			Assert.AreEqual("なかった", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0038_読みませんでした()
+        public void Test_JT_0050_読みませんでした()
         {
 			var result = ConvertText("読みませんでした");
 			Assert.AreEqual("読まなかった", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0039_読めませんでした()
+        public void Test_JT_0051_読めませんでした()
         {
 			var result = ConvertText("読めませんでした");
 			Assert.AreEqual("読めなかった", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0040_読ませませんでした()
+        public void Test_JT_0052_読ませませんでした()
         {
 			var result = ConvertText("読ませませんでした");
 			Assert.AreEqual("読ませなかった", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0041_どうでしょうか()
+        public void Test_JT_0053_どうでしょうか()
         {
 			var result = ConvertText("どうでしょうか");
 			Assert.AreEqual("どうだろうか", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0042_欲しいです()
+        public void Test_JT_0054_欲しいです()
         {
 			var result = ConvertText("欲しいです");
 			Assert.AreEqual("欲しい", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0043_欲しかったです()
+        public void Test_JT_0055_欲しかったです()
         {
 			var result = ConvertText("欲しかったです");
 			Assert.AreEqual("欲しかった", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0044_欲しそうです()
+        public void Test_JT_0056_欲しそうです()
         {
 			var result = ConvertText("欲しそうです");
 			Assert.AreEqual("欲しそうだ", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0045_欲しくありません()
+        public void Test_JT_0057_欲しくありません()
         {
 			var result = ConvertText("欲しくありません");
 			Assert.AreEqual("欲しくない", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0046_欲しくないです()
+        public void Test_JT_0058_欲しくないです()
         {
 			var result = ConvertText("欲しくないです");
 			Assert.AreEqual("欲しくない", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0047_読みたいです()
+        public void Test_JT_0059_読みたいです()
         {
 			var result = ConvertText("読みたいです");
 			Assert.AreEqual("読みたい", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0048_好きです()
+        public void Test_JT_0060_好きです()
         {
 			var result = ConvertText("好きです");
 			Assert.AreEqual("好きだ", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0049_好きでした()
+        public void Test_JT_0061_好きでした()
         {
 			var result = ConvertText("好きでした");
 			Assert.AreEqual("好きだった", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0050_好きでしょう()
+        public void Test_JT_0062_好きでしょう()
         {
 			var result = ConvertText("好きでしょう");
 			Assert.AreEqual("好きだろう", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0051_終わりましたら()
+        public void Test_JT_0063_終わりましたら()
         {
 			var result = ConvertText("終わりましたら");
 			Assert.AreEqual("終わったら", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0052_書きましたら()
+        public void Test_JT_0064_書きましたら()
         {
 			var result = ConvertText("書きましたら");
 			Assert.AreEqual("書いたら", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0053_見ましたら()
+        public void Test_JT_0065_見ましたら()
         {
 			var result = ConvertText("見ましたら");
 			Assert.AreEqual("見たら", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0054_食べましたら()
+        public void Test_JT_0066_食べましたら()
         {
 			var result = ConvertText("食べましたら");
 			Assert.AreEqual("食べたら", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0055_読みましたら()
+        public void Test_JT_0067_読みましたら()
         {
 			var result = ConvertText("読みましたら");
 			Assert.AreEqual("読んだら", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0056_貼りましたら()
+        public void Test_JT_0068_貼りましたら()
         {
 			var result = ConvertText("貼りましたら");
 			Assert.AreEqual("貼ったら", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0057_見てあげます()
+        public void Test_JT_0069_見てあげます()
         {
 			var result = ConvertText("見てあげます");
 			Assert.AreEqual("見てあげる", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0058_見てあげてるんです()
+        public void Test_JT_0070_見てあげてるんです()
         {
 			var result = ConvertText("見てあげてるんです");
 			Assert.AreEqual("見てあげてるんだ", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0059_本です()
+        public void Test_JT_0071_本です()
         {
 			var result = ConvertText("本です");
 			Assert.AreEqual("本だ", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0060_本でしょう()
+        public void Test_JT_0072_本でしょう()
         {
 			var result = ConvertText("本でしょう");
 			Assert.AreEqual("本だろう", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0061_本でした()
+        public void Test_JT_0073_本でした()
         {
 			var result = ConvertText("本でした");
 			Assert.AreEqual("本だった", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0062_僕のです()
+        public void Test_JT_0074_僕のです()
         {
 			var result = ConvertText("僕のです");
 			Assert.AreEqual("僕のだ", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0063_僕のでしょう()
+        public void Test_JT_0075_僕のでしょう()
         {
 			var result = ConvertText("僕のでしょう");
 			Assert.AreEqual("僕のだろう", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0064_僕のでした()
+        public void Test_JT_0076_僕のでした()
         {
 			var result = ConvertText("僕のでした");
 			Assert.AreEqual("僕のだった", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0065_静かです()
+        public void Test_JT_0077_静かです()
         {
 			var result = ConvertText("静かです");
 			Assert.AreEqual("静かだ", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0066_静かでしょう()
+        public void Test_JT_0078_静かでしょう()
         {
 			var result = ConvertText("静かでしょう");
 			Assert.AreEqual("静かだろう", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0067_静かでした()
+        public void Test_JT_0079_静かでした()
         {
 			var result = ConvertText("静かでした");
 			Assert.AreEqual("静かだった", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0068_読みそうです()
+        public void Test_JT_0080_読みそうです()
         {
 			var result = ConvertText("読みそうです");
 			Assert.AreEqual("読みそうだ", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0069_読みそうでしょう()
+        public void Test_JT_0081_読みそうでしょう()
         {
 			var result = ConvertText("読みそうでしょう");
 			Assert.AreEqual("読みそうだろう", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0070_読みそうでした()
+        public void Test_JT_0082_読みそうでした()
         {
 			var result = ConvertText("読みそうでした");
 			Assert.AreEqual("読みそうだった", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0071_来るようです()
+        public void Test_JT_0083_来るようです()
         {
 			var result = ConvertText("来るようです");
 			Assert.AreEqual("来るようだ", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0072_来るようでしょう()
+        public void Test_JT_0084_来るようでしょう()
         {
 			var result = ConvertText("来るようでしょう");
 			Assert.AreEqual("来るようだろう", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0073_来るようでした()
+        public void Test_JT_0085_来るようでした()
         {
 			var result = ConvertText("来るようでした");
 			Assert.AreEqual("来るようだった", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0074_美しいでしょう()
+        public void Test_JT_0086_美しいでしょう()
         {
 			var result = ConvertText("美しいでしょう");
 			Assert.AreEqual("美しいだろう", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0075_雨が降るでしょう()
+        public void Test_JT_0087_雨が降るでしょう()
         {
 			var result = ConvertText("雨が降るでしょう");
 			Assert.AreEqual("雨が降るだろう", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0076_寒いでしょう()
+        public void Test_JT_0088_寒いでしょう()
         {
 			var result = ConvertText("寒いでしょう");
 			Assert.AreEqual("寒いだろう", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0077_困らせるでしょう()
+        public void Test_JT_0089_困らせるでしょう()
         {
 			var result = ConvertText("困らせるでしょう");
 			Assert.AreEqual("困らせるだろう", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0078_行うでしょう()
+        public void Test_JT_0090_行うでしょう()
         {
 			var result = ConvertText("行うでしょう");
 			Assert.AreEqual("行うだろう", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0079_行かないです()
+        public void Test_JT_0091_行かないです()
         {
 			var result = ConvertText("行かないです");
 			Assert.AreEqual("行かない", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0080_行きたいです()
+        public void Test_JT_0092_行きたいです()
         {
 			var result = ConvertText("行きたいです");
 			Assert.AreEqual("行きたい", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0081_行くらしいです()
+        public void Test_JT_0093_行くらしいです()
         {
 			var result = ConvertText("行くらしいです");
 			Assert.AreEqual("行くらしい", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0082_行かないでしょう()
+        public void Test_JT_0094_行かないでしょう()
         {
 			var result = ConvertText("行かないでしょう");
 			Assert.AreEqual("行かないだろう", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0083_行きたいでしょう()
+        public void Test_JT_0095_行きたいでしょう()
         {
 			var result = ConvertText("行きたいでしょう");
 			Assert.AreEqual("行きたいだろう", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0084_行くらしいでしょう()
+        public void Test_JT_0096_行くらしいでしょう()
         {
 			var result = ConvertText("行くらしいでしょう");
 			Assert.AreEqual("行くらしいだろう", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0085_冬らしいでしょう()
+        public void Test_JT_0097_冬らしいでしょう()
         {
 			var result = ConvertText("冬らしいでしょう");
 			Assert.AreEqual("冬らしいだろう", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0086_行かせるでしょう()
+        public void Test_JT_0098_行かせるでしょう()
         {
 			var result = ConvertText("行かせるでしょう");
 			Assert.AreEqual("行かせるだろう", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0087_見させるでしょう()
+        public void Test_JT_0099_見させるでしょう()
         {
 			var result = ConvertText("見させるでしょう");
 			Assert.AreEqual("見させるだろう", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0088_見られるでしょう()
+        public void Test_JT_0100_見られるでしょう()
         {
 			var result = ConvertText("見られるでしょう");
 			Assert.AreEqual("見られるだろう", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0089_読まれるでしょう()
+        public void Test_JT_0101_読まれるでしょう()
         {
 			var result = ConvertText("読まれるでしょう");
 			Assert.AreEqual("読まれるだろう", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0090_行きたがるでしょう()
+        public void Test_JT_0102_行きたがるでしょう()
         {
 			var result = ConvertText("行きたがるでしょう");
 			Assert.AreEqual("行きたがるだろう", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0091_行かないでしょう()
+        public void Test_JT_0103_行かないでしょう()
         {
 			var result = ConvertText("行かないでしょう");
 			Assert.AreEqual("行かないだろう", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0092_行かぬでしょう()
+        public void Test_JT_0104_行かぬでしょう()
         {
 			var result = ConvertText("行かぬでしょう");
 			Assert.AreEqual("行かぬだろう", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0093_行かんでしょう()
+        public void Test_JT_0105_行かんでしょう()
         {
 			var result = ConvertText("行かんでしょう");
 			Assert.AreEqual("行かんだろう", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0094_行ったでしょう()
+        public void Test_JT_0106_行ったでしょう()
         {
 			var result = ConvertText("行ったでしょう");
 			Assert.AreEqual("行っただろう", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0095_行きますでしょう()
+        public void Test_JT_0107_行きますでしょう()
         {
 			var result = ConvertText("行きますでしょう");
 			Assert.AreEqual("行くだろう", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0096_回復するでしょう()
+        public void Test_JT_0108_回復するでしょう()
         {
 			var result = ConvertText("回復するでしょう");
 			Assert.AreEqual("回復するだろう", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0097_勉強しませんでした()
+        public void Test_JT_0109_勉強しませんでした()
         {
 			var result = ConvertText("勉強しませんでした");
 			Assert.AreEqual("勉強しなかった", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0098_捕まりませんでした()
+        public void Test_JT_0110_捕まりませんでした()
         {
 			var result = ConvertText("捕まりませんでした");
 			Assert.AreEqual("捕まらなかった", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0099_来ませんでした()
+        public void Test_JT_0111_来ませんでした()
         {
 			var result = ConvertText("来ませんでした");
 			Assert.AreEqual("来なかった", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0100_捨てませんでした()
+        public void Test_JT_0112_捨てませんでした()
         {
 			var result = ConvertText("捨てませんでした");
 			Assert.AreEqual("捨てなかった", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0101_拾いませんでした()
+        public void Test_JT_0113_拾いませんでした()
         {
 			var result = ConvertText("拾いませんでした");
 			Assert.AreEqual("拾わなかった", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0102_泳ぎませんでした()
+        public void Test_JT_0114_泳ぎませんでした()
         {
 			var result = ConvertText("泳ぎませんでした");
 			Assert.AreEqual("泳がなかった", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0103_死にませんでした()
+        public void Test_JT_0115_死にませんでした()
         {
 			var result = ConvertText("死にませんでした");
 			Assert.AreEqual("死ななかった", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0104_転びませんでした()
+        public void Test_JT_0116_転びませんでした()
         {
 			var result = ConvertText("転びませんでした");
 			Assert.AreEqual("転ばなかった", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0105_くるみませんでした()
+        public void Test_JT_0117_くるみませんでした()
         {
 			var result = ConvertText("くるみませんでした");
 			Assert.AreEqual("くるまなかった", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0106_くるめませんでした()
+        public void Test_JT_0118_くるめませんでした()
         {
 			var result = ConvertText("くるめませんでした");
 			Assert.AreEqual("くるめなかった", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0107_楽しいです()
+        public void Test_JT_0119_楽しいです()
         {
 			var result = ConvertText("楽しいです");
 			Assert.AreEqual("楽しい", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0108_大学生らしいです()
+        public void Test_JT_0120_大学生らしいです()
         {
 			var result = ConvertText("大学生らしいです");
 			Assert.AreEqual("大学生らしい", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0109_書くでしょう()
+        public void Test_JT_0121_書くでしょう()
         {
 			var result = ConvertText("書くでしょう");
 			Assert.AreEqual("書くだろう", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0110_見るでしょう()
+        public void Test_JT_0122_見るでしょう()
         {
 			var result = ConvertText("見るでしょう");
 			Assert.AreEqual("見るだろう", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0111_食べるでしょう()
+        public void Test_JT_0123_食べるでしょう()
         {
 			var result = ConvertText("食べるでしょう");
 			Assert.AreEqual("食べるだろう", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0112_読むでしょう()
+        public void Test_JT_0124_読むでしょう()
         {
 			var result = ConvertText("読むでしょう");
 			Assert.AreEqual("読むだろう", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0113_貼るでしょう()
+        public void Test_JT_0125_貼るでしょう()
         {
 			var result = ConvertText("貼るでしょう");
 			Assert.AreEqual("貼るだろう", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0114_書いたでしょう()
+        public void Test_JT_0126_書いたでしょう()
         {
 			var result = ConvertText("書いたでしょう");
 			Assert.AreEqual("書いただろう", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0115_見たでしょう()
+        public void Test_JT_0127_見たでしょう()
         {
 			var result = ConvertText("見たでしょう");
 			Assert.AreEqual("見ただろう", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0116_食べたでしょう()
+        public void Test_JT_0128_食べたでしょう()
         {
 			var result = ConvertText("食べたでしょう");
 			Assert.AreEqual("食べただろう", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0117_読んだでしょう()
+        public void Test_JT_0129_読んだでしょう()
         {
 			var result = ConvertText("読んだでしょう");
 			Assert.AreEqual("読んだだろう", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0118_貼ったでしょう()
+        public void Test_JT_0130_貼ったでしょう()
         {
 			var result = ConvertText("貼ったでしょう");
 			Assert.AreEqual("貼っただろう", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0119_練習しますれば上達します_()
+        public void Test_JT_0131_練習しますれば上達します_()
         {
 			var result = ConvertText("練習しますれば上達します。");
 			Assert.AreEqual("練習すれば上達する。", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0120_春になりますれば花が咲きます_()
+        public void Test_JT_0132_春になりますれば花が咲きます_()
         {
 			var result = ConvertText("春になりますれば花が咲きます。");
 			Assert.AreEqual("春になれば花が咲く。", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0121_山もありますれば谷もあります_()
+        public void Test_JT_0133_山もありますれば谷もあります_()
         {
 			var result = ConvertText("山もありますれば谷もあります。");
 			Assert.AreEqual("山もあれば谷もある。", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0122_急ぎませんと遅刻します_()
+        public void Test_JT_0134_急ぎませんと遅刻します_()
         {
 			var result = ConvertText("急ぎませんと遅刻します。");
 			Assert.AreEqual("急がないと遅刻する。", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0123_氷を解かしますと水になります_()
+        public void Test_JT_0135_氷を解かしますと水になります_()
         {
 			var result = ConvertText("氷を解かしますと水になります。");
 			Assert.AreEqual("氷を解かすと水になる。", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0124_雪が解けますと春になります_()
+        public void Test_JT_0136_雪が解けますと春になります_()
         {
 			var result = ConvertText("雪が解けますと春になります。");
 			Assert.AreEqual("雪が解けると春になる。", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0125_何を言われましょうと平気です_()
+        public void Test_JT_0137_何を言われましょうと平気です_()
         {
 			var result = ConvertText("何を言われましょうと平気です。");
 			Assert.AreEqual("何を言われようと平気だ。", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0126_落ちましてうれしいでしょうか_()
+        public void Test_JT_0138_落ちましてうれしいでしょうか_()
         {
 			var result = ConvertText("落ちましてうれしいでしょうか？");
 			Assert.AreEqual("落ちてうれしいだろうか？", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0127_店を継ぎまして正解でした_()
+        public void Test_JT_0139_店を継ぎまして正解でした_()
         {
 			var result = ConvertText("店を継ぎまして正解でした。");
 			Assert.AreEqual("店を継いで正解だった。", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0128_猫が死にまして大変でした_()
+        public void Test_JT_0140_猫が死にまして大変でした_()
         {
 			var result = ConvertText("猫が死にまして大変でした。");
 			Assert.AreEqual("猫が死んで大変だった。", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0129_飛びましてどうでしたか_()
+        public void Test_JT_0141_飛びましてどうでしたか_()
         {
 			var result = ConvertText("飛びましてどうでしたか？");
 			Assert.AreEqual("飛んでどうだったか？", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0130_先に進みまして第三章です_()
+        public void Test_JT_0142_先に進みまして第三章です_()
         {
 			var result = ConvertText("先に進みまして第三章です。");
 			Assert.AreEqual("先に進んで第三章だ。", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0131_見ましてから選びましょう_()
+        public void Test_JT_0143_見ましてから選びましょう_()
         {
 			var result = ConvertText("見ましてから選びましょう。");
 			Assert.AreEqual("見てから選ぼう。", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0132_揺らぎましてから考えましょう_()
+        public void Test_JT_0144_揺らぎましてから考えましょう_()
         {
 			var result = ConvertText("揺らぎましてから考えましょう。");
 			Assert.AreEqual("揺らいでから考えよう。", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0133_死にましてからが心配です_()
+        public void Test_JT_0145_死にましてからが心配です_()
         {
 			var result = ConvertText("死にましてからが心配です。");
 			Assert.AreEqual("死んでからが心配だ。", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0134_浮かびましてからが勝負です_()
+        public void Test_JT_0146_浮かびましてからが勝負です_()
         {
 			var result = ConvertText("浮かびましてからが勝負です。");
 			Assert.AreEqual("浮かんでからが勝負だ。", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0135_痛みましてから後悔しましても_()
+        public void Test_JT_0147_痛みましてから後悔しましても_()
         {
 			var result = ConvertText("痛みましてから後悔しましても。");
 			Assert.AreEqual("痛んでから後悔しても。", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0136_寒いですので注意しましょう_()
+        public void Test_JT_0148_寒いですので注意しましょう_()
         {
 			var result = ConvertText("寒いですので注意しましょう。");
 			Assert.AreEqual("寒いので注意しよう。", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0137_知りませんから聞いたのです_()
+        public void Test_JT_0149_知りませんから聞いたのです_()
         {
 			var result = ConvertText("知りませんから聞いたのです。");
 			Assert.AreEqual("知らないから聞いたのだ。", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0138_捨てましても解決になりません_()
+        public void Test_JT_0150_捨てましても解決になりません_()
         {
 			var result = ConvertText("捨てましても解決になりません。");
 			Assert.AreEqual("捨てても解決にならない。", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0139_今から急ぎましても手遅れです_()
+        public void Test_JT_0151_今から急ぎましても手遅れです_()
         {
 			var result = ConvertText("今から急ぎましても手遅れです。");
 			Assert.AreEqual("今から急いでも手遅れだ。", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0140_死にましても死にきれません_()
+        public void Test_JT_0152_死にましても死にきれません_()
         {
 			var result = ConvertText("死にましても死にきれません。");
 			Assert.AreEqual("死んでも死にきれない。", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0141_文法など学びましても無益です_()
+        public void Test_JT_0153_文法など学びましても無益です_()
         {
 			var result = ConvertText("文法など学びましても無益です。");
 			Assert.AreEqual("文法など学んでも無益だ。", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0142_囲みましても勝機が見えません_()
+        public void Test_JT_0154_囲みましても勝機が見えません_()
         {
 			var result = ConvertText("囲みましても勝機が見えません。");
 			Assert.AreEqual("囲んでも勝機が見えない。", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0143_努力しましたが落第しました_()
+        public void Test_JT_0155_努力しましたが落第しました_()
         {
 			var result = ConvertText("努力しましたが落第しました。");
 			Assert.AreEqual("努力したが落第した。", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0144_こぎましたが進みません_()
+        public void Test_JT_0156_こぎましたが進みません_()
         {
 			var result = ConvertText("こぎましたが進みません。");
 			Assert.AreEqual("こいだが進まない。", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0145_死にましたが消えません_()
+        public void Test_JT_0157_死にましたが消えません_()
         {
 			var result = ConvertText("死にましたが消えません。");
 			Assert.AreEqual("死んだが消えない。", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0146_喜びましたが不安が残ります_()
+        public void Test_JT_0158_喜びましたが不安が残ります_()
         {
 			var result = ConvertText("喜びましたが不安が残ります。");
 			Assert.AreEqual("喜んだが不安が残る。", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0147_包みましたが臭いは隠せません_()
+        public void Test_JT_0159_包みましたが臭いは隠せません_()
         {
 			var result = ConvertText("包みましたが臭いは隠せません。");
 			Assert.AreEqual("包んだが臭いは隠せない。", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0148_眠いですけれど勉強します_()
+        public void Test_JT_0160_眠いですけれど勉強します_()
         {
 			var result = ConvertText("眠いですけれど勉強します。");
 			Assert.AreEqual("眠いけれど勉強する。", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0149_日本語もできますけれど英語もできます_()
+        public void Test_JT_0161_日本語もできますけれど英語もできます_()
         {
 			var result = ConvertText("日本語もできますけれど英語もできます。");
 			Assert.AreEqual("日本語もできるけれど英語もできる。", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0150_練習しましたのに試合で負けました_()
+        public void Test_JT_0162_練習しましたのに試合で負けました_()
         {
 			var result = ConvertText("練習しましたのに試合で負けました。");
 			Assert.AreEqual("練習したのに試合で負けた。", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0151_試しましたものの効きませんでした_()
+        public void Test_JT_0163_試しましたものの効きませんでした_()
         {
 			var result = ConvertText("試しましたものの効きませんでした。");
 			Assert.AreEqual("試したものの効かなかった。", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0152_酒は飲みませんしタバコも吸いません_()
+        public void Test_JT_0164_酒は飲みませんしタバコも吸いません_()
         {
 			var result = ConvertText("酒は飲みませんしタバコも吸いません。");
 			Assert.AreEqual("酒は飲まないしタバコも吸わない。", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0153_行きましたり来ましたり_()
+        public void Test_JT_0165_行きましたり来ましたり_()
         {
 			var result = ConvertText("行きましたり来ましたり。");
 			Assert.AreEqual("行ったり来たり。", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0154_泳ぎましたり歩きましたり_()
+        public void Test_JT_0166_泳ぎましたり歩きましたり_()
         {
 			var result = ConvertText("泳ぎましたり歩きましたり。");
 			Assert.AreEqual("泳いだり歩いたり。", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0155_死にましたり生まれましたり_()
+        public void Test_JT_0167_死にましたり生まれましたり_()
         {
 			var result = ConvertText("死にましたり生まれましたり。");
 			Assert.AreEqual("死んだり生まれたり。", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0156_転びましたり苦しみましたり_()
+        public void Test_JT_0168_転びましたり苦しみましたり_()
         {
 			var result = ConvertText("転びましたり苦しみましたり。");
 			Assert.AreEqual("転んだり苦しんだり。", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0157_雨でしょう()
+        public void Test_JT_0169_雨でしょう()
         {
 			var result = ConvertText("雨でしょう");
 			Assert.AreEqual("雨だろう", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0158_雨でした()
+        public void Test_JT_0170_雨でした()
         {
 			var result = ConvertText("雨でした");
 			Assert.AreEqual("雨だった", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0159_雨です()
+        public void Test_JT_0171_雨です()
         {
 			var result = ConvertText("雨です");
 			Assert.AreEqual("雨だ", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0160_雨ですので家にいます()
+        public void Test_JT_0172_雨ですので家にいます()
         {
 			var result = ConvertText("雨ですので家にいます");
 			Assert.AreEqual("雨なので家にいます", result, "Unexpected jotai text.");
         }
         [TestMethod]
-        public void Test_JT_0161_雨ですのに外に出ます()
+        public void Test_JT_0173_雨ですのに外に出ます()
         {
 			var result = ConvertText("雨ですのに外に出ます");
 			Assert.AreEqual("雨なのに外に出ます", result, "Unexpected jotai text.");
