@@ -170,7 +170,11 @@ namespace JapaneseStyleChanger
                             {
                                 // replace ず (most likely in its ん form) following ます (in its ませ form) with ない,
                                 // so that 読みません, for example, as a whole is replaced by 読まない
-                                conjugations2 = Conjugator.ConjugateLoosely(DummyNode_27438, current.Next.CForm);
+                                conjugations2 = Conjugator.ConjugateLoosely(DummyNode_27438, current.Next.CForm) ?? conjugations2;
+
+                                // Note that the above call to ConjugateLoosely can return a null for an unusual input, 
+                                // such as 読みませざれ which is parsed to 読み/ませ/ざれ with ざれ considered a 命令形 of 文語助動詞-ズ.
+                                // Having ?? operator is essential to live with such an input.
                             }
 
                             // Find the best conjugations for up to two nodes each before and after ます.
