@@ -70,6 +70,7 @@ namespace JapaneseStyleChanger
             { 21642, new WNode { Feature = "助動詞,*,*,*,助動詞-タ,終止形,,た,だ,,だ,,,,,,,,,,,,,,,,,0,21642" } },
             { 24874, new WNode { Feature = "助詞,接続助詞,*,*,*,*,,て,で,,で,,,,,,,,,,,,,,,,,0,24874" } },
             { 22727, new WNode { Feature = "助詞,副助詞,*,*,*,*,,たり,だり,,だり,,,,,,,,,,,,,,,,,0,22727" } },
+            { 22430, new WNode { Feature = "助詞,接続助詞,*,*,*,*,,たって,だって,,だって,,,,,,,,,,,,,,,,,0,22430" } },
         };
 
         public void ToJotai(EditBuffer buffer)
