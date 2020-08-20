@@ -1053,13 +1053,13 @@ namespace JapaneseStyleChangerTest
         public void Test_JT_0172_雨ですので家にいます()
         {
 			var result = ConvertText("雨ですので家にいます");
-			Assert.AreEqual("雨なので家にいます", result, "Unexpected jotai text.");
+			Assert.AreEqual("雨なので家にいる", result, "Unexpected jotai text.");
         }
         [TestMethod]
         public void Test_JT_0173_雨ですのに外に出ます()
         {
 			var result = ConvertText("雨ですのに外に出ます");
-			Assert.AreEqual("雨なのに外に出ます", result, "Unexpected jotai text.");
+			Assert.AreEqual("雨なのに外に出る", result, "Unexpected jotai text.");
         }
 
 		// Postamble
