@@ -65,7 +65,7 @@ namespace JapaneseStyleChanger
             paths[0] = new Path[nodes[0].Count];
             for (int i = 0; i < paths[0].Length; i++)
             {
-                paths[0][i].Cost = nodes[0][i].WCost * (1 - CostMixFactor);
+                paths[0][i].Cost = Dictionaries.MixedCost(CostMixFactor, nodes[0][i]);
             }
             for (int p = 1; p < nodes.Count; p++)
             {
@@ -126,7 +126,7 @@ namespace JapaneseStyleChanger
             var list = new List<CostAndCandidate>();
             foreach (var n in candidate_nodes[0])
             {
-                var cost = (1 - CostMixFactor) * n.WCost;
+                var cost = Dictionaries.MixedCost(CostMixFactor, n);
                 var nodes = new WNode[] { n };
                 list.Add(new CostAndCandidate { Cost = cost, Nodes = nodes });
             }
