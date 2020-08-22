@@ -150,7 +150,7 @@ namespace JapaneseStyleChanger
                     case 35697: // 助動詞「ます」
                         {
                             // Remove this ます, conjugating the previous 用言 into a same conjugation form as this ます,
-                            // as well as conjugating or otherwise changing nearby words where necessary.
+                            // as well as conjugating or otherwise changing the succeeding words where necessary.
                             var conjugations1 = Conjugator.ConjugateLoosely(current.Prev, current.CForm) ?? new[] { current.Prev };
                             var conjugations2 = Conjugator.ConjugateLoosely(current.Next, current.Next.CForm) ?? new[] { current.Next };
 
@@ -165,10 +165,14 @@ namespace JapaneseStyleChanger
                                 if (VocalizingCTypes.Contains(current.Prev.CType))
                                 {
                                     conjugations2 = Conjugator.ConjugateLoosely(vocalized_node, current.Next.CForm) ?? new[] { vocalized_node };
-                                    // We've been relying only on MeCab's cost to choose an appropriate set of conjugations.
-                                    // However, jotaing a phrase 泳ぎましたり causes comparison of 泳ぎだり and 泳いだり,
-                                    // and it seems UniDic gives the former a lower cost (and CostMixFactor can't workaround it).
-                                    // To avoid producing 泳ぎだり, I decided to add a special non-cost criteria here.
+                                }
+
+                                // We've been relying only on ChooseBest, i.e., MeCab's cost to choose an appropriate set of conjugations.
+                                // However, jotaing a phrase 泳ぎましたり causes comparison of 泳ぎだり and 泳いだり,
+                                // and it seems UniDic gives the former a lower cost (and CostMixFactor can't workaround it).
+                                // To avoid producing 泳ぎだり, I decided to add a special non-cost criteria here.
+                                if (current.Prev.CType.StartsWith("五段") || current.Prev.CType.StartsWith("形容詞"))
+                                {
                                     var euphonism = conjugations1.Where(n => n.CForm.EndsWith("音便")).ToArray();
                                     if (euphonism.Length > 0) conjugations1 = euphonism;
                                 }

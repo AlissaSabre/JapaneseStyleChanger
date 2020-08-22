@@ -16,7 +16,7 @@ namespace JapaneseStyleChanger
 
         private readonly IDictionary<int, List<WNode>> ConjugationTable;
 
-        public const double CostMixFactor = 0.6; // 
+        public const double CostMixFactor = 0.5; // 0.6;
 
         public Conjugator(Tagger<WNode> tagger)
         {
@@ -56,6 +56,17 @@ namespace JapaneseStyleChanger
             public int Previous;
         }
 
+        /// <summary>
+        /// Chooses a sequence of best conjugation forms among given possible conjugations.
+        /// </summary>
+        /// <param name="nodes">List of list of candidate nodes.</param>
+        /// <returns>List of best nodes.</returns>
+        /// <remarks>
+        /// An element of outer list is a list of possible conjugations for a single word (node).
+        /// This method tries to choose the best combination of nodes to form a most likely sentence fragment.
+        /// What we really need is a good language model that works for a short fragment,
+        /// but the current implementation does something ridiculously unscientific out of UniDic's CRF parameters
+        /// </remarks>
         public WNode[] ChooseBest(IList<IList<WNode>> nodes)
         {
 #if DEBUG
