@@ -51,6 +51,7 @@
             this.UseHalfwidthSymbols = new System.Windows.Forms.CheckBox();
             this.HalfwidthSymbolsList = new System.Windows.Forms.TextBox();
             this.DearuCheckBox = new System.Windows.Forms.CheckBox();
+            this.HtmlSyntax = new System.Windows.Forms.CheckBox();
             this.Initializing.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -87,7 +88,7 @@
             this.JotaiCheckBox.AutoSize = true;
             this.JotaiCheckBox.Checked = true;
             this.JotaiCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.JotaiCheckBox.Location = new System.Drawing.Point(546, 65);
+            this.JotaiCheckBox.Location = new System.Drawing.Point(546, 46);
             this.JotaiCheckBox.Name = "JotaiCheckBox";
             this.JotaiCheckBox.Size = new System.Drawing.Size(167, 16);
             this.JotaiCheckBox.TabIndex = 2;
@@ -98,7 +99,7 @@
             // 
             this.SpacingCheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.SpacingCheckBox.AutoSize = true;
-            this.SpacingCheckBox.Location = new System.Drawing.Point(546, 112);
+            this.SpacingCheckBox.Location = new System.Drawing.Point(546, 93);
             this.SpacingCheckBox.Name = "SpacingCheckBox";
             this.SpacingCheckBox.Size = new System.Drawing.Size(105, 16);
             this.SpacingCheckBox.TabIndex = 3;
@@ -183,7 +184,7 @@
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.Controls.Add(this.FullwidthButton);
             this.panel2.Controls.Add(this.HalfwidthButton);
-            this.panel2.Location = new System.Drawing.Point(564, 211);
+            this.panel2.Location = new System.Drawing.Point(564, 192);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(208, 44);
             this.panel2.TabIndex = 14;
@@ -214,7 +215,7 @@
             // 
             this.ChangeWidths.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.ChangeWidths.AutoSize = true;
-            this.ChangeWidths.Location = new System.Drawing.Point(546, 189);
+            this.ChangeWidths.Location = new System.Drawing.Point(546, 170);
             this.ChangeWidths.Name = "ChangeWidths";
             this.ChangeWidths.Size = new System.Drawing.Size(151, 16);
             this.ChangeWidths.TabIndex = 10;
@@ -226,7 +227,7 @@
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.Controls.Add(this.MSButton);
             this.panel1.Controls.Add(this.CGButton);
-            this.panel1.Location = new System.Drawing.Point(563, 131);
+            this.panel1.Location = new System.Drawing.Point(563, 112);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(209, 52);
             this.panel1.TabIndex = 13;
@@ -235,7 +236,7 @@
             // 
             this.UseFullwidthAlphabets.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.UseFullwidthAlphabets.AutoSize = true;
-            this.UseFullwidthAlphabets.Location = new System.Drawing.Point(567, 258);
+            this.UseFullwidthAlphabets.Location = new System.Drawing.Point(567, 239);
             this.UseFullwidthAlphabets.Name = "UseFullwidthAlphabets";
             this.UseFullwidthAlphabets.Size = new System.Drawing.Size(144, 16);
             this.UseFullwidthAlphabets.TabIndex = 15;
@@ -246,7 +247,7 @@
             // 
             this.UseFullwidthDigits.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.UseFullwidthDigits.AutoSize = true;
-            this.UseFullwidthDigits.Location = new System.Drawing.Point(567, 280);
+            this.UseFullwidthDigits.Location = new System.Drawing.Point(567, 261);
             this.UseFullwidthDigits.Name = "UseFullwidthDigits";
             this.UseFullwidthDigits.Size = new System.Drawing.Size(123, 16);
             this.UseFullwidthDigits.TabIndex = 16;
@@ -257,7 +258,7 @@
             // 
             this.UseFullwidthSymbols.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.UseFullwidthSymbols.AutoSize = true;
-            this.UseFullwidthSymbols.Location = new System.Drawing.Point(567, 324);
+            this.UseFullwidthSymbols.Location = new System.Drawing.Point(567, 305);
             this.UseFullwidthSymbols.Name = "UseFullwidthSymbols";
             this.UseFullwidthSymbols.Size = new System.Drawing.Size(157, 16);
             this.UseFullwidthSymbols.TabIndex = 17;
@@ -267,7 +268,7 @@
             // FullwidthSymbolsList
             // 
             this.FullwidthSymbolsList.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.FullwidthSymbolsList.Location = new System.Drawing.Point(588, 346);
+            this.FullwidthSymbolsList.Location = new System.Drawing.Point(588, 327);
             this.FullwidthSymbolsList.Name = "FullwidthSymbolsList";
             this.FullwidthSymbolsList.Size = new System.Drawing.Size(182, 19);
             this.FullwidthSymbolsList.TabIndex = 18;
@@ -276,7 +277,7 @@
             // 
             this.UseIdeographicSpace.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.UseIdeographicSpace.AutoSize = true;
-            this.UseIdeographicSpace.Location = new System.Drawing.Point(567, 302);
+            this.UseIdeographicSpace.Location = new System.Drawing.Point(567, 283);
             this.UseIdeographicSpace.Name = "UseIdeographicSpace";
             this.UseIdeographicSpace.Size = new System.Drawing.Size(214, 16);
             this.UseIdeographicSpace.TabIndex = 19;
@@ -286,7 +287,7 @@
             // UseHalfwidthSymbols
             // 
             this.UseHalfwidthSymbols.AutoSize = true;
-            this.UseHalfwidthSymbols.Location = new System.Drawing.Point(567, 375);
+            this.UseHalfwidthSymbols.Location = new System.Drawing.Point(567, 356);
             this.UseHalfwidthSymbols.Name = "UseHalfwidthSymbols";
             this.UseHalfwidthSymbols.Size = new System.Drawing.Size(169, 16);
             this.UseHalfwidthSymbols.TabIndex = 20;
@@ -295,7 +296,7 @@
             // 
             // HalfwidthSymbolsList
             // 
-            this.HalfwidthSymbolsList.Location = new System.Drawing.Point(588, 397);
+            this.HalfwidthSymbolsList.Location = new System.Drawing.Point(588, 378);
             this.HalfwidthSymbolsList.Name = "HalfwidthSymbolsList";
             this.HalfwidthSymbolsList.Size = new System.Drawing.Size(182, 19);
             this.HalfwidthSymbolsList.TabIndex = 21;
@@ -303,12 +304,22 @@
             // DearuCheckBox
             // 
             this.DearuCheckBox.AutoSize = true;
-            this.DearuCheckBox.Location = new System.Drawing.Point(567, 87);
+            this.DearuCheckBox.Location = new System.Drawing.Point(567, 68);
             this.DearuCheckBox.Name = "DearuCheckBox";
             this.DearuCheckBox.Size = new System.Drawing.Size(164, 16);
             this.DearuCheckBox.TabIndex = 22;
             this.DearuCheckBox.Text = "Prefer である ending over だ";
             this.DearuCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // HtmlSyntax
+            // 
+            this.HtmlSyntax.AutoSize = true;
+            this.HtmlSyntax.Location = new System.Drawing.Point(546, 408);
+            this.HtmlSyntax.Name = "HtmlSyntax";
+            this.HtmlSyntax.Size = new System.Drawing.Size(148, 16);
+            this.HtmlSyntax.TabIndex = 23;
+            this.HtmlSyntax.Text = "Recognize HTML syntax";
+            this.HtmlSyntax.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -316,6 +327,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 441);
+            this.Controls.Add(this.HtmlSyntax);
             this.Controls.Add(this.DearuCheckBox);
             this.Controls.Add(this.HalfwidthSymbolsList);
             this.Controls.Add(this.UseHalfwidthSymbols);
@@ -380,6 +392,7 @@
         private System.Windows.Forms.CheckBox UseHalfwidthSymbols;
         private System.Windows.Forms.TextBox HalfwidthSymbolsList;
         private System.Windows.Forms.CheckBox DearuCheckBox;
+        private System.Windows.Forms.CheckBox HtmlSyntax;
     }
 }
 

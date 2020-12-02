@@ -118,6 +118,8 @@ namespace JapaneseStyleChangerDemo
 
                 Changer.CustomHalfwidthSet = HalfwidthSymbolsList.Text;
 
+                Changer.HtmlSyntax = HtmlSyntax.Checked;
+
                 var text = SourceText.Text;
                 var result = await Task.Run(() => Changer.ChangeText(text));
                 TargetText.Text = result;
